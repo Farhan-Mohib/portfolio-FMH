@@ -113,7 +113,7 @@
             border: 1px solid var(--border);
             margin: 1.2rem auto 0;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
             min-height: 320px;
         }
         .award-img-caption {
@@ -161,15 +161,29 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;
         }
         .project-img-grid img {
-            width: 100%; height: 200px;
-            object-fit: cover; border-radius: 0.6rem;
+            width: 100%; height: 240px;
+            object-fit: contain; 
+            background: rgba(10,22,40,0.5);
+            border-radius: 0.6rem;
             border: 1px solid var(--border);
             cursor: pointer;
             transition: transform 0.3s, border-color 0.3s;
+            padding: 0.5rem;
         }
         .project-img-grid img:hover { transform: scale(1.02); border-color: var(--accent); }
-        .project-img-grid img.span2 { grid-column: 1 / -1; height: 320px; }
-        .project-img-single { width: 100%; height: 300px; object-fit: cover; border-radius: 0.6rem; border: 1px solid var(--border); margin-bottom: 1.5rem; cursor: pointer; transition: transform 0.3s; display: block; }
+        .project-img-grid img.span2 { grid-column: 1 / -1; height: 380px; }
+        .project-img-single { 
+            width: 100%; height: 380px; 
+            object-fit: contain;
+            background: rgba(10,22,40,0.5);
+            border-radius: 0.6rem; 
+            border: 1px solid var(--border); 
+            margin-bottom: 1.5rem; 
+            cursor: pointer; 
+            transition: transform 0.3s; 
+            display: block;
+            padding: 1rem;
+        }
         .project-img-single:hover { transform: scale(1.01); border-color: var(--accent); }
 
         .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
@@ -202,7 +216,9 @@
             border: 1px solid var(--border);
             margin-top: 1.2rem; display: block;
             min-height: 300px;
-            object-fit: cover;
+            object-fit: contain;
+            background: rgba(10,22,40,0.5);
+            padding: 1rem;
         }
 
         /* Contact */
@@ -339,13 +355,13 @@
                 <img
                     src="images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg"
                     alt="1st Runner Up Poster Presentation"
-                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
+                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:contain; cursor:pointer; background:rgba(10,22,40,0.5); padding:0.5rem;"
                     onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025 (BDT 5,000)')"
                 >
                 <img
                     src="images/poster.jpg"
                     alt="Research Poster – Real-Time Plant Disease Detection"
-                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
+                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:contain; cursor:pointer; background:rgba(10,22,40,0.5); padding:0.5rem;"
                     onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones for Precision Agriculture')"
                 >
             </div>
@@ -392,7 +408,7 @@
                     Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced
                     computer vision and deep learning. Leveraged Segment Anything Model (SAM) for automated mask generation, enabling
                     intelligent synthetic dataset creation through blending and copy-paste augmentation techniques. Trained YOLOv11
-                    models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771a362737475942">[email&#160;protected]</a>:0.95).
+                    models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (mAP@0.5:0.95).
                 </p>
                 <p style="font-size:0.95rem; color:var(--accent); font-weight:700; margin-top:1rem;">
                     ✅ Published | ✅ Peer-Reviewed | ✅ Novel Methodology | ✅ Real-world Environmental Application
@@ -415,24 +431,12 @@
 
             <!-- Mavirov ROV -->
             <div class="project-card">
-                <div class="project-img-grid">
-                    <img
-                        src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
-                        alt="Leviathan ROV – First underwater drone by Mavirov"
-                        class="span2"
-                        onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')"
-                    >
-                    <img
-                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful operation of Leviathan"
-                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
-                    >
-                    <img
-                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
-                        alt="Leviathan at BEAR Summit with team"
-                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan at BEAR Summit 2')"
-                    >
-                </div>
+                <img
+                    src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
+                    alt="Leviathan ROV – First underwater drone by Mavirov"
+                    class="project-img-single"
+                    onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')"
+                >
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
                 <p>
                     Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform.
@@ -504,14 +508,14 @@
                         onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
                     >
                     <img
+                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
+                        alt="First successful operation of Leviathan"
+                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
+                    >
+                    <img
                         src="images/postogola.jpg"
                         alt="Field operation at Postogola Cantonment pool (33 ft depth)"
                         onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
-                    >
-                    <img
-                        src="images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg"
-                        alt="Farhan explaining the underwater drone system"
-                        onclick="openLightbox(this.src, 'Farhan Mohib Hemal presenting the underwater drone system')"
                     >
                 </div>
                 <h3>Field Operations & Public Showcases</h3>
@@ -539,14 +543,14 @@
                         onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Officially unveiled by the Commandant of MIST')"
                     >
                     <img
+                        src="images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg"
+                        alt="Farhan explaining the underwater drone system at revealing day"
+                        onclick="openLightbox(this.src, 'Farhan Mohib Hemal presenting the underwater drone system at revealing day')"
+                    >
+                    <img
                         src="images/our%20new%20underwatera%20drone%20with%20arm.jpg"
                         alt="New underwater drone with robotic arm"
                         onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Leviathan 2.0')"
-                    >
-                    <img
-                        src="images/projector%20view%20of%20our%20new%20drone%20at%20revealing%20days.jpg"
-                        alt="Projector view of new drone at revealing day"
-                        onclick="openLightbox(this.src, 'Live underwater footage of new drone projected for MIST officials on Revealing Day')"
                     >
                 </div>
                 <h3>New Drone with Robotic Arm – Official Unveiling at MIST</h3>
@@ -879,8 +883,28 @@
 </footer>
 
 <!-- Lightbox Script -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     function openLightbox(src, caption) {
         document.getElementById('lightbox-img').src = src;
         document.getElementById('lightbox-caption').textContent = caption || '';
-        document.getElementById('lightbox').classList.ad
+        document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
