@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - AI/ML & Robotics Engineer</title>
+    <title>Md Farhan Mohib Hemal - Underwater Robotics Engineer & Researcher</title>
     <style>
         * {
             margin: 0;
@@ -12,18 +12,20 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #3b82f6;
-            --accent-dark: #1d4ed8;
-            --text: #f1f5f9;
-            --text-muted: #cbd5e1;
-            --border: #334155;
+            --primary: #0a1628;
+            --secondary: #1a2744;
+            --accent: #00a8ff;
+            --accent-dark: #0080cc;
+            --text: #f0f4f8;
+            --text-muted: #b0bac8;
+            --border: #2d3e54;
+            --success: #00d97e;
+            --warning: #ffa500;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
@@ -34,7 +36,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(10, 22, 40, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
@@ -50,7 +52,7 @@
         }
 
         nav .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--accent);
             text-decoration: none;
@@ -66,6 +68,7 @@
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         nav a:hover {
@@ -92,18 +95,18 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 168, 255, 0.08) 0%, transparent 70%);
             border-radius: 50%;
-            top: -100px;
+            top: -200px;
             right: -100px;
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
+            50% { transform: translateY(40px); }
         }
 
         .hero-content {
@@ -126,17 +129,41 @@
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero p {
-            font-size: 1.5rem;
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
+        }
+
+        .hero .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            background: rgba(0, 168, 255, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .cta-buttons {
@@ -163,7 +190,7 @@
         .btn-primary:hover {
             background: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3);
         }
 
         .btn-secondary {
@@ -172,20 +199,235 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(0, 168, 255, 0.1);
             transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text);
+        }
+
+        /* Awards & Recognition */
+        .awards {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .award-card {
+            background: rgba(0, 168, 255, 0.08);
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            background: rgba(0, 168, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 168, 255, 0.2);
+        }
+
+        .award-card h3 {
+            color: var(--success);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .award-card .award-type {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Mavirov Section */
+        .mavirov {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .mavirov-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .mavirov-info h3 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .mavirov-info p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.2), rgba(0, 217, 126, 0.2));
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .project-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-item {
+            background: rgba(30, 41, 59, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .project-item h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-item p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 168, 255, 0.1);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 168, 255, 0.3);
+        }
+
+        /* Research Section */
+        .research {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.15);
+        }
+
+        .research-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .research-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .research-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .research-links a:hover {
+            color: var(--success);
+        }
+
+        /* Education Section */
+        .education {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .education-timeline {
+            position: relative;
+            padding: 0;
+        }
+
+        .education-item {
+            background: rgba(30, 41, 59, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            background: rgba(30, 41, 59, 1);
+            transform: translateX(10px);
+        }
+
+        .education-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .institution {
+            color: var(--success);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            color: var(--text-muted);
         }
 
         /* Skills Section */
         .skills {
             padding: 6rem 0;
             border-top: 1px solid var(--border);
-        }
-
-        .skills h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
         }
 
         .skills-grid {
@@ -207,13 +449,13 @@
             border-color: var(--accent);
             background: rgba(30, 41, 59, 1);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
         }
 
         .skill-card h3 {
             color: var(--accent);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .skill-tags {
@@ -223,137 +465,12 @@
         }
 
         .tag {
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(0, 168, 255, 0.1);
             color: var(--accent);
             padding: 0.3rem 0.8rem;
             border-radius: 0.25rem;
             font-size: 0.85rem;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 6rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .projects h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
-            padding: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(59, 130, 246, 0.15);
-            color: var(--accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.2rem;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .project-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .project-links a:hover {
-            color: #60a5fa;
-        }
-
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        .about-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .highlight {
-            background: rgba(59, 130, 246, 0.05);
-            border-left: 3px solid var(--accent);
-            padding: 1.5rem;
-            border-radius: 0.25rem;
-        }
-
-        .highlight h4 {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
+            border: 1px solid rgba(0, 168, 255, 0.3);
         }
 
         /* Contact Section */
@@ -386,21 +503,23 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: rgba(59, 130, 246, 0.1);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 168, 255, 0.1);
             border: 1px solid var(--border);
             border-radius: 50%;
             color: var(--accent);
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
             background: var(--accent);
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 168, 255, 0.3);
         }
 
         /* Footer */
@@ -415,18 +534,27 @@
         @media (max-width: 768px) {
             nav ul {
                 gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
 
-            .hero p {
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero .tagline {
                 font-size: 1rem;
             }
 
-            .about-content {
+            .mavirov-content {
                 grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
             }
 
             .hero::before {
@@ -440,11 +568,12 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="logo">Your Name</a>
+            <a href="#" class="logo">Md Farhan Mohib Hemal</a>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#mavirov">Mavirov</a></li>
+                <li><a href="#research">Research</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -453,11 +582,175 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>AI & Robotics Engineer</h1>
-            <p>Building intelligent systems through Machine Learning, Deep Learning & Electronics</p>
+            <h1>Md Farhan Mohib Hemal</h1>
+            <p class="subtitle">Underwater Robotics Engineer & Researcher</p>
+            <p class="tagline">Building Autonomous Underwater Systems | Award-Winning Innovator</p>
+            
+            <div class="badges">
+                <span class="badge">🏆 Best Paper Award - STI 2025</span>
+                <span class="badge">🤖 Mavirov Co-founder</span>
+                <span class="badge">🔬 Published Researcher</span>
+            </div>
+
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Projects</a>
+                <a href="#research" class="btn btn-primary">View Research</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition -->
+    <section class="awards" id="about">
+        <div class="container">
+            <h2>🏆 Awards & Recognition</h2>
+            
+            <div class="award-card">
+                <div class="award-type">🏆 BEST PAPER AWARD</div>
+                <h3>STI 2025 Conference</h3>
+                <p>Recognized for outstanding research contribution in underwater robotics and autonomous systems at the prestigious STI 2025 conference.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Paper details and link available upon request</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-type">🎓 ACADEMIC EXCELLENCE</div>
+                <h3>A+ in SSC & HSC (96% in PCM)</h3>
+                <p>Achieved top grades in Secondary and Higher Secondary Certificate examinations with 96% in Physics, Chemistry, and Mathematics from Bangladesh Noubahini School & College, Chattogram.</p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-type">📊 PUBLISHED RESEARCHER</div>
+                <h3>Google Scholar & ResearchGate</h3>
+                <p>Active researcher with publications in underwater robotics, autonomous systems, and control engineering. Find my research profiles below.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mavirov Section -->
+    <section class="mavirov" id="mavirov">
+        <div class="container">
+            <h2>🤖 Mavirov - Underwater Robotics Innovation</h2>
+            
+            <div class="mavirov-content">
+                <div class="mavirov-info">
+                    <h3>Mavirov</h3>
+                    <div class="role-badge">Co-founder & Software Team Lead</div>
+                    
+                    <p>
+                        Mavirov is an innovative research group focused on developing cutting-edge underwater robotics systems. 
+                        We design and build autonomous underwater drones with advanced control systems and real-world applications.
+                    </p>
+
+                    <h4 style="color: var(--accent); margin-top: 2rem; margin-bottom: 1rem;">Our Mission</h4>
+                    <p>
+                        To advance underwater robotics technology through innovative engineering, autonomous systems, and 
+                        practical solutions for underwater exploration, research, and industrial applications.
+                    </p>
+
+                    <a href="https://www.facebook.com/mistmavirov" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">
+                        Visit Mavirov
+                    </a>
+                </div>
+
+                <div class="project-showcase">
+                    <h4 style="color: var(--accent); margin-bottom: 1.5rem; font-size: 1.3rem;">Key Projects</h4>
+                    
+                    <div class="project-item">
+                        <h4>Autonomous Underwater Drone</h4>
+                        <p>6 DOF (Degrees of Freedom) autonomous underwater vehicle with both wireless and wired control capabilities</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">Control Systems</span>
+                            <span class="tech-tag">Autonomous Navigation</span>
+                            <span class="tech-tag">Electronics</span>
+                            <span class="tech-tag">Software Engineering</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <h4>Wireless & Wired Control Systems</h4>
+                        <p>Advanced control architecture supporting both autonomous and remote-operated modes for underwater vehicles</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Real-time Systems</span>
+                            <span class="tech-tag">Communication Protocol</span>
+                            <span class="tech-tag">Embedded Systems</span>
+                            <span class="tech-tag">Control Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="research" id="research">
+        <div class="container">
+            <h2>🔬 Research & Publications</h2>
+            
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Google Scholar</h3>
+                    <p>Access all my research publications, citations, and academic work on Google Scholar. Follow for updates on latest research.</p>
+                    <div class="research-links">
+                        <a href="https://scholar.google.com">Visit Google Scholar</a>
+                        <a href="#">Md Farhan Mohib Hemal</a>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <h3>ResearchGate</h3>
+                    <p>Connect on ResearchGate to view my full research profile, publications, and ongoing research activities in underwater robotics.</p>
+                    <div class="research-links">
+                        <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal">View Profile</a>
+                        <a href="#">ResearchGate</a>
+                    </div>
+                </div>
+
+                <div class="research-card">
+                    <h3>STI 2025 - Best Paper</h3>
+                    <p>Award-winning research presented at STI 2025 Conference. Research focuses on advanced underwater robotics and autonomous systems.</p>
+                    <div class="research-links">
+                        <a href="#">Paper Details</a>
+                        <a href="#">Conference</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 168, 255, 0.08); border-left: 4px solid var(--success); border-radius: 0.5rem;">
+                <p style="color: var(--text); margin-bottom: 0.5rem;">
+                    <strong>📚 More Publications Coming Soon</strong>
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    Additional research work and publications will be added soon. Stay tuned for updates on underwater robotics research and autonomous systems development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="container">
+            <h2>🎓 Education</h2>
+            
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>Bachelor's Degree</h3>
+                    <div class="institution">Military Institute of Science and Technology (MIST)</div>
+                    <p><strong>Department:</strong> Electrical Electronic & Communication Engineering</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Pursuing advanced engineering education with focus on robotics, automation, and control systems</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <div class="institution">A+ | 96% in Physics, Chemistry, Mathematics (PCM)</div>
+                    <p><strong>School:</strong> Bangladesh Noubahini School & College, Chattogram</p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Achieved excellence in science subjects with strong foundation in mathematics and physics</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <div class="institution">A+ | Bangladesh Noubahini School & College, Chattogram</div>
+                    <p>Demonstrated consistent academic excellence from secondary education level</p>
+                </div>
             </div>
         </div>
     </section>
@@ -465,214 +758,72 @@
     <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="container">
-            <h2>Technical Skills</h2>
+            <h2>💼 Technical Expertise</h2>
+            
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>Machine Learning</h3>
+                    <h3>Robotics & Control</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Underwater Robotics</span>
+                        <span class="tag">Autonomous Systems</span>
+                        <span class="tag">Control Engineering</span>
+                        <span class="tag">Motion Planning</span>
+                        <span class="tag">Robot Dynamics</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Software Development</h3>
                     <div class="skill-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">NumPy</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Real-time Systems</span>
+                        <span class="tag">Software Architecture</span>
+                        <span class="tag">Team Leadership</span>
                     </div>
                 </div>
+
                 <div class="skill-card">
-                    <h3>Deep Learning</h3>
+                    <h3>Electronics & Hardware</h3>
                     <div class="skill-tags">
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">CNNs</span>
-                        <span class="tag">RNNs</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <h3>Robotics</h3>
-                    <div class="skill-tags">
-                        <span class="tag">ROS</span>
-                        <span class="tag">Computer Vision</span>
                         <span class="tag">Embedded Systems</span>
-                        <span class="tag">Arduino</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <h3>Electronics</h3>
-                    <div class="skill-tags">
                         <span class="tag">Circuit Design</span>
                         <span class="tag">Microcontrollers</span>
+                        <span class="tag">Sensor Integration</span>
                         <span class="tag">PCB Design</span>
-                        <span class="tag">IoT</span>
                     </div>
                 </div>
+
                 <div class="skill-card">
-                    <h3>Programming</h3>
+                    <h3>Communication Systems</h3>
                     <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Java</span>
+                        <span class="tag">Wireless Communication</span>
+                        <span class="tag">Wired Control</span>
+                        <span class="tag">Protocol Design</span>
+                        <span class="tag">Signal Processing</span>
+                        <span class="tag">IoT Systems</span>
                     </div>
                 </div>
+
                 <div class="skill-card">
-                    <h3>Tools & Platforms</h3>
+                    <h3>Research & Innovation</h3>
                     <div class="skill-tags">
-                        <span class="tag">Git</span>
-                        <span class="tag">Jupyter</span>
-                        <span class="tag">VS Code</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>AI-Powered Robot Vision</h3>
-                        <p>An intelligent robotic system using computer vision and deep learning for object detection and classification</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">ROS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Demo</a>
-                        </div>
+                        <span class="tag">Technical Writing</span>
+                        <span class="tag">Research Methodology</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Innovation</span>
+                        <span class="tag">Problem Solving</span>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Autonomous Navigation System</h3>
-                        <p>Machine learning model for path planning and obstacle avoidance in robotics applications</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">SLAM</span>
-                            <span class="tech-tag">ROS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Paper</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>IoT Sensor Network</h3>
-                        <p>Real-time data collection and analysis using embedded systems and machine learning for anomaly detection</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Arduino</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Electronics</span>
-                            <span class="tech-tag">IoT</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Docs</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Deep Learning Image Processing</h3>
-                        <p>Advanced neural networks for image segmentation and enhancement in robotics applications</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">CNNs</span>
-                            <span class="tech-tag">Jupyter</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Notebook</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Predictive Maintenance System</h3>
-                        <p>ML-based predictive analytics for equipment maintenance using time-series analysis</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Time Series</span>
-                            <span class="tech-tag">Data Analysis</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Dashboard</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Custom PCB Design</h3>
-                        <p>Multi-layer PCB design for robotics control systems with integrated sensor interfacing</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">KiCAD</span>
-                            <span class="tech-tag">Circuit Design</span>
-                            <span class="tech-tag">Electronics</span>
-                            <span class="tech-tag">Microcontroller</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#">GitHub</a>
-                            <a href="#">Schematics</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a passionate AI and Robotics engineer with a strong foundation in machine learning, deep learning, and electronics. I love building intelligent systems that solve real-world problems.
-                    </p>
-                    <p>
-                        With expertise in Python, TensorFlow, PyTorch, and ROS, I've worked on diverse projects ranging from computer vision systems to autonomous robotics platforms.
-                    </p>
-                    <p>
-                        My goal is to create innovative solutions that bridge the gap between AI theory and practical robotics applications.
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight">
-                        <h4>🎓 Education</h4>
-                        <p>Bachelor's/Master's in [Your Field] - [Your University]</p>
-                    </div>
-                    <div class="highlight">
-                        <h4>💼 Experience</h4>
-                        <p>X+ years in AI/ML and Robotics development</p>
-                    </div>
-                    <div class="highlight">
-                        <h4>🏆 Achievements</h4>
-                        <p>Published papers, awards, certifications, and notable projects</p>
-                    </div>
-                    <div class="highlight">
-                        <h4>📚 Learning</h4>
-                        <p>Continuously exploring cutting-edge AI and robotics technologies</p>
+                <div class="skill-card">
+                    <h3>Leadership & Collaboration</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Team Leadership</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Technical Mentoring</span>
+                        <span class="tag">Entrepreneurship</span>
+                        <span class="tag">Cross-functional Teams</span>
                     </div>
                 </div>
             </div>
@@ -682,21 +833,22 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <p>I'm always interested in collaborating on AI/ML and robotics projects. Feel free to reach out!</p>
+            <h2>🔗 Connect With Me</h2>
+            <p>Interested in collaborating on underwater robotics, autonomous systems, or research projects?</p>
+            
             <div class="social-links">
-                <a href="https://github.com/yourusername" title="GitHub">🔗</a>
-                <a href="https://linkedin.com/in/yourprofile" title="LinkedIn">💼</a>
-                <a href="mailto:your.email@example.com" title="Email">✉️</a>
-                <a href="https://twitter.com/yourhandle" title="Twitter">𝕏</a>
+                <a href="https://wa.me/+8801824100874" title="WhatsApp" style="background: rgba(37, 211, 102, 0.1); border-color: #25d366;">💬</a>
+                <a href="mailto:farhanmohibhemal@gmail.com" title="Email">✉️</a>
+                <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" title="LinkedIn">in</a>
+                <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" title="ResearchGate">RG</a>
+                <a href="https://www.facebook.com/farhan.mohib.2024" title="Facebook">f</a>
             </div>
-            <a href="mailto:your.email@example.com" class="btn btn-primary">Send Me an Email</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved. | Built with passion for AI & Robotics</p>
+        <p>&copy; 2024 Md Farhan Mohib Hemal. All rights reserved. | Underwater Robotics Engineer & Researcher</p>
     </footer>
 </body>
 </html>
