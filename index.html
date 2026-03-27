@@ -8,152 +8,81 @@
     <title>Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
-            --primary: #0a1628;
-            --secondary: #1a2744;
-            --accent: #00a8ff;
-            --accent-dark: #0080cc;
-            --text: #f0f4f8;
-            --text-muted: #b0bac8;
-            --border: #2d3e54;
-            --success: #00d97e;
-            --warning: #ffa500;
+            --primary: #0a1628; --secondary: #1a2744; --accent: #00a8ff;
+            --accent-dark: #0080cc; --text: #f0f4f8; --text-muted: #b0bac8;
+            --border: #2d3e54; --success: #00d97e; --warning: #ffa500;
         }
-
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
-            color: var(--text);
-            line-height: 1.8;
-            overflow-x: hidden;
+            color: var(--text); line-height: 1.8; overflow-x: hidden;
         }
-
-        /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: rgba(10, 22, 40, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100; padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: fixed; top:0; width:100%; background: rgba(10,22,40,0.98);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+            z-index:100; padding:1rem 2rem; box-shadow:0 2px 20px rgba(0,0,0,0.3);
         }
-        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { font-size: 1.3rem; font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: 0.5px; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-size: 0.9rem; font-weight: 500; }
+        nav .container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        nav .logo { font-size:1.3rem; font-weight:700; color: var(--accent); text-decoration:none; letter-spacing:0.5px; }
+        nav ul { display:flex; list-style:none; gap:2rem; }
+        nav a { color: var(--text-muted); text-decoration:none; transition: color 0.3s; font-size:0.9rem; font-weight:500; }
         nav a:hover { color: var(--accent); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 7rem 0; border-top: 1px solid var(--border); }
-        section h2 { font-size: 2.8rem; margin-bottom: 3rem; text-align: center; font-weight: 700; letter-spacing: 0.5px; }
+        .container { max-width: 1200px; margin:0 auto; padding:0 2rem; }
+        section { padding: 7rem 0; border-top:1px solid var(--border); }
+        section h2 { font-size:2.8rem; margin-bottom:3rem; text-align:center; font-weight:700; }
 
-        /* Hero */
-        .hero {
-            margin-top: 80px; min-height: calc(100vh - 80px);
-            display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: ''; position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,168,255,0.08) 0%, transparent 70%);
-            border-radius: 50%; top: -200px; right: -100px;
-            animation: float 8s ease-in-out infinite;
-        }
-        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(40px)} }
+        .hero { margin-top:80px; min-height: calc(100vh - 80px); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+        .hero::before { content:''; position:absolute; width:600px; height:600px; background: radial-gradient(circle, rgba(0,168,255,0.08) 0%, transparent 70%); border-radius:50%; top:-200px; right:-100px; animation: float 8s ease-in-out infinite; }
+        @keyframes float {0%,100%{transform:translateY(0)} 50%{transform:translateY(40px)}}
         @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        .hero-content { position:relative; z-index:2; text-align:center; animation: slideUp 0.8s ease-out; }
 
-        .hero-content { position: relative; z-index: 2; text-align: center; animation: slideUp 0.8s ease-out; }
+        .hero-photo { width:160px; height:160px; border-radius:50%; object-fit:cover; object-position:top; border:4px solid var(--accent); box-shadow:0 0 40px rgba(0,168,255,0.35); margin:0 auto 2rem; display:block; cursor:pointer; }
 
-        /* Hero photo */
-        .hero-photo {
-            width: 160px; height: 160px;
-            border-radius: 50%;
-            object-fit: cover; object-position: top;
-            border: 4px solid var(--accent);
-            box-shadow: 0 0 40px rgba(0,168,255,0.35);
-            margin: 0 auto 2rem;
-            display: block;
-            cursor: pointer;
-        }
+        .hero h1 { font-size:3.8rem; margin-bottom:0.8rem; background:linear-gradient(135deg,#00a8ff 0%,#00d97e 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:800; letter-spacing:-1px; }
+        .hero .subtitle { font-size:1.9rem; color: var(--text); margin-bottom:0.8rem; font-weight:600; }
+        .hero .tagline { font-size:1.3rem; color: var(--text-muted); margin-bottom:2.5rem; max-width:600px; margin-left:auto; margin-right:auto; }
 
-        .hero h1 {
-            font-size: 3.8rem; margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; font-weight: 800; letter-spacing: -1px;
-        }
-        .hero .subtitle { font-size: 1.9rem; color: var(--text); margin-bottom: 0.8rem; font-weight: 600; }
-        .hero .tagline { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .badges { display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; margin-bottom:3rem; }
+        .badge { background: rgba(0,168,255,0.15); border:1px solid var(--accent); color: var(--accent); padding:0.7rem 1.4rem; border-radius:0.6rem; font-size:0.95rem; font-weight:600; }
 
-        .badges { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-        .badge { background: rgba(0,168,255,0.15); border: 1px solid var(--accent); color: var(--accent); padding: 0.7rem 1.4rem; border-radius: 0.6rem; font-size: 0.95rem; font-weight: 600; }
-
-        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 1rem 2.5rem; border-radius: 0.6rem; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; font-size: 1rem; }
-        .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 15px rgba(0,168,255,0.3); }
-        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,168,255,0.4); }
+        .cta-buttons { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; }
+        .btn { padding:1rem 2.5rem; border-radius:0.6rem; text-decoration:none; font-weight:600; transition: all 0.3s; border:2px solid transparent; font-size:1rem; }
+        .btn-primary { background: var(--accent); color:white; box-shadow:0 4px 15px rgba(0,168,255,0.3); }
+        .btn-primary:hover { background: var(--accent-dark); transform:translateY(-3px); box-shadow:0 8px 25px rgba(0,168,255,0.4); }
         .btn-secondary { border-color: var(--accent); color: var(--accent); }
-        .btn-secondary:hover { background: rgba(0,168,255,0.1); transform: translateY(-3px); }
+        .btn-secondary:hover { background: rgba(0,168,255,0.1); transform:translateY(-3px); }
 
-        /* Award & Project Cards */
-        .award-card, .project-card {
-            background: rgba(30,41,59,0.8); border: 1px solid var(--border);
-            padding: 2.5rem; border-radius: 0.8rem; margin-bottom: 2rem; transition: all 0.3s;
-        }
-        .award-card:hover, .project-card:hover { border-color: var(--accent); background: rgba(30,41,59,1); transform: translateY(-5px); }
-        .award-card h3, .project-card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.4rem; font-weight: 700; }
-        .award-card p, .project-card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        .award-card { background: rgba(0,168,255,0.08); border:2px solid var(--accent); padding:2.5rem; border-radius:0.8rem; margin-bottom:2rem; transition: all 0.3s; }
+        .award-card:hover { background: rgba(0,168,255,0.15); transform:translateY(-5px); box-shadow:0 15px 40px rgba(0,168,255,0.2); }
+        .award-card h3 { color: var(--success); margin-bottom:0.8rem; font-size:1.4rem; font-weight:700; }
+        .award-type { color: var(--accent); font-weight:700; font-size:0.95rem; margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; }
+        .award-card p { color: var(--text-muted); margin-bottom:1rem; line-height:1.8; }
+        .award-img { width:100%; max-width:560px; border-radius:0.6rem; border:1px solid var(--border); margin:1.2rem auto 0; display:block; cursor:pointer; }
+        .award-img-caption { text-align:center; font-size:0.85rem; color: var(--text-muted); margin-top:0.5rem; font-style:italic; }
 
-        .award-type { color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .project-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2.5rem; margin-top:3rem; }
+        .project-card { background: rgba(30,41,59,0.8); border:1px solid var(--border); padding:2.5rem; border-radius:0.8rem; transition: all 0.3s; cursor:pointer; }
+        .project-card:hover { border-color: var(--accent); background: rgba(30,41,59,1); transform:translateY(-8px); box-shadow:0 15px 40px rgba(0,168,255,0.15); }
+        .project-card h3 { color: var(--accent); margin-bottom:1rem; font-size:1.4rem; font-weight:700; }
+        .project-card p { color: var(--text-muted); margin-bottom:1.5rem; line-height:1.8; }
+        .project-img-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin-bottom:1.5rem; }
+        .project-img-grid img { width:100%; height:140px; object-fit:cover; border-radius:0.4rem; border:1px solid var(--border); cursor:pointer; }
+        .project-img-grid img.span2 { grid-column:1 / -1; height:180px; }
 
-        .award-img, .project-img {
-            width: 100%; max-width: 560px;
-            border-radius: 0.6rem; border: 1px solid var(--border);
-            margin: 1rem auto 0; display: block; cursor: pointer;
-            object-fit: cover;
-        }
-        .award-img-caption, .gallery-caption { text-align: center; font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-muted); font-style: italic; }
-
-        .photo-gallery, .project-img-grid {
-            display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem;
-        }
-        .project-img-grid img { flex: 0 0 auto; width: 280px; height: 200px; border-radius: 0.6rem; border: 1px solid var(--border); object-fit: cover; cursor: pointer; transition: transform 0.3s; }
-        .project-img-grid img:hover { transform: scale(1.03); border-color: var(--accent); }
-
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
-        .skill-category { background: rgba(30,41,59,0.8); border: 1px solid var(--border); padding: 2rem; border-radius: 0.8rem; }
-        .skill-category:hover { border-color: var(--accent); background: rgba(30,41,59,1); transform: translateY(-5px); }
-        .skill-category h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 700; }
-        .skill-list { list-style: none; }
-        .skill-list li { color: var(--text-muted); margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative; line-height: 1.6; }
-        .skill-list li:before { content: "▸"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-
-        /* Contact */
-        .contact { text-align: center; }
-        .social-links { display: flex; gap: 1.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
-        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 55px; height: 55px; background: rgba(0,168,255,0.12); border: 1.5px solid var(--border); border-radius: 50%; color: var(--accent); text-decoration: none; transition: all 0.3s; font-weight: bold; font-size: 1.3rem; }
-        .social-links a:hover { background: var(--accent); color: white; transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 25px rgba(0,168,255,0.3); }
-
-        footer { border-top: 1px solid var(--border); padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.95rem; }
+        .tech-stack { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:1.5rem; }
+        .tech-tag { background: rgba(0,168,255,0.12); color: var(--accent); padding:0.4rem 0.9rem; border-radius:0.3rem; font-size:0.85rem; border:1px solid rgba(0,168,255,0.3); font-weight:600; }
 
         /* Lightbox */
-        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 0.5rem; object-fit: contain; }
-        .lightbox-close { position: absolute; top: 1.2rem; right: 1.8rem; font-size: 2.5rem; color: white; cursor: pointer; line-height: 1; }
-        .lightbox-caption { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 0.95rem; text-align: center; }
+        .lightbox { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.92); z-index:999; align-items:center; justify-content:center; }
+        .lightbox.active { display:flex; }
+        .lightbox img { max-width:90vw; max-height:88vh; border-radius:0.5rem; object-fit:contain; }
+        .lightbox-close { position:absolute; top:1.2rem; right:1.8rem; font-size:2.5rem; color:white; cursor:pointer; line-height:1; }
+        .lightbox-caption { position:absolute; bottom:1.5rem; left:50%; transform:translateX(-50%); color:#ccc; font-size:0.95rem; text-align:center; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero .subtitle { font-size: 1.3rem; }
-            section h2 { font-size: 2rem; }
-            nav ul { gap: 1rem; }
-            .project-img-grid img { width: 220px; height: 160px; }
-        }
+        @media(max-width:768px){ .hero h1{font-size:2.2rem;} .hero .subtitle{font-size:1.3rem;} section h2{font-size:2rem;} nav ul{gap:1rem;} .project-img-grid{grid-template-columns:1fr;} .project-img-grid img.span2{grid-column:1;} }
     </style>
 </head>
 <body>
@@ -172,10 +101,6 @@
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
 </nav>
@@ -183,40 +108,10 @@
 <!-- Hero -->
 <section class="hero">
     <div class="hero-content">
-        <img src="images/my_pic.jpg" alt="Md Farhan Mohib Hemal" class="hero-photo" onclick="openLightbox(this.src,'Md Farhan Mohib Hemal')">
+        <img src="images/my_pic.jpg" alt="Md Farhan Mohib Hemal" class="hero-photo"
+             onclick="openLightbox(this.src,'Md Farhan Mohib Hemal')">
         <h1>Md Farhan Mohib Hemal</h1>
         <p class="subtitle">Underwater Robotics Engineer & Advanced Signal Processing Researcher</p>
-        <p class="tagline">Designing autonomous systems through rigorous software architecture, real-time control, and innovative signal processing</p>
-
-        <div class="badges">
-            <span class="badge">🏆 Best Paper Award – IEEE STI 2025</span>
-            <span class="badge">🤖 Co-founder & Software Lead – Mavirov</span>
-            <span class="badge">📊 Published Researcher</span>
-            <span class="badge">💻 Full-Stack Embedded Systems</span>
-        </div>
-
-        <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">Explore Projects</a>
-            <a href="#contact" class="btn btn-secondary">Connect With Me</a>
-        </div>
-    </div>
-</section>
-
-<!-- About / Awards -->
-<section id="about">
-    <div class="container">
-        <h2>Professional Recognition & Achievements</h2>
-
-        <!-- Example Award Card -->
-        <div class="award-card">
-            <div class="award-type">🏆 IEEE STI 2025 – Best Paper Award</div>
-            <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
-            <p>Received Best Paper Award at IEEE STI 2025. Improved detection accuracy using SAM-guided synthetic augmentation.</p>
-            <img src="images/best_paper.jpg" alt="IEEE STI 2025 Best Paper Certificate" class="award-img" onclick="openLightbox(this.src,'IEEE STI 2025 Best Paper Award Certificate – Md Farhan Mohib Hemal')">
-            <p class="award-img-caption">IEEE STI 2025 Best Paper Award Certificate</p>
-        </div>
-
-        <!-- More awards can be added in same structure -->
     </div>
 </section>
 
@@ -224,115 +119,51 @@
 <section id="projects">
     <div class="container">
         <h2>Major Projects & Research</h2>
+
         <div class="project-grid">
-
-            <!-- SAM YOLO Project -->
+            <!-- Project 1 -->
             <div class="project-card">
-                <h3>SAM-Augmented Microplastic Detection Using YOLO11</h3>
-                <p>Advanced underwater microplastic detection using SAM + YOLO11 with synthetic data augmentation.</p>
                 <div class="project-img-grid">
-                    <img src="images/best_paper.jpg" alt="Microplastic Detection" onclick="openLightbox(this.src,'Microplastic Detection Project')">
+                    <img src="images/first_underwater_drone_name_Leviathan.jpg" class="span2"
+                         onclick="openLightbox(this.src,'Leviathan ROV')">
+                    <img src="images/first_sucess_ful_operation_of_leviathan.jpg"
+                         onclick="openLightbox(this.src,'First Successful Operation')">
+                    <img src="images/our_new_underwatera_drone_with_arm.jpg"
+                         onclick="openLightbox(this.src,'New Underwater Drone with Robotic Arm')">
                 </div>
-            </div>
-
-            <!-- Mavirov ROV Leviathan -->
-            <div class="project-card">
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
-                <p>Autonomous underwater robotics with hierarchical control, Pixhawk + Raspberry Pi 5, video streaming, and joystick control.</p>
-                <div class="project-img-grid">
-                    <img src="images/first_underwater_drone_name_Leviathan.jpg" alt="Leviathan ROV" onclick="openLightbox(this.src,'Leviathan ROV')">
-                    <img src="images/first_sucess_ful_operation_of_leviathan.jpg" alt="First Operation" onclick="openLightbox(this.src,'First Operation of Leviathan')">
-                    <img src="images/our_new_underwatera_drone_with_arm.jpg" alt="New Drone with Arm" onclick="openLightbox(this.src,'New Drone with Robotic Arm')">
-                </div>
             </div>
 
-            <!-- Expo 2026 -->
+            <!-- Project 2 -->
             <div class="project-card">
-                <h3>Digital Device & Innovation Expo 2026 – Mavirov</h3>
-                <p>Leviathan 2.0 & Creeper 1.0 showcased at BCFCC Dhaka, high-profile audience including Dr. Muhammad Yunus and MIST Commandant.</p>
                 <div class="project-img-grid">
-                    <img src="images/digital_device_innovation_expo_2026_leviathan_with_our_new_wireless_drone_creeper.jpg" alt="DDIE 2026 Exhibition" onclick="openLightbox(this.src,'DDIE 2026 – Leviathan 2.0 & Creeper 1.0')">
-                    <img src="images/digital_device_innovation_expo_2026_mine_pic.jpg" alt="Farhan at DDIE 2026" onclick="openLightbox(this.src,'Md Farhan Mohib Hemal at DDIE 2026')">
-                    <img src="images/chief_advisor_DR_yunus_and_commandat_of_mist__with_our_drones.jpg" alt="Dr. Yunus & MIST Commandant" onclick="openLightbox(this.src,'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')">
+                    <img src="images/digital_device_innovation_expo_2026_leviathan_with_our_new_wireless_drone_creeper.jpg" class="span2"
+                         onclick="openLightbox(this.src,'DDIE 2026 – Leviathan & Creeper')">
+                    <img src="images/digital_device_innovation_expo_2026_mine_pic.jpg"
+                         onclick="openLightbox(this.src,'Md Farhan Mohib Hemal at DDIE 2026')">
                 </div>
+                <h3>Digital Device & Innovation Expo 2026</h3>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Skills -->
-<section id="skills">
-    <div class="container">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Robotics & Embedded Systems</h3>
-                <ul class="skill-list">
-                    <li>Autonomous ROV Control</li>
-                    <li>ROS / MAVROS Integration</li>
-                    <li>Microcontroller Programming (Arduino, ESP32)</li>
-                    <li>Real-time Sensors & Feedback</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Signal Processing & AI</h3>
-                <ul class="skill-list">
-                    <li>Digital Signal Processing (MATLAB)</li>
-                    <li>Deep Learning for Image Detection</li>
-                    <li>YOLO11 / SAM Integration</li>
-                    <li>Data Acquisition & Analysis</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Software & Development</h3>
-                <ul class="skill-list">
-                    <li>Python / C++ / JavaScript</li>
-                    <li>Linux Embedded Systems</li>
-                    <li>Git & Version Control</li>
-                    <li>Full-stack Embedded Web Dashboards</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-    <div class="container contact">
-        <h2>Connect With Me</h2>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/farhanmohib" target="_blank">in</a>
-            <a href="https://github.com/farhanmohib" target="_blank">GH</a>
-            <a href="mailto:farhanmohib@example.com">✉</a>
-        </div>
-        <p>For inquiries, collaborations, or research opportunities, feel free to reach out!</p>
-    </div>
-</section>
-
-<footer>
-    &copy; 2026 Md Farhan Mohib Hemal. All rights reserved.
-</footer>
 
 <script>
-    function openLightbox(src, caption = '') {
-        const lb = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lightbox-img');
-        const lbCaption = document.getElementById('lightbox-caption');
-        lb.classList.add('active');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, caption) {
         lbImg.src = src;
-        lbCaption.textContent = caption;
+        lbCaption.innerText = caption;
+        lightbox.classList.add('active');
     }
 
     function closeLightbox() {
-        const lb = document.getElementById('lightbox');
-        lb.classList.remove('active');
+        lightbox.classList.remove('active');
+        lbImg.src = '';
+        lbCaption.innerText = '';
     }
-
-    // Close lightbox on ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-    });
-
 </script>
 
 </body>
