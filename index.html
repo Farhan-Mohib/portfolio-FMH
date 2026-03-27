@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Md Farhan Mohib Hemal - Underwater Robotics Engineer, Software Architect, and Signals Processing Researcher">
+    <meta name="keywords" content="Robotics, Underwater ROV, Signal Processing, MATLAB, Autonomous Systems, Control Systems">
+    <title>Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a1628;
+            --secondary: #1a2744;
+            --accent: #00a8ff;
+            --accent-dark: #0080cc;
+            --text: #f0f4f8;
+            --text-muted: #b0bac8;
+            --border: #2d3e54;
+            --success: #00d97e;
+            --warning: #ffa500;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 7rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 168, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(40px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.9rem;
+            color: var(--text);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            background: rgba(0, 168, 255, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.7rem 1.4rem;
+            border-radius: 0.6rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 0.6rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 168, 255, 0.4);
+        }
+
+        .btn-secondary {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 168, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Award Cards */
+        .award-card {
+            background: rgba(0, 168, 255, 0.08);
+            border: 2px solid var(--accent);
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover {
+            background: rgba(0, 168, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 168, 255, 0.2);
+        }
+
+        .award-card h3 {
+            color: var(--success);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .award-type {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .award-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 168, 255, 0.15);
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 168, 255, 0.12);
+            color: var(--accent);
+            padding: 0.4rem 0.9rem;
+            border-radius: 0.3rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 168, 255, 0.3);
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .project-links a:hover {
+            color: var(--success);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--accent);
+            background: rgba(30, 41, 59, 1);
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            padding-left: 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .skill-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .education-item {
+            background: rgba(30, 41, 59, 0.8);
+            border-left: 4px solid var(--accent);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.6rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            background: rgba(30, 41, 59, 1);
+            transform: translateX(10px);
+        }
+
+        .education-item h3 {
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .institution {
+            color: var(--success);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .education-item p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.8rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 168, 255, 0.12);
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero .subtitle { font-size: 1.3rem; }
+            section h2 { font-size: 2rem; }
+            nav ul { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Md Farhan Mohib Hemal</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Md Farhan Mohib Hemal</h1>
+            <p class="subtitle">Underwater Robotics Engineer & Signal Processing Researcher</p>
+            <p class="tagline">Architecting advanced control systems and autonomous underwater platforms</p>
+            
+            <div class="badges">
+                <span class="badge">🏆 Best Paper Award - STI 2025</span>
+                <span class="badge">🤖 Co-founder & Software Lead, Mavirov</span>
+                <span class="badge">📊 Published Researcher</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recognition Section -->
+    <section id="about">
+        <div class="container">
+            <h2>Recognition & Awards</h2>
+            
+            <div class="award-card">
+                <div class="award-type">🏆 Best Paper Award</div>
+                <h3>STI 2025 Conference</h3>
+                <p>
+                    Recognized for outstanding research contribution in underwater robotics control systems and autonomous navigation. 
+                    The research focuses on advanced multi-sensor integration and real-time system architecture for subsea applications.
+                </p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-type">🎓 Academic Excellence</div>
+                <h3>Secondary & Higher Secondary Education</h3>
+                <p>
+                    Achieved A+ in both SSC and HSC examinations with 96% in Physics, Chemistry, and Mathematics (PCM) 
+                    from Bangladesh Noubahini School & College, Chattogram. Strong foundation in advanced mathematics and physics.
+                </p>
+            </div>
+
+            <div class="award-card">
+                <div class="award-type">📚 Research & Publications</div>
+                <h3>Google Scholar & ResearchGate</h3>
+                <p>
+                    Active researcher contributing to underwater robotics, autonomous systems, and control engineering literature. 
+                    Engaged in peer-reviewed publications and collaborative research in advanced robotics domains.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Major Projects & Research</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Mavirov ROV Software Architecture</h3>
+                    <p>
+                        Architected and implemented complete software stack for autonomous underwater ROV system. 
+                        Designed integration between Pixhawk autopilot, Raspberry Pi 5 central processing hub, 
+                        multi-camera streaming systems, and Teensy-based servo control framework.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--success); font-weight: 700;">
+                        Co-founder & Software Team Lead
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">MAVProxy</span>
+                        <span class="tech-tag">GStreamer</span>
+                        <span class="tech-tag">ROS</span>
+                        <span class="tech-tag">UDP/TCP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Technical Docs</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>PAM + TDM 4-Servo Simulator</h3>
+                    <p>
+                        Developed comprehensive real-time MATLAB oscilloscope simulator for Pulse Amplitude Modulation 
+                        and Time Division Multiplexing. Demonstrates signal processing concepts with 4-channel servo control, 
+                        Butterworth filter design, and interactive signal recovery visualization at 25 FPS.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--warning); font-weight: 700;">
+                        EECE-310 Signals & Communications
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Signal Processing</span>
+                        <span class="tech-tag">Butterworth Filters</span>
+                        <span class="tech-tag">Real-time Graphics</span>
+                        <span class="tech-tag">Vectorized Math</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Documentation</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Underwater Systems Integration</h3>
+                    <p>
+                        Developed integrated control and telemetry system combining Pixhawk autonomous capabilities 
+                        with real-time video streaming and servo manipulation. Implemented MAVLink forwarding, 
+                        multi-camera RTSP streaming, and UDP-based servo control with low-latency optimization.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--accent); font-weight: 700;">
+                        Advanced Robotics Research
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Pixhawk</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">MAVLink</span>
+                        <span class="tech-tag">RTSP</span>
+                        <span class="tech-tag">H.264</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Research Paper</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Robotics & Control Systems</h3>
+                    <ul class="skill-list">
+                        <li>Underwater Robotics Architecture</li>
+                        <li>Autonomous Navigation Systems</li>
+                        <li>6-DOF Motion Control</li>
+                        <li>Servo Control & PWM</li>
+                        <li>Robot Kinematics & Dynamics</li>
+                        <li>Real-time Control Loops</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Software Development</h3>
+                    <ul class="skill-list">
+                        <li>Python (Advanced)</li>
+                        <li>C/C++ (Embedded)</li>
+                        <li>Real-time Systems</li>
+                        <li>MAVLink Protocol</li>
+                        <li>Network Programming</li>
+                        <li>Software Architecture</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Signal Processing & MATLAB</h3>
+                    <ul class="skill-list">
+                        <li>PAM/TDM Multiplexing</li>
+                        <li>Digital Filter Design</li>
+                        <li>Butterworth Filters</li>
+                        <li>Signal Recovery</li>
+                        <li>Real-time Visualization</li>
+                        <li>Vectorized Operations</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Embedded Systems & Hardware</h3>
+                    <ul class="skill-list">
+                        <li>Pixhawk Flight Controller</li>
+                        <li>Raspberry Pi Integration</li>
+                        <li>Teensy Microcontroller</li>
+                        <li>Circuit Design</li>
+                        <li>Sensor Integration</li>
+                        <li>PCB Layout</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Communication Systems</h3>
+                    <ul class="skill-list">
+                        <li>Ethernet Tether Systems</li>
+                        <li>UDP/TCP Protocols</li>
+                        <li>RTSP Video Streaming</li>
+                        <li>GStreamer Pipeline</li>
+                        <li>H.264 Encoding</li>
+                        <li>Low-Latency Design</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Research & Innovation</h3>
+                    <ul class="skill-list">
+                        <li>Technical Writing</li>
+                        <li>Research Methodology</li>
+                        <li>Data Analysis</li>
+                        <li>System Integration</li>
+                        <li>Problem Solving</li>
+                        <li>Team Leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Educational Background</h2>
+            
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>Bachelor of Science</h3>
+                    <div class="institution">Military Institute of Science and Technology (MIST)</div>
+                    <p>
+                        <strong>Department:</strong> Electrical Electronic & Communication Engineering<br>
+                        Pursuing advanced engineering education with specialization in robotics, 
+                        automation, control systems, and embedded electronics. Focus on practical 
+                        implementation of theoretical concepts in real-world applications.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <div class="institution">A+ | 96% in Physics, Chemistry, Mathematics (PCM)</div>
+                    <p>
+                        <strong>Institution:</strong> Bangladesh Noubahini School & College, Chattogram<br>
+                        Achieved distinction in advanced science subjects with strong mathematical 
+                        foundation. Grade: A+ with cumulative score of 96% demonstrating comprehensive 
+                        mastery of core scientific disciplines.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <div class="institution">A+ | Bangladesh Noubahini School & College, Chattogram</div>
+                    <p>
+                        Demonstrated consistent academic excellence from secondary education level. 
+                        Achieved highest grade with strong performance across all subjects, 
+                        establishing foundation for advanced scientific study.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <p>Interested in collaborating on underwater robotics, autonomous systems, or advanced signal processing research?</p>
+            
+            <div class="social-links">
+                <a href="https://wa.me/+8801824100874" title="WhatsApp">💬</a>
+                <a href="mailto:farhanmohibhemal@gmail.com" title="Email">✉️</a>
+                <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" title="LinkedIn">in</a>
+                <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" title="ResearchGate">RG</a>
+                <a href="https://www.facebook.com/farhan.mohib.2024" title="Facebook">f</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Md Farhan Mohib Hemal. All rights reserved. | Underwater Robotics Engineer & Signals Processing Researcher | MIST</p>
+        </div>
+    </footer>
+</body>
+</html>
