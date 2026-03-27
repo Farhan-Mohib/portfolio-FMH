@@ -7,7 +7,6 @@
     <meta name="keywords" content="Robotics, Underwater ROV, Signal Processing, MATLAB, Autonomous Systems, Control Systems">
     <title>Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher</title>
     <style>
-        /* ---------------------- GLOBAL STYLES ---------------------- */
         * {
             margin: 0;
             padding: 0;
@@ -34,30 +33,7 @@
             overflow-x: hidden;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            padding: 7rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        section h2 {
-            font-size: 2.8rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        /* ---------------------- NAVIGATION ---------------------- */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -71,6 +47,8 @@
         }
 
         nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -102,7 +80,26 @@
             color: var(--accent);
         }
 
-        /* ---------------------- HERO ---------------------- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 7rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
         .hero {
             margin-top: 80px;
             min-height: calc(100vh - 80px);
@@ -123,7 +120,6 @@
             top: -200px;
             right: -100px;
             animation: float 8s ease-in-out infinite;
-            transform: translateZ(0);
         }
 
         @keyframes float {
@@ -149,6 +145,7 @@
             background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 800;
             letter-spacing: -1px;
         }
@@ -226,7 +223,7 @@
             transform: translateY(-3px);
         }
 
-        /* ---------------------- AWARD CARDS ---------------------- */
+        /* Award Cards */
         .award-card {
             background: rgba(0, 168, 255, 0.08);
             border: 2px solid var(--accent);
@@ -264,7 +261,7 @@
             line-height: 1.8;
         }
 
-        /* ---------------------- PROJECT CARDS ---------------------- */
+        /* Project Cards */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -335,7 +332,7 @@
             color: var(--success);
         }
 
-        /* ---------------------- SKILLS ---------------------- */
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -384,7 +381,7 @@
             font-weight: bold;
         }
 
-        /* ---------------------- EDUCATION ---------------------- */
+        /* Education Section */
         .education-timeline {
             max-width: 900px;
             margin: 3rem auto 0;
@@ -423,7 +420,7 @@
             line-height: 1.8;
         }
 
-        /* ---------------------- CONTACT ---------------------- */
+        /* Contact Section */
         .contact {
             text-align: center;
         }
@@ -466,6 +463,7 @@
             box-shadow: 0 10px 25px rgba(0, 168, 255, 0.3);
         }
 
+        /* Footer */
         footer {
             border-top: 1px solid var(--border);
             padding: 3rem 0;
@@ -474,7 +472,7 @@
             font-size: 0.95rem;
         }
 
-        /* ---------------------- RESPONSIVE ---------------------- */
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .hero .subtitle { font-size: 1.3rem; }
@@ -484,7 +482,7 @@
     </style>
 </head>
 <body>
-    <!-- NAVIGATION -->
+    <!-- Navigation -->
     <nav>
         <div class="container">
             <a href="#" class="logo">Md Farhan Mohib Hemal</a>
@@ -499,18 +497,20 @@
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Md Farhan Mohib Hemal</h1>
             <p class="subtitle">Underwater Robotics Engineer & Advanced Signal Processing Researcher</p>
             <p class="tagline">Designing autonomous systems through rigorous software architecture, real-time control, and innovative signal processing</p>
+            
             <div class="badges">
                 <span class="badge">🏆 Best Paper Award - STI 2025</span>
                 <span class="badge">🤖 Co-founder & Software Lead - Mavirov</span>
                 <span class="badge">📊 Published Researcher</span>
                 <span class="badge">💻 Full-Stack Embedded Systems</span>
             </div>
+
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">Explore Projects</a>
                 <a href="#contact" class="btn btn-secondary">Connect With Me</a>
@@ -518,116 +518,517 @@
         </div>
     </section>
 
-    <!-- ABOUT / RECOGNITION -->
+    <!-- Recognition Section -->
     <section id="about">
         <div class="container">
             <h2>Professional Recognition & Achievements</h2>
+            
             <div class="award-card">
                 <div class="award-type">🏆 STI 2025 Best Paper Award</div>
                 <h3>Advanced Control Systems for Underwater Robotics</h3>
-                <p>Received recognition for research on real-time multi-sensor integration, autonomous navigation, attitude estimation, and adaptive control in subsea environments.</p>
+                <p>
+                    Received prestigious recognition for groundbreaking research on real-time multi-sensor integration and autonomous 
+                    navigation in subsea environments. The research demonstrates novel approaches to attitude estimation, control loop optimization, 
+                    and adaptive system response under challenging underwater conditions with limited communication bandwidth and variable 
+                    sensor availability.
+                </p>
             </div>
+
             <div class="award-card">
                 <div class="award-type">🎓 Academic Excellence</div>
                 <h3>Secondary & Higher Secondary Education</h3>
-                <p>A+ grades in SSC & HSC with exceptional performance in Physics, Chemistry, and Mathematics (96% aggregate). Bangladesh Noubahini School & College, Chattogram.</p>
+                <p>
+                    Achieved A+ grades in both SSC and HSC examinations with exceptional performance in Physics, Chemistry, and Mathematics 
+                    (96% aggregate in PCM subjects). Demonstrated mastery of advanced scientific concepts, mathematical reasoning, and problem-solving 
+                    methodology. Educational foundation from Bangladesh Noubahini School & College, Chattogram, establishing strong theoretical 
+                    and analytical skills essential for advanced engineering work.
+                </p>
             </div>
+
             <div class="award-card">
-                <div class="award-type">📚 Research Publications</div>
+                <div class="award-type">📚 Research & Academic Publication</div>
                 <h3>Peer-Reviewed Research Contributions</h3>
-                <p>Published works on underwater robotics, control systems, sensor fusion, and real-time embedded systems on IEEE and ResearchGate.</p>
+                <p>
+                    Active contributor to underwater robotics and autonomous systems literature through publications on Google Scholar and 
+                    ResearchGate. Engaged in rigorous research methodology, experimental validation, and peer-reviewed publication of findings. 
+                    Research focuses on practical implementation of advanced control systems, sensor fusion algorithms, and real-time embedded 
+                    system design for autonomous underwater vehicles and robotic systems.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <h2>Major Projects & Research</h2>
+            
             <div class="project-grid">
-                <!-- Project cards go here; use the ones from your previous code -->
+                <div class="project-card" style="background: linear-gradient(135deg, rgba(0, 168, 255, 0.15) 0%, rgba(0, 136, 204, 0.15) 100%); border: 2px solid var(--accent); grid-column: 1 / -1;">
+                    <span style="display: inline-block; font-size: 1.8rem; margin-bottom: 0.5rem;">📰</span>
+                    <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
+                    <p style="font-size: 0.9rem; color: var(--accent); margin-bottom: 1rem;">
+                        <strong>Published Research Paper | Peer-Reviewed</strong>
+                    </p>
+                    <p>
+                        Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced computer vision and deep learning. 
+                        Leveraged Segment Anything Model (SAM) for automated mask generation, enabling intelligent synthetic dataset creation through blending and copy-paste 
+                        augmentation techniques. Trained YOLOv11 models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (mAP@0.5:0.95) 
+                        using SAM + Blended (1BG) approach. Research demonstrates practical effectiveness of synthetic data generation for low-resource environmental 
+                        monitoring applications. Framework combines state-of-the-art computer vision with real-world environmental challenges, offering scalable solution 
+                        for automated microplastic detection in oceanographic monitoring systems.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--accent); font-weight: 700; margin-top: 1rem;">
+                        ✅ Published | ✅ Peer-Reviewed | ✅ Novel Methodology | ✅ Real-world Environmental Application
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">YOLO11</span>
+                        <span class="tech-tag">Segment Anything Model</span>
+                        <span class="tech-tag">Data Augmentation</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Environmental Monitoring</span>
+                        <span class="tech-tag">Object Detection</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Research Documentation</a>
+                        <a href="#">Full Paper PDF</a>
+                        <a href="#">Implementation Code</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Mavirov ROV Software Architecture</h3>
+                    <p>
+                        Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform. 
+                        Designed hierarchical control architecture integrating Pixhawk autopilot for autonomous navigation with 
+                        Raspberry Pi 5 central processing hub managing real-time video streaming, telemetry aggregation, and servo 
+                        coordination. Implemented MAVLink protocol bridge for seamless autopilot communication, GStreamer-based H.264 
+                        video encoding pipeline for multi-camera systems, and UDP-based servo control protocol with Teensy microcontroller 
+                        for 6-DOF manipulator control. System supports autonomous waypoint navigation via QGroundControl integration, 
+                        manual joystick control with exponential response curves and deadband filtering, and keyboard-based fine-grain servo adjustment.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--success); font-weight: 700;">
+                        Co-founder & Software Team Lead | Production Deployment
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">MAVLink Protocol</span>
+                        <span class="tech-tag">GStreamer</span>
+                        <span class="tech-tag">Pixhawk</span>
+                        <span class="tech-tag">Raspberry Pi 5</span>
+                        <span class="tech-tag">Real-time Systems</span>
+                        <span class="tech-tag">Systemd Services</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">System Architecture</a>
+                        <a href="#">GitHub Repository</a>
+                        <a href="#">Technical Documentation</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
+                    <p>
+                        Developed sophisticated MATLAB-based signal processing system for Pulse Amplitude Modulation and Time Division 
+                        Multiplexing. Implemented real-time signal processing chain demonstrating PAM signal generation with adjustable 
+                        pulse widths (5-28 microseconds), non-overlapping TDM interleaving across 4 independent channels with 8 kHz master 
+                        clock, and signal recovery via 4th-order Butterworth low-pass filtering. System computes and visualizes 19 distinct 
+                        signal outputs including pulse trains, combined TDM waveform, individual channel PAM signals, and recovered signals 
+                        post-demultiplexing. Achieves smooth 25 FPS real-time animation through vectorized MATLAB operations and pre-allocated 
+                        graphics handles. Features interactive servo control simulation with synchronized multi-plot visualization demonstrating 
+                        fundamental signal processing principles in communication systems.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--warning); font-weight: 700;">
+                        Signal Processing & Communication Systems | Real-time Implementation
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Signal Processing</span>
+                        <span class="tech-tag">Butterworth Filters</span>
+                        <span class="tech-tag">PAM/TDM Systems</span>
+                        <span class="tech-tag">Real-time Visualization</span>
+                        <span class="tech-tag">Vectorized Operations</span>
+                        <span class="tech-tag">Filter Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Project Documentation</a>
+                        <a href="#">MATLAB Code</a>
+                        <a href="#">Technical Specifications</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Underwater Systems Integration & Telemetry</h3>
+                    <p>
+                        Engineered integrated control and telemetry system combining Pixhawk autonomous capabilities with real-time 
+                        video streaming and servo-based manipulator control. Implemented MAVLink telemetry forwarding over UDP for 
+                        low-latency mission monitoring and remote commanding. Designed multi-camera video streaming architecture using 
+                        GStreamer, achieving H.264 encoding at 1280×720 resolution, 30 FPS, with RTSP server integration for distributed 
+                        viewing across network. Developed UDP-based servo control protocol with Teensy MCU managing six servo channels for 
+                        gripper and camera orientation. System optimized for low-latency operation in bandwidth-constrained tether environments, 
+                        with automatic reconnection handling and graceful degradation when communication dropouts occur.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--accent); font-weight: 700;">
+                        Advanced Robotics Research | Field Tested
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Pixhawk</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">MAVLink Protocol</span>
+                        <span class="tech-tag">GStreamer</span>
+                        <span class="tech-tag">RTSP Server</span>
+                        <span class="tech-tag">H.264 Video</span>
+                        <span class="tech-tag">UDP Networking</span>
+                        <span class="tech-tag">Teensy MCU</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Architecture Details</a>
+                        <a href="#">GitHub Repository</a>
+                        <a href="#">Integration Guide</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Image Processing: Salt & Pepper Noise Reduction</h3>
+                    <p>
+                        Developed comprehensive MATLAB-based image restoration system implementing advanced noise reduction techniques 
+                        for salt-and-pepper noise (impulse noise) removal. Designed and optimized median filtering algorithms with adaptive 
+                        kernel sizes for efficient noise suppression while preserving critical image features and edge information. Implemented 
+                        performance comparison framework evaluating multiple filtering approaches (standard median, weighted median, morphological 
+                        operations) across various noise intensity levels. System includes real-time image processing pipeline with noise injection, 
+                        filtering, and quality metrics (PSNR, SSIM) calculation. Demonstrates practical signal processing techniques applicable 
+                        to medical imaging, satellite imagery, and document scanning applications.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--accent); font-weight: 700;">
+                        Digital Image Processing | Algorithm Optimization
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Image Processing</span>
+                        <span class="tech-tag">Median Filter</span>
+                        <span class="tech-tag">Noise Reduction</span>
+                        <span class="tech-tag">Algorithm Design</span>
+                        <span class="tech-tag">Performance Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Documentation</a>
+                        <a href="#">MATLAB Code</a>
+                        <a href="#">GitHub Repository</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Practical Drone Building & Design (MIST)</h3>
+                    <p>
+                        Conducted comprehensive hands-on educational program teaching practical drone design, construction, and operation 
+                        at Military Institute of Science and Technology. Program covers complete drone development cycle from component selection 
+                        through final assembly and flight testing. Students learn to select and integrate flight controller hardware (pixhawk, 
+                        APM), build custom quadrotor frames from raw materials, select and calibrate motors and ESCs (Electronic Speed Controllers), 
+                        design and implement battery systems, and integrate multi-sensor packages (IMU, barometer, compass, GPS). Includes practical 
+                        training on soldering and electrical connections, frame construction techniques, motor balancing and optimization, weight 
+                        distribution and center of gravity calculation, and complete flight controller configuration. Program emphasizes hands-on 
+                        experience with actual drone platforms, real-world troubleshooting, flight testing procedures, and safety protocols for 
+                        autonomous systems.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--success); font-weight: 700;">
+                        Practical Drone Engineering | Hands-On Construction & Design
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Quadrotor Design</span>
+                        <span class="tech-tag">Flight Controller</span>
+                        <span class="tech-tag">Motor Selection</span>
+                        <span class="tech-tag">Battery Systems</span>
+                        <span class="tech-tag">Sensor Integration</span>
+                        <span class="tech-tag">Calibration & Tuning</span>
+                        <span class="tech-tag">Flight Testing</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Building Guide</a>
+                        <a href="#">Component Selection</a>
+                        <a href="#">Assembly Instructions</a>
+                    </div>
+                </div>
+                    <p>
+                        Implemented professional-grade 9-axis Inertial Measurement Unit sensor fusion system using ESP32 microcontroller 
+                        and Adafruit BNO055. Designed real-time sensor data acquisition pipeline processing linear acceleration, gravity vector, 
+                        angular velocity, magnetic field, Euler angles, and quaternion-based orientation at 20 Hz sampling rate. Implemented 
+                        efficient binary protocol encoding 19 floats into 76-byte packets for BLE transmission. Integrated Bluetooth Low Energy 
+                        5.0 communication with automatic device reconnection, GATT service architecture, and CCCD descriptor management. Developed 
+                        automatic calibration status monitoring with real-time feedback, external crystal timing for improved gyroscope accuracy, 
+                        and comprehensive error handling with graceful degradation. System demonstrates advanced embedded systems design principles 
+                        with non-blocking architecture, callback-based event handling, and optimized memory management.
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--success); font-weight: 700;">
+                        Embedded Systems Engineering | Production Ready
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">BLE 5.0</span>
+                        <span class="tech-tag">BNO055 IMU</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Sensor Fusion</span>
+                        <span class="tech-tag">I2C Communication</span>
+                        <span class="tech-tag">Binary Protocol</span>
+                        <span class="tech-tag">Quaternion Math</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Technical Documentation</a>
+                        <a href="#">Source Code</a>
+                        <a href="#">Code Walkthrough</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <h2>Core Skills & Expertise</h2>
+            <h2>Technical Expertise</h2>
+            
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Signal Processing</h3>
+                    <h3>Robotics & Control Systems</h3>
+                    <ul class="skill-list">
+                        <li>Underwater Robotics Architecture</li>
+                        <li>Autonomous Navigation Systems</li>
+                        <li>6-DOF Motion Control</li>
+                        <li>Servo Control & PWM</li>
+                        <li>Robot Kinematics & Dynamics</li>
+                        <li>Real-time Control Loops</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Software Development</h3>
+                    <ul class="skill-list">
+                        <li>Python (Advanced)</li>
+                        <li>C/C++ (Embedded)</li>
+                        <li>Real-time Systems</li>
+                        <li>MAVLink Protocol</li>
+                        <li>Network Programming</li>
+                        <li>Software Architecture</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Signal Processing & MATLAB</h3>
                     <ul class="skill-list">
                         <li>PAM/TDM Multiplexing</li>
                         <li>Digital Filter Design</li>
-                        <li>Real-Time Signal Processing</li>
-                        <li>Sensor Fusion & Kalman Filtering</li>
-                        <li>MATLAB & Simulink Modeling</li>
+                        <li>Butterworth Filters</li>
+                        <li>Signal Recovery</li>
+                        <li>Real-time Visualization</li>
+                        <li>Vectorized Operations</li>
                     </ul>
                 </div>
+
                 <div class="skill-category">
-                    <h3>Robotics & Control</h3>
+                    <h3>Embedded Systems & Hardware</h3>
                     <ul class="skill-list">
-                        <li>Autonomous Underwater Vehicles</li>
-                        <li>PID & Adaptive Control</li>
-                        <li>Path Planning & Obstacle Avoidance</li>
-                        <li>ROS & Embedded Firmware</li>
-                        <li>Power Electronics Integration</li>
+                        <li>Pixhawk Flight Controller</li>
+                        <li>Raspberry Pi Integration</li>
+                        <li>Teensy Microcontroller</li>
+                        <li>Circuit Design</li>
+                        <li>Sensor Integration</li>
+                        <li>PCB Layout</li>
                     </ul>
                 </div>
+
                 <div class="skill-category">
-                    <h3>Software & Systems</h3>
+                    <h3>Communication Systems</h3>
                     <ul class="skill-list">
-                        <li>Arduino & ESP32 Development</li>
-                        <li>Full-Stack Embedded Applications</li>
-                        <li>Data Acquisition & Analysis</li>
-                        <li>Python & C++ Programming</li>
-                        <li>Version Control (Git & GitHub)</li>
+                        <li>Ethernet Tether Systems</li>
+                        <li>UDP/TCP Protocols</li>
+                        <li>RTSP Video Streaming</li>
+                        <li>GStreamer Pipeline</li>
+                        <li>H.264 Encoding</li>
+                        <li>Low-Latency Design</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Embedded Systems & Hardware</h3>
+                    <ul class="skill-list">
+                        <li>ESP32 Microcontroller Programming</li>
+                        <li>BLE (Bluetooth Low Energy) Protocol</li>
+                        <li>BNO055 9-Axis IMU Integration</li>
+                        <li>Sensor Fusion Algorithms</li>
+                        <li>I2C/Wire Communication</li>
+                        <li>Real-time Data Acquisition</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Image Processing & Computer Vision</h3>
+                    <ul class="skill-list">
+                        <li>Noise Reduction Algorithms</li>
+                        <li>Median Filtering Techniques</li>
+                        <li>Image Enhancement & Restoration</li>
+                        <li>Digital Image Processing</li>
+                        <li>MATLAB Image Processing Toolbox</li>
+                        <li>Algorithm Optimization & Performance</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Unmanned Aerial Systems (Drones)</h3>
+                    <ul class="skill-list">
+                        <li>Drone Flight Control & Dynamics</li>
+                        <li>UAV System Design & Architecture</li>
+                        <li>Autonomous Flight Algorithms</li>
+                        <li>Quadcopter Control Systems</li>
+                        <li>Aerial Robotics Principles</li>
+                        <li>Educational Program Development</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
+    <!-- Certifications & Awards Section -->
+    <section id="certifications">
         <div class="container">
-            <h2>Education</h2>
+            <h2>Certifications & Professional Recognition</h2>
+            
+            <div style="margin-bottom: 3rem;">
+                <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; text-align: center;">
+                    Comprehensive collection of professional certifications, academic awards, and formal recognition 
+                    of expertise and achievements in robotics, embedded systems, and electrical engineering.
+                </p>
+            </div>
+
             <div class="education-timeline">
                 <div class="education-item">
-                    <h3>Bachelor of Science in Electrical & Electronics Engineering</h3>
-                    <div class="institution">Military Institute of Science and Technology (MIST), Bangladesh</div>
-                    <p>Focus on robotics, control systems, signal processing, and embedded systems. Graduated with distinction and multiple research publications.</p>
+                    <h3>🏆 STI 2025 Best Paper Award</h3>
+                    <div class="institution">Advanced Control Systems for Underwater Robotics</div>
+                    <p>
+                        <strong>Issuing Organization:</strong> STI 2025 Conference<br>
+                        <strong>Recognition:</strong> Best Paper Award for outstanding research contribution<br>
+                        <strong>Focus Area:</strong> Real-time multi-sensor integration, autonomous underwater navigation, 
+                        advanced control system design for subsea applications<br>
+                        <strong>Significance:</strong> Demonstrates research excellence and innovation in underwater robotics field
+                    </p>
                 </div>
+
+                <div class="education-item">
+                    <h3>📚 Academic Certifications & Honors</h3>
+                    <div class="institution">Secondary & Higher Secondary Education Excellence</div>
+                    <p>
+                        <strong>HSC Achievement:</strong> A+ Grade with 96% in Physics, Chemistry, Mathematics (PCM)<br>
+                        <strong>SSC Achievement:</strong> A+ Grade (Bangladesh Noubahini School & College, Chattogram)<br>
+                        <strong>Academic Standing:</strong> Consistent excellence in advanced science and mathematics subjects<br>
+                        <strong>Recognition:</strong> Foundation for advanced engineering education at MIST
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>🔬 Research & Publication Credentials</h3>
+                    <div class="institution">Google Scholar & ResearchGate Profiles</div>
+                    <p>
+                        <strong>Publications:</strong> Peer-reviewed research contributions in underwater robotics and autonomous systems<br>
+                        <strong>Research Profiles:</strong> Active on Google Scholar and ResearchGate platforms<br>
+                        <strong>Research Areas:</strong> Advanced control systems, autonomous underwater vehicles, sensor fusion algorithms<br>
+                        <strong>Engagement:</strong> Ongoing collaboration and peer review participation in academic community
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>💻 Professional Certifications</h3>
+                    <div class="institution">Technical Competencies & Professional Training</div>
+                    <p>
+                        <strong>Embedded Systems:</strong> Professional-grade microcontroller programming and sensor integration<br>
+                        <strong>Signal Processing:</strong> Advanced MATLAB certifications and digital signal processing expertise<br>
+                        <strong>Robotics Systems:</strong> Autonomous systems design, real-time control, and system integration<br>
+                        <strong>Industry Standards:</strong> Professional engineering practices, documentation, and deployment procedures
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>🎓 Co-founder & Leadership Recognition</h3>
+                    <div class="institution">Mavirov Underwater Robotics Platform</div>
+                    <p>
+                        <strong>Position:</strong> Co-founder & Software Team Lead<br>
+                        <strong>Achievement:</strong> Led software architecture development for autonomous underwater robotics platform<br>
+                        <strong>Responsibility:</strong> System design, implementation, deployment, and team coordination<br>
+                        <strong>Recognition:</strong> Demonstrated technical leadership and innovative engineering in advanced robotics
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>🏫 Educational Leadership</h3>
+                    <div class="institution">MIST Drone Systems Class Session</div>
+                    <p>
+                        <strong>Role:</strong> Educational Program Designer & Instructor<br>
+                        <strong>Subject Matter:</strong> Unmanned Aerial Systems (UAVs/Drones) - Theory & Practice<br>
+                        <strong>Achievement:</strong> Conducted comprehensive curriculum on drone flight control, autonomous systems, and applications<br>
+                        <strong>Impact:</strong> Established foundational knowledge in aerial robotics for MIST engineering students
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Educational Background</h2>
+            
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3>Bachelor of Science</h3>
+                    <div class="institution">Military Institute of Science and Technology (MIST)</div>
+                    <p>
+                        <strong>Department:</strong> Electrical Electronic & Communication Engineering<br>
+                        Pursuing advanced engineering education with specialization in robotics, 
+                        automation, control systems, and embedded electronics. Focus on practical 
+                        implementation of theoretical concepts in real-world applications.
+                    </p>
+                </div>
+
                 <div class="education-item">
                     <h3>Higher Secondary Certificate (HSC)</h3>
-                    <div class="institution">Noubahini College, Chattogram</div>
-                    <p>Physics, Chemistry, Mathematics – Achieved A+ grades with outstanding performance in STEM competitions.</p>
+                    <div class="institution">A+ | 96% in Physics, Chemistry, Mathematics (PCM)</div>
+                    <p>
+                        <strong>Institution:</strong> Bangladesh Noubahini School & College, Chattogram<br>
+                        Achieved distinction in advanced science subjects with strong mathematical 
+                        foundation. Grade: A+ with cumulative score of 96% demonstrating comprehensive 
+                        mastery of core scientific disciplines.
+                    </p>
                 </div>
+
                 <div class="education-item">
                     <h3>Secondary School Certificate (SSC)</h3>
-                    <div class="institution">Noubahini School, Chattogram</div>
-                    <p>Science major – A+ grade, foundation in electronics, computing, and mathematics.</p>
+                    <div class="institution">A+ | Bangladesh Noubahini School & College, Chattogram</div>
+                    <p>
+                        Demonstrated consistent academic excellence from secondary education level. 
+                        Achieved highest grade with strong performance across all subjects, 
+                        establishing foundation for advanced scientific study.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="container contact">
-            <h2>Contact Me</h2>
-            <p>If you are interested in collaborating, discussing research, or exploring robotics projects, feel free to reach out via social links or email.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Connect With Me</h2>
+            <p>Interested in collaborating on underwater robotics, autonomous systems, or advanced signal processing research?</p>
+            
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/farhanmohib/" target="_blank">in</a>
-                <a href="https://github.com/farhanmohib" target="_blank">GH</a>
-                <a href="mailto:farhan@example.com" target="_blank">@</a>
+                <a href="https://wa.me/+8801824100874" title="WhatsApp">💬</a>
+                <a href="/cdn-cgi/l/email-protection#264047544e47484b494e4f444e434b474a66414b474f4a0845494b" title="Email">✉️</a>
+                <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" title="LinkedIn">in</a>
+                <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" title="ResearchGate">RG</a>
+                <a href="https://www.facebook.com/farhan.mohib.2024" title="Facebook">f</a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        &copy; 2026 Md Farhan Mohib Hemal. All rights reserved.
-    </footer>
-</body>
-</html>
+        <div class="container">
+            <p>&copy; 2024 Md Farhan Mohib Hemal. All rights reserved. | Underwater Robotics Engineer & Signals Processing Researcher | MIST
