@@ -108,12 +108,13 @@
 
         /* Award image inside card */
         .award-img {
-            width: 100%; max-width: 560px;
+            width: 100%; max-width: 680px;
             border-radius: 0.6rem;
             border: 1px solid var(--border);
             margin: 1.2rem auto 0;
             display: block;
             object-fit: cover;
+            min-height: 320px;
         }
         .award-img-caption {
             text-align: center; font-size: 0.85rem;
@@ -157,14 +158,19 @@
 
         /* Multi-image grid inside project */
         .project-img-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;
         }
         .project-img-grid img {
-            width: 100%; height: 140px;
-            object-fit: cover; border-radius: 0.4rem;
+            width: 100%; height: 200px;
+            object-fit: cover; border-radius: 0.6rem;
             border: 1px solid var(--border);
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
         }
-        .project-img-grid img.span2 { grid-column: 1 / -1; height: 180px; }
+        .project-img-grid img:hover { transform: scale(1.02); border-color: var(--accent); }
+        .project-img-grid img.span2 { grid-column: 1 / -1; height: 320px; }
+        .project-img-single { width: 100%; height: 300px; object-fit: cover; border-radius: 0.6rem; border: 1px solid var(--border); margin-bottom: 1.5rem; cursor: pointer; transition: transform 0.3s; display: block; }
+        .project-img-single:hover { transform: scale(1.01); border-color: var(--accent); }
 
         .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
         .tech-tag { background: rgba(0,168,255,0.12); color: var(--accent); padding: 0.4rem 0.9rem; border-radius: 0.3rem; font-size: 0.85rem; border: 1px solid rgba(0,168,255,0.3); font-weight: 600; }
@@ -191,10 +197,12 @@
 
         /* Cert image inside education item */
         .cert-img {
-            width: 100%; max-width: 480px;
+            width: 100%; max-width: 600px;
             border-radius: 0.5rem;
             border: 1px solid var(--border);
             margin-top: 1.2rem; display: block;
+            min-height: 300px;
+            object-fit: cover;
         }
 
         /* Contact */
@@ -253,7 +261,7 @@
 <section class="hero">
     <div class="hero-content">
         <img
-            src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/my%20pic.jpg"
+            src="images/Picsart_25-07-08_16-22-30-400.jpg"
             alt="Md Farhan Mohib Hemal"
             class="hero-photo"
             onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal')"
@@ -292,7 +300,7 @@
                 in microplastic detection for oceanographic monitoring systems.
             </p>
             <img
-                src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/best_paper.jpg"
+                src="images/best_paper.jpg"
                 alt="IEEE STI 2025 Best Paper Award Certificate"
                 class="award-img"
                 onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate – Md Farhan Mohib Hemal')"
@@ -310,7 +318,7 @@
                 and sustainable technology for next-generation industry.
             </p>
             <img
-                src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/STI2025%20miy%20pic.jpg"
+                src="images/STI2025%20miy%20pic.jpg"
                 alt="At IEEE STI 2025 Conference"
                 class="award-img"
                 onclick="openLightbox(this.src, 'At IEEE STI 2025 – Sustainable Technologies for Industry 5.0')"
@@ -329,15 +337,15 @@
             </p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.2rem;">
                 <img
-                    src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg"
+                    src="images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg"
                     alt="1st Runner Up Poster Presentation"
-                    style="flex:1; min-width:240px; max-width:420px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
+                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
                     onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025 (BDT 5,000)')"
                 >
                 <img
-                    src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/poster.jpg"
+                    src="images/poster.jpg"
                     alt="Research Poster – Real-Time Plant Disease Detection"
-                    style="flex:1; min-width:240px; max-width:420px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
+                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:cover; cursor:pointer;"
                     onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones for Precision Agriculture')"
                 >
             </div>
@@ -409,20 +417,20 @@
             <div class="project-card">
                 <div class="project-img-grid">
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/first%20underwater%20drone%20name%20Leviathan.jpg"
-                        alt="Leviathan ROV floating in water"
+                        src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
+                        alt="Leviathan ROV – First underwater drone by Mavirov"
                         class="span2"
-                        onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov, floating in pool')"
+                        onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful operation – Leviathan"
+                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
+                        alt="First successful operation of Leviathan"
                         onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/our%20new%20underwatera%20drone%20with%20arm.jpg"
-                        alt="New underwater drone with robotic arm"
-                        onclick="openLightbox(this.src, 'New Underwater Drone (Leviathan 2.0) with Robotic Arm')"
+                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
+                        alt="Leviathan at BEAR Summit with team"
+                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan at BEAR Summit 2')"
                     >
                 </div>
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
@@ -453,18 +461,18 @@
             <div class="project-card">
                 <div class="project-img-grid">
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
+                        src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
                         alt="DDIE 2026 – Leviathan and Creeper drones on display"
                         class="span2"
                         onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0 on display at MIST booth')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg"
+                        src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg"
                         alt="Farhan at DDIE 2026"
                         onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026, BCFCC Dhaka')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/chief%20advisor%20DR%20yunus%20and%20commandat%20of%20mist%20with%20our%20drones.jpg"
+                        src="images/chief_advisor.jpg"
                         alt="Chief Advisor Dr. Yunus and MIST Commandant with our drones"
                         onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')"
                     >
@@ -490,20 +498,20 @@
             <div class="project-card">
                 <div class="project-img-grid">
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
+                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
                         alt="Leviathan at Bear Summit 2 with team members"
                         class="span2"
                         onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/team%20with%20postogola%20cantonment%20to%20monitor%20and%20capture%20the%20driver%20movment%20at%20deepst%20swimming%20oppol%20about%2033%20feet.jpg"
+                        src="images/postogola_field.jpg"
                         alt="Field operation at Postogola Cantonment pool (33 ft depth)"
                         onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg"
+                        src="images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg"
                         alt="Farhan explaining the underwater drone system"
-                        onclick="openLightbox(this.src, 'Farhan Mohib Hemal explaining the underwater drone system on Revealing Day')"
+                        onclick="openLightbox(this.src, 'Farhan Mohib Hemal presenting the underwater drone system')"
                     >
                 </div>
                 <h3>Field Operations & Public Showcases</h3>
@@ -521,43 +529,51 @@
                 </div>
             </div>
 
-            <!-- Revealing Day / Commandant -->
+            <!-- Revealing Day / New Drone with Arm -->
             <div class="project-card">
                 <div class="project-img-grid">
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/new%20underwater%20drone%20reveling%20by%20commandat%20of%20MIST.jpg"
-                        alt="New underwater drone revealed by MIST Commandant"
+                        src="images/new%20underwater%20drone%20reveling%20by%20commandat%20of%20MIST.jpg"
+                        alt="New drone with arm revealed by MIST Commandant"
                         class="span2"
-                        onclick="openLightbox(this.src, 'New Underwater Drone officially unveiled by the Commandant of MIST')"
+                        onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Officially unveiled by the Commandant of MIST')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/projector%20view%20of%20our%20new%20drone%20at%20revealing%20days.jpg"
-                        alt="Projector presentation of new drone at revealing day"
-                        onclick="openLightbox(this.src, 'Underwater footage of Leviathan shown to senior officials on Revealing Day, MIST')"
+                        src="images/our%20new%20underwatera%20drone%20with%20arm.jpg"
+                        alt="New underwater drone with robotic arm"
+                        onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Leviathan 2.0')"
                     >
                     <img
-                        src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful test operation of Leviathan"
-                        onclick="openLightbox(this.src, 'First Successful Operation – Leviathan presented to MIST officials')"
+                        src="images/projector%20view%20of%20our%20new%20drone%20at%20revealing%20days.jpg"
+                        alt="Projector view of new drone at revealing day"
+                        onclick="openLightbox(this.src, 'Live underwater footage of new drone projected for MIST officials on Revealing Day')"
                     >
                 </div>
-                <h3>Leviathan Official Unveiling – MIST</h3>
+                <h3>New Drone with Robotic Arm – Official Unveiling at MIST</h3>
                 <p>
-                    The Leviathan underwater drone was officially unveiled by the <strong>Commandant of MIST</strong> in a formal
-                    ceremony. Live underwater footage was projected for senior officials, demonstrating the vehicle's real-time
-                    video streaming, 6-DOF motion, and control capabilities — a landmark moment for the Mavirov team.
+                    The new advanced underwater drone equipped with a <strong>robotic arm</strong> was officially unveiled by the
+                    <strong>Commandant of MIST</strong> in a formal ceremony. This next-generation vehicle features 6-DOF motion,
+                    real-time video streaming, and a functional manipulator arm — representing a significant leap beyond Leviathan,
+                    our first drone. Live footage was projected for senior officials during the event.
                 </p>
-                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Official Unveiling | MIST Commandant | Live Demo</p>
+                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Official Unveiling | MIST Commandant | Robotic Arm | Next-Gen ROV</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Leviathan ROV</span>
-                    <span class="tech-tag">Live Demo</span>
+                    <span class="tech-tag">Robotic Arm</span>
+                    <span class="tech-tag">6-DOF ROV</span>
                     <span class="tech-tag">H.264 Streaming</span>
-                    <span class="tech-tag">6-DOF Control</span>
+                    <span class="tech-tag">Live Demo</span>
+                    <span class="tech-tag">Manipulation System</span>
                 </div>
             </div>
 
             <!-- PAM + TDM MATLAB -->
             <div class="project-card">
+                <img
+                    src="images/PAM_TDM_SERVO.png"
+                    alt="PAM TDM 4-Servo Signal Processor – MATLAB"
+                    class="project-img-single"
+                    onclick="openLightbox(this.src, 'PAM + TDM 4-Servo Real-time Signal Processor – MATLAB Implementation')"
+                >
                 <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
                 <p>
                     Developed sophisticated MATLAB-based signal processing system for Pulse Amplitude Modulation and Time Division
@@ -730,7 +746,7 @@
                     <strong>Significance:</strong> Recognition of research excellence in AI-powered environmental monitoring
                 </p>
                 <img
-                    src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/best_paper.jpg"
+                    src="images/best_paper.jpg"
                     alt="IEEE STI 2025 Best Paper Award Certificate"
                     class="cert-img"
                     onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate')"
@@ -756,7 +772,7 @@
                     Issued by Brig Gen K M Mustafizur Rahman, psc – Head of EECE Department.
                 </p>
                 <img
-                    src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/intructor_drone_course_MIST.jpg"
+                    src="images/intructor_drone_course_MIST.jpg"
                     alt="Drone Course Instructor Certificate – MIST Mavirov"
                     class="cert-img"
                     onclick="openLightbox(this.src, 'MIST Mavirov Certificate of Recognition – Drone Course Instructor')"
@@ -830,18 +846,26 @@
         <p>Interested in collaborating on underwater robotics, autonomous systems, or advanced signal processing research?</p>
 
         <img
-            src="https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/Picsart_25-07-08_16-22-30-400.jpg"
+            src="images/Picsart_25-07-08_16-22-30-400.jpg"
             alt="Md Farhan Mohib Hemal"
             style="width:130px; height:130px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid var(--accent); margin: 0 auto 2rem; display:block; box-shadow:0 0 30px rgba(0,168,255,0.25);"
         >
 
         <div class="social-links">
-            <a href="https://wa.me/+8801824100874" title="WhatsApp">💬</a>
-            <a href="/cdn-cgi/l/email-protection#452324372d242b282a2d2c272d20282429052228242c296b262a28" title="Email">✉️</a>
+            <a href="https://wa.me/+8801824100874" title="WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </a>
+            <a href="mailto:farhanmohibhemal@gmail.com" title="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/>
+                    <polyline points="2,4 12,13 22,4"/>
+                </svg>
+            </a>
             <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" title="LinkedIn">in</a>
             <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" title="ResearchGate">RG</a>
             <a href="https://www.facebook.com/farhan.mohib.2024" title="Facebook">f</a>
-            <a href="https://github.com/farhan-mohib" title="GitHub">GH</a>
         </div>
     </div>
 </section>
