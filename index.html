@@ -1670,18 +1670,44 @@
         });
     });
 
-    // Active nav highlight on scroll
+    // ── FIXED: Active nav highlight on scroll ──
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('#navMenu a[href^="#"]');
+
+    let lastScrollY = window.scrollY;
+
     const activeObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const link = document.querySelector(`#navMenu a[href="#${entry.target.id}"]`);
+            if (!link) return;
+
             if (entry.isIntersecting) {
                 navLinks.forEach(a => a.classList.remove('active'));
-                const link = document.querySelector(`#navMenu a[href="#${entry.target.id}"]`);
-                if (link) link.classList.add('active');
+                link.classList.add('active');
+            } else {
+                // When scrolling back up and a section leaves from the bottom of the active zone,
+                // activate the previous section's link
+                const scrollingUp = window.scrollY < lastScrollY;
+                if (scrollingUp && entry.boundingClientRect.top > 0) {
+                    const sectionArray = Array.from(sections);
+                    const idx = sectionArray.indexOf(entry.target);
+                    if (idx > 0) {
+                        const prevId = sectionArray[idx - 1].id;
+                        const prevLink = document.querySelector(`#navMenu a[href="#${prevId}"]`);
+                        if (prevLink) {
+                            navLinks.forEach(a => a.classList.remove('active'));
+                            prevLink.classList.add('active');
+                        }
+                    }
+                }
             }
         });
-    }, { threshold: 0.4 });
+    }, {
+        threshold: 0,
+        rootMargin: '-30% 0px -65% 0px'
+    });
+
+    window.addEventListener('scroll', () => { lastScrollY = window.scrollY; }, { passive: true });
     sections.forEach(s => activeObs.observe(s));
 
     // Animate stat numbers when visible (any element with data-count)
