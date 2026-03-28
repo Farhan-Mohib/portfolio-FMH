@@ -14,7 +14,7 @@
 
 **Key Innovation:** Novel SAM-guided synthetic data augmentation framework combining mask generation with blending compositing for realistic training data creation in low-resource environments.
 
----
+**DOI: 10.1109/STI69347.2025.11367502**
 
 ## 🎯 Research Problem
 
