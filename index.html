@@ -516,13 +516,14 @@
             font-family: 'Cormorant Garamond', serif; font-size: 0.95rem;
         }
 
-        /* ── PROJECT CARDS ── */
-        .project-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
+        /* Each project card reveals individually on scroll */
         .project-card {
             background: var(--card-bg); border: 1px solid var(--border);
-            padding: 2.8rem; border-radius: 1rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            padding: 2.8rem; border-radius: 1rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
             backdrop-filter: blur(8px); position: relative; overflow: hidden;
+            opacity: 0; transform: translateY(30px);
         }
+        .project-card.visible { opacity: 1; transform: translateY(0); }
         .project-card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
             background: linear-gradient(90deg, var(--ocean-mid), var(--accent));
@@ -531,7 +532,7 @@
         .project-card:hover::before { transform: scaleX(1); }
         .project-card:hover {
             border-color: rgba(0,168,150,0.3); background: var(--card-bg-hover);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.35); transform: translateY(-4px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35); transform: translateY(-4px) !important;
         }
         .project-card h3 {
             font-family: 'Cormorant Garamond', serif;
@@ -604,7 +605,23 @@
         @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
 
         /* ── SKILLS ── */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem; margin-top: 3rem;
+        }
+        /* 7th card: sits in middle column, same width as others */
+        .skills-grid > .skill-category:last-child {
+            grid-column: 2 / 3;
+        }
+        @media (max-width: 1000px) {
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .skills-grid > .skill-category:last-child { grid-column: 1 / 3; max-width: calc(50% - 1rem); margin: 0 auto; width: 100%; }
+        }
+        @media (max-width: 580px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .skills-grid > .skill-category:last-child { grid-column: 1; max-width: 100%; }
+        }
         .skill-category {
             background: var(--card-bg); border: 1px solid var(--border);
             padding: 2.2rem; border-radius: 1rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
@@ -839,10 +856,13 @@
             transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
         }
         .stagger-cards.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
-        .stagger-cards.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.18s; }
-        .stagger-cards.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.31s; }
-        .stagger-cards.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.44s; }
-        .stagger-cards.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.57s; }
+        .stagger-cards.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+        .stagger-cards.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.25s; }
+        .stagger-cards.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.35s; }
+        .stagger-cards.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.45s; }
+        .stagger-cards.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.55s; }
+        .stagger-cards.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.65s; }
+        .stagger-cards.visible > *:nth-child(n+8) { opacity:1; transform:none; transition-delay:0.75s; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
@@ -866,7 +886,8 @@
             .project-img-large { max-height: 260px; padding: 0.8rem; }
             .project-img-grid { grid-template-columns: 1fr; gap: 0.9rem; }
             .project-img-grid img { height: 220px; padding: 0.8rem; }
-            .skills-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            /* Bear summit side panel stacks on mobile */
+            .project-card [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
             .skill-category { padding: 1.3rem; }
             .education-item { padding: 1.5rem; }
             .cert-img { min-height: 220px; padding: 0.8rem; }
@@ -878,7 +899,6 @@
             .hero h1 { font-size: 1.8rem; }
             .hero .subtitle { font-size: 1rem; }
             section h2 { font-size: 1.8rem; }
-            .skills-grid { grid-template-columns: 1fr; }
             .cg-item { width: calc(33.33% - 0.6rem); height: 86px; font-size: 0.68rem; }
             .cg-item svg { width: 20px; height: 20px; }
         }
@@ -1049,7 +1069,7 @@
         <div class="award-card reveal-scale" style="transition-delay:0.25s">
             <div class="award-type">📚 Research &amp; Academic Publication</div>
             <h3>Peer-Reviewed Research Contributions</h3>
-            <p>Active contributor to underwater robotics and autonomous systems literature through publications on Google Scholar and ResearchGate. Research focuses on practical implementation of advanced control systems, sensor fusion algorithms, and real-time embedded system design for autonomous underwater vehicles.</p>
+            <p>Active contributor to underwater robotics literature through publications on Google Scholar and ResearchGate. Research focuses on practical implementation of advanced control systems, sensor fusion algorithms, and real-time embedded system design for underwater ROV platforms.</p>
         </div>
     </div>
 </section>
@@ -1060,7 +1080,7 @@
         <div class="section-eyebrow reveal">Research &amp; Engineering</div>
         <h2 class="reveal">Major Projects<br><em>&amp; Research</em></h2>
 
-        <div class="project-list stagger-cards">
+        <div class="project-list">
 
             <div class="project-card project-highlight">
                 <span style="display:inline-block; font-size:2rem; margin-bottom:0.8rem;">📰</span>
@@ -1091,7 +1111,7 @@
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
                 <div class="project-status"><span class="dot"></span> Co-founder &amp; Software Team Lead | Production Deployment | Real-World Field Operations</div>
                 <img src="images/first%20underwater%20drone%20name%20Leviathan.jpg" alt="Leviathan ROV" class="project-img-large" onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')">
-                <p>Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform. Designed hierarchical control architecture integrating Pixhawk autopilot with Raspberry Pi 5 central processing hub managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.</p>
+                <p>Architected and implemented comprehensive software ecosystem for the Leviathan ROV — Mavirov team's first underwater drone. Designed hierarchical control architecture integrating Pixhawk autopilot with Raspberry Pi 5 central processing hub managing real-time video streaming, telemetry aggregation, and servo coordination. System supports PS5 joystick control, keyboard fine-grain servo adjustment, and operator-directed underwater navigation.</p>
                 <h4 style="color:var(--gold-lt); margin-top:2rem; margin-bottom:1rem; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic;">🌊 Real-World Field Operations &amp; Deployment</h4>
                 <div class="project-img-grid">
                     <img src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg" alt="First successful operation of Leviathan" onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')">
@@ -1126,19 +1146,29 @@
             </div>
 
             <div class="project-card">
-                <h3>Digital Device &amp; Innovation Expo 2026 &amp; BEAR Summit 2</h3>
+                <h3>Digital Device &amp; Innovation Expo 2026 &amp; BEAR Summit 2025</h3>
                 <div class="project-status"><span class="dot"></span> National-Level Exhibitions | High-Profile Audience</div>
-                <div class="project-img-grid span-full">
-                    <img src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg" alt="DDIE 2026" onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0')">
-                    <img src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg" alt="Farhan at DDIE 2026" onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026')">
-                    <img src="images/chief advisor.jpg" alt="Chief Advisor with drones" onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus observing Leviathan at the expo')">
-                    <img src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg" alt="BEAR Summit 2" onclick="openLightbox(this.src, 'Mavirov Team with Leviathan at BEAR Summit 2')">
+
+                <!-- Top 3 images in a 3-col grid -->
+                <div class="project-img-grid" style="grid-template-columns:repeat(3,1fr); margin-bottom:1.2rem;">
+                    <img src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg" alt="DDIE 2026" style="height:220px;" onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0')">
+                    <img src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg" alt="Farhan at DDIE 2026" style="height:220px;" onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026')">
+                    <img src="images/chief advisor.jpg" alt="Chief Advisor with drones" style="height:220px;" onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus observing Leviathan at the expo')">
                 </div>
-                <p><strong>Digital Device &amp; Innovation Expo 2026:</strong> Showcased <strong>Leviathan 2.0</strong> and <strong>Creeper 1.0</strong> at BCFCC Dhaka. The exhibition attracted Chief Advisor Dr. Muhammad Yunus and the MIST Commandant.</p>
-                <p><strong>BEAR Summit 2 &amp; National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council, and World Bank – EDGE initiative.</p>
+
+                <p><strong>Digital Device &amp; Innovation Expo 2026:</strong> Showcased <strong>Leviathan 2.0</strong> and <strong>Creeper 1.0</strong> at BCFCC Dhaka (January 28–31, 2026). The exhibition attracted Chief Advisor <strong>Dr. Muhammad Yunus</strong> and the MIST Commandant, highlighting the Mavirov team's underwater robotics work on a national stage.</p>
+
+                <!-- BEAR Summit 2025: centred image + description -->
+                <h4 style="color:var(--gold-lt); margin:2rem 0 1rem; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic;">🐻 BEAR Summit 2025 — National Robotics Showcase</h4>
+                <div style="text-align:center; margin-bottom:1.4rem;">
+                    <img src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg" alt="BEAR Summit 2025" style="width:100%; max-width:600px; height:300px; object-fit:cover; border-radius:0.8rem; border:1px solid var(--border); cursor:pointer; transition:transform 0.4s, border-color 0.3s; display:inline-block;" onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2025')" onmouseover="this.style.transform='scale(1.02)';this.style.borderColor='rgba(0,168,150,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.borderColor='var(--border)'">
+                    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.92rem; color:var(--text-muted); margin-top:0.6rem;">Mavirov Team presenting Leviathan ROV at BEAR Summit 2025</p>
+                </div>
+                <p><strong>BEAR Summit 2025 &amp; National Seminar:</strong> Participated in the prestigious BEAR (Bangladesh Engineering and Robotics) Summit 2025, organized by the <strong>ICT Division</strong>, Bangladesh Computer Council, and <strong>World Bank EDGE initiative</strong>. The Mavirov team presented <strong>Leviathan ROV</strong> live to government officials, international delegates, and industry leaders — demonstrating real-time underwater video streaming, operator-controlled navigation, and diver-monitoring capabilities. The event served as a major platform to showcase the Mavirov team's work in underwater robotics from Bangladesh.</p>
+
                 <div class="tech-stack">
                     <span class="tech-tag">Leviathan 2.0</span><span class="tech-tag">Creeper 1.0</span>
-                    <span class="tech-tag">6-DOF ROV</span><span class="tech-tag">Autonomous Navigation</span>
+                    <span class="tech-tag">6-DOF ROV</span><span class="tech-tag">Operator-Controlled</span>
                     <span class="tech-tag">Wireless Control</span><span class="tech-tag">National Exhibition</span>
                 </div>
             </div>
@@ -1307,11 +1337,11 @@
 
             <div class="education-item reveal-left">
                 <h3>🎓 Co-founder &amp; Software Team Lead</h3>
-                <div class="institution">Mavirov Underwater Robotics Platform, MIST</div>
+                <div class="institution">Mavirov Underwater Robotics Team, MIST</div>
                 <p>
                     <strong>Position:</strong> Co-founder &amp; Software Team Lead<br>
                     <strong>Achievement:</strong> Led software architecture development for Leviathan ROV and Creeper drone platforms<br>
-                    <strong>Recognition:</strong> Technical leadership in autonomous robotics at national and international exhibitions
+                    <strong>Recognition:</strong> Technical leadership across Leviathan and Creeper builds, representing the Mavirov team at national and international exhibitions
                 </p>
             </div>
 
@@ -1438,6 +1468,17 @@
         if (e.isIntersecting) e.target.classList.add('visible');
     }, { threshold: 0.15 });
     footerObs.observe(document.getElementById('site-footer'));
+
+    // Individual project card reveal — each triggers as it enters view
+    const cardObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                cardObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.project-card').forEach(c => cardObs.observe(c));
 
     const sectionObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
