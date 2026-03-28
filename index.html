@@ -27,6 +27,14 @@
             color: var(--text);
             line-height: 1.8;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Prevent images from breaking layout */
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         /* Navigation */
@@ -43,6 +51,35 @@
         nav ul { display: flex; list-style: none; gap: 2rem; }
         nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-size: 0.9rem; font-weight: 500; }
         nav a:hover { color: var(--accent); }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle { display: none; background: none; border: none; color: var(--accent); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+        
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.2rem;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.3s, opacity 0.3s;
+                pointer-events: none;
+            }
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+            nav ul li { text-align: center; }
+            nav a { font-size: 1rem; display: block; padding: 0.5rem; }
+        }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 7rem 0; border-top: 1px solid var(--border); }
@@ -245,14 +282,93 @@
         .lightbox-caption { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 0.95rem; text-align: center; }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero .subtitle { font-size: 1.3rem; }
-            section h2 { font-size: 2rem; }
-            nav ul { gap: 1rem; }
+        @media (max-width: 1024px) {
+            .container { padding: 0 1.5rem; }
+            section { padding: 5rem 0; }
             .project-img-grid { grid-template-columns: 1fr; }
-            .project-img-grid img { height: 350px; }
-            .award-img { min-height: 350px; }
+        }
+
+        @media (max-width: 768px) {
+            /* Container & Sections */
+            .container { padding: 0 1rem; }
+            section { padding: 4rem 0; }
+            section h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            
+            /* Hero */
+            .hero { min-height: auto; padding: 3rem 0; }
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1.3rem; }
+            .hero .tagline { font-size: 1rem; }
+            .hero-photo { width: 120px; height: 120px; }
+            
+            /* Badges */
+            .badges { gap: 0.8rem; }
+            .badge { font-size: 0.8rem; padding: 0.5rem 1rem; }
+            
+            /* Buttons */
+            .cta-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; padding: 0.9rem 2rem; font-size: 0.95rem; }
+            
+            /* Award Cards */
+            .award-card { padding: 1.5rem; margin-bottom: 2rem; }
+            .award-card h3 { font-size: 1.2rem; }
+            .award-type { font-size: 0.85rem; }
+            .award-img { min-height: 250px; max-width: 100%; padding: 0.8rem; }
+            .award-img-caption { font-size: 0.8rem; }
+            
+            /* Projects */
+            .project-card { padding: 1.5rem; }
+            .project-card h3 { font-size: 1.3rem; }
+            .project-card p { font-size: 0.95rem; }
+            .project-status { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
+            
+            /* Images */
+            .project-img-large { max-height: 350px; padding: 1rem; }
+            .project-img-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .project-img-grid img { height: 280px; padding: 1rem; }
+            
+            /* Tech Stack */
+            .tech-stack { gap: 0.5rem; }
+            .tech-tag { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+            
+            /* Skills */
+            .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .skill-category { padding: 1.5rem; }
+            .skill-category h3 { font-size: 1.1rem; }
+            .skill-list li { font-size: 0.9rem; }
+            
+            /* Education */
+            .education-item { padding: 1.5rem; }
+            .education-item h3 { font-size: 1.1rem; }
+            .institution { font-size: 0.95rem; }
+            .cert-img { min-height: 300px; padding: 1rem; }
+            
+            /* Contact */
+            .contact p { font-size: 1rem; }
+            .social-links { gap: 1.2rem; }
+            .social-links a { width: 48px; height: 48px; font-size: 1.1rem; }
+            
+            /* Footer */
+            footer { font-size: 0.85rem; padding: 2rem 0; }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .hero h1 { font-size: 1.6rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .hero .tagline { font-size: 0.9rem; }
+            
+            section h2 { font-size: 1.5rem; }
+            
+            .badge { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+            
+            .award-card { padding: 1.2rem; }
+            .project-card { padding: 1.2rem; }
+            
+            .project-img-grid img { height: 220px; padding: 0.8rem; }
+            .project-img-large { max-height: 280px; padding: 0.8rem; }
+            .award-img { min-height: 200px; padding: 0.8rem; }
+            .cert-img { min-height: 250px; padding: 0.8rem; }
         }
     </style>
 </head>
@@ -269,7 +385,8 @@
 <nav>
     <div class="container">
         <a href="#" class="logo">Md Farhan Mohib Hemal</a>
-        <ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+        <ul id="navMenu">
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -432,7 +549,7 @@
             <!-- Mavirov ROV -->
             <div class="project-card">
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
-                <div class="project-status">Co-founder & Software Team Lead | Production Deployment</div>
+                <div class="project-status">Co-founder & Software Team Lead | Production Deployment | Real-World Field Operations</div>
                 <img
                     src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
                     alt="Leviathan ROV – First underwater drone by Mavirov"
@@ -445,6 +562,30 @@
                     managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous
                     waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.
                 </p>
+                
+                <h4 style="color: var(--warning); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">🌊 Real-World Field Operations & Deployment</h4>
+                <div class="project-img-grid">
+                    <img
+                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
+                        alt="First successful operation of Leviathan"
+                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
+                    >
+                    <img
+                        src="images/postogola.jpg"
+                        alt="Field operation at Postogola Cantonment pool (33 ft depth)"
+                        onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
+                    >
+                </div>
+                <p>
+                    <strong>Milestone Achievement:</strong> Successfully conducted live underwater field operations at <strong>Postogola Cantonment</strong>, 
+                    monitoring and capturing diver movements at approximately <strong>33 feet depth</strong>. This real-world deployment demonstrated the 
+                    system's reliability, stability, and operational capability in challenging underwater environments — validating years of development 
+                    and engineering work in actual field conditions.
+                </p>
+                <p style="font-size: 0.95rem; color: var(--accent); font-weight: 600; margin-top: 1rem;">
+                    ✅ Depth-tested to 33+ feet | ✅ Real-time underwater video | ✅ Diver monitoring capability | ✅ Stable field performance
+                </p>
+                
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">C++</span>
@@ -453,6 +594,7 @@
                     <span class="tech-tag">Pixhawk</span>
                     <span class="tech-tag">Raspberry Pi 5</span>
                     <span class="tech-tag">Systemd Services</span>
+                    <span class="tech-tag">Field Deployment</span>
                 </div>
             </div>
 
@@ -492,10 +634,10 @@
                 </div>
             </div>
 
-            <!-- Expo 2026 -->
+            <!-- Expo 2026 & Bear Summit -->
             <div class="project-card">
-                <h3>Digital Device & Innovation Expo 2026 – Mavirov Exhibition</h3>
-                <div class="project-status">National-Level Expo | High-Profile Audience | MIST Mavirov</div>
+                <h3>Digital Device & Innovation Expo 2026 & BEAR Summit 2 – National Showcases</h3>
+                <div class="project-status">National-Level Exhibitions | High-Profile Audience | MIST Mavirov</div>
                 <div class="project-img-grid span-full">
                     <img
                         src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
@@ -512,12 +654,22 @@
                         alt="Chief Advisor Dr. Yunus and MIST Commandant with our drones"
                         onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')"
                     >
+                    <img
+                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
+                        alt="Leviathan at Bear Summit 2 with team members"
+                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
+                    >
                 </div>
                 <p>
-                    Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (depth-tested to 10.36 m, 6-DOF, 2.3 hrs operation)
+                    <strong>Digital Device & Innovation Expo 2026:</strong> Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (depth-tested to 10.36 m, 6-DOF, 2.3 hrs operation)
                     and <strong>Creeper 1.0</strong> (3 m depth, 4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
                     Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus
                     and the MIST Commandant.
+                </p>
+                <p>
+                    <strong>BEAR Summit 2 & National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council, 
+                    and World Bank – EDGE initiative. Presented Leviathan ROV to government officials, international delegates, and industry leaders, 
+                    showcasing Bangladesh's capabilities in advanced underwater robotics technology.
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Leviathan 2.0</span>
@@ -525,40 +677,7 @@
                     <span class="tech-tag">6-DOF ROV</span>
                     <span class="tech-tag">Autonomous Navigation</span>
                     <span class="tech-tag">Wireless Control</span>
-                </div>
-            </div>
-
-            <!-- Bear Summit + Field Ops -->
-            <div class="project-card">
-                <h3>Field Operations & Public Showcases</h3>
-                <div class="project-status">Real-World Deployment | Field Testing | ~33 ft Depth</div>
-                <div class="project-img-grid span-full">
-                    <img
-                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
-                        alt="Leviathan at Bear Summit 2 with team members"
-                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
-                    >
-                    <img
-                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful operation of Leviathan"
-                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
-                    >
-                    <img
-                        src="images/postogola.jpg"
-                        alt="Field operation at Postogola Cantonment pool (33 ft depth)"
-                        onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
-                    >
-                </div>
-                <p>
-                    Participated in the <strong>BEAR Summit 2 & National Seminar</strong> (ICT Division, Bangladesh Computer Council &
-                    World Bank – EDGE) with Leviathan ROV. Conducted live underwater field operations at Postogola Cantonment,
-                    monitoring and capturing diver movements at approximately 33 feet depth — a milestone real-world deployment.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-tag">ROV Deployment</span>
-                    <span class="tech-tag">Underwater Surveillance</span>
-                    <span class="tech-tag">Real-time Video</span>
-                    <span class="tech-tag">Field Testing</span>
+                    <span class="tech-tag">National Exhibition</span>
                 </div>
             </div>
 
@@ -873,6 +992,21 @@
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
     }
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', function() {
+            navMenu.classList.remove('active');
+        });
+    });
 
     // Smooth scroll for navigation links
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
