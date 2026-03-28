@@ -99,98 +99,102 @@
         /* Award Cards */
         .award-card {
             background: rgba(0,168,255,0.08); border: 2px solid var(--accent);
-            padding: 2.5rem; border-radius: 0.8rem; margin-bottom: 2rem; transition: all 0.3s;
+            padding: 2.5rem; border-radius: 0.8rem; margin-bottom: 2.5rem; transition: all 0.3s;
         }
         .award-card:hover { background: rgba(0,168,255,0.15); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,168,255,0.2); }
-        .award-card h3 { color: var(--success); margin-bottom: 0.8rem; font-size: 1.4rem; font-weight: 700; }
+        .award-card h3 { color: var(--success); margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 700; }
         .award-type { color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
         .award-card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
 
-        /* Award image inside card */
+        /* Award image inside card - MUCH LARGER */
         .award-img {
-            width: 100%; max-width: 680px;
+            width: 100%; max-width: 900px;
             border-radius: 0.6rem;
             border: 1px solid var(--border);
-            margin: 1.2rem auto 0;
+            margin: 1.5rem auto 0;
             display: block;
             object-fit: contain;
-            min-height: 320px;
-        }
-        .award-img-caption {
-            text-align: center; font-size: 0.85rem;
-            color: var(--text-muted); margin-top: 0.5rem; font-style: italic;
-        }
-
-        /* Gallery strip */
-        .photo-gallery {
-            display: flex; gap: 1rem; overflow-x: auto;
-            padding-bottom: 1rem; margin-top: 2rem; scroll-snap-type: x mandatory;
-        }
-        .photo-gallery img {
-            flex: 0 0 auto; width: 280px; height: 200px;
-            object-fit: cover; border-radius: 0.6rem;
-            border: 1px solid var(--border);
-            scroll-snap-align: start;
-            transition: transform 0.3s;
+            min-height: 500px;
+            background: rgba(10,22,40,0.3);
             cursor: pointer;
+            transition: transform 0.3s;
         }
-        .photo-gallery img:hover { transform: scale(1.03); border-color: var(--accent); }
-        .gallery-caption { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
+        .award-img:hover { transform: scale(1.02); border-color: var(--accent); }
+        .award-img-caption {
+            text-align: center; font-size: 0.9rem;
+            color: var(--text-muted); margin-top: 0.8rem; font-style: italic;
+        }
 
-        /* Project Cards */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+        /* Project Cards - FULL WIDTH STACKED */
+        .project-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 3rem; }
         .project-card {
             background: rgba(30,41,59,0.8); border: 1px solid var(--border);
-            padding: 2.5rem; border-radius: 0.8rem; transition: all 0.3s;
+            padding: 3rem; border-radius: 0.8rem; transition: all 0.3s;
         }
-        .project-card:hover { border-color: var(--accent); background: rgba(30,41,59,1); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,168,255,0.15); }
-        .project-card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700; }
+        .project-card:hover { border-color: var(--accent); background: rgba(30,41,59,1); box-shadow: 0 15px 40px rgba(0,168,255,0.15); }
+        .project-card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.6rem; font-weight: 700; }
         .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
 
-        /* Project card image */
-        .project-img {
-            width: 100%; height: 200px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
+        /* Project highlight card */
+        .project-highlight {
+            background: linear-gradient(135deg, rgba(0,168,255,0.15) 0%, rgba(0,136,204,0.15) 100%);
+            border: 2px solid var(--accent);
         }
 
-        /* Multi-image grid inside project */
+        /* Single large project image */
+        .project-img-large {
+            width: 100%; 
+            max-height: 600px;
+            object-fit: contain;
+            background: rgba(10,22,40,0.5);
+            border-radius: 0.6rem;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+            padding: 1.5rem;
+            display: block;
+        }
+        .project-img-large:hover { transform: scale(1.01); border-color: var(--accent); }
+
+        /* Multi-image grid - LARGER IMAGES */
         .project-img-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1.5rem;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            gap: 1.5rem; 
+            margin-bottom: 2rem;
         }
         .project-img-grid img {
-            width: 100%; height: 240px;
+            width: 100%; 
+            height: 450px;
             object-fit: contain; 
             background: rgba(10,22,40,0.5);
             border-radius: 0.6rem;
             border: 1px solid var(--border);
             cursor: pointer;
             transition: transform 0.3s, border-color 0.3s;
-            padding: 0.5rem;
+            padding: 1.5rem;
         }
         .project-img-grid img:hover { transform: scale(1.02); border-color: var(--accent); }
-        .project-img-grid img.span2 { grid-column: 1 / -1; height: 380px; }
-        .project-img-single { 
-            width: 100%; height: 380px; 
-            object-fit: contain;
-            background: rgba(10,22,40,0.5);
-            border-radius: 0.6rem; 
-            border: 1px solid var(--border); 
-            margin-bottom: 1.5rem; 
-            cursor: pointer; 
-            transition: transform 0.3s; 
-            display: block;
-            padding: 1rem;
+        .project-img-grid.span-full img:first-child { 
+            grid-column: 1 / -1; 
+            height: 550px; 
         }
-        .project-img-single:hover { transform: scale(1.01); border-color: var(--accent); }
 
         .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
-        .tech-tag { background: rgba(0,168,255,0.12); color: var(--accent); padding: 0.4rem 0.9rem; border-radius: 0.3rem; font-size: 0.85rem; border: 1px solid rgba(0,168,255,0.3); font-weight: 600; }
-        .project-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-        .project-links a { color: var(--accent); text-decoration: none; font-weight: 700; transition: color 0.3s; font-size: 0.95rem; }
-        .project-links a:hover { color: var(--success); }
+        .tech-tag { background: rgba(0,168,255,0.12); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0.4rem; font-size: 0.9rem; border: 1px solid rgba(0,168,255,0.3); font-weight: 600; }
+        
+        .project-status { 
+            display: inline-block;
+            font-size: 0.95rem; 
+            color: var(--success); 
+            font-weight: 700; 
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0,217,126,0.1);
+            border-radius: 0.4rem;
+            border: 1px solid rgba(0,217,126,0.3);
+        }
 
         /* Skills */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
@@ -209,17 +213,20 @@
         .institution { color: var(--success); font-weight: 700; margin-bottom: 0.8rem; font-size: 1rem; }
         .education-item p { color: var(--text-muted); line-height: 1.8; }
 
-        /* Cert image inside education item */
+        /* Cert image inside education item - LARGER */
         .cert-img {
-            width: 100%; max-width: 600px;
-            border-radius: 0.5rem;
+            width: 100%; max-width: 800px;
+            border-radius: 0.6rem;
             border: 1px solid var(--border);
-            margin-top: 1.2rem; display: block;
-            min-height: 300px;
+            margin-top: 1.5rem; display: block;
+            min-height: 450px;
             object-fit: contain;
-            background: rgba(10,22,40,0.5);
-            padding: 1rem;
+            background: rgba(10,22,40,0.3);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
+        .cert-img:hover { transform: scale(1.02); border-color: var(--accent); }
 
         /* Contact */
         .contact { text-align: center; }
@@ -243,9 +250,9 @@
             .hero .subtitle { font-size: 1.3rem; }
             section h2 { font-size: 2rem; }
             nav ul { gap: 1rem; }
-            .photo-gallery img { width: 220px; height: 160px; }
             .project-img-grid { grid-template-columns: 1fr; }
-            .project-img-grid img.span2 { grid-column: 1; }
+            .project-img-grid img { height: 350px; }
+            .award-img { min-height: 350px; }
         }
     </style>
 </head>
@@ -347,21 +354,19 @@
             <div class="award-type">🥈 1st Runner Up – Poster Presentation Competition 2025</div>
             <h3>Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones</h3>
             <p>
-                Achieved <strong>1st Runner Up (BDT 5,000)</strong> at MIST's Poster Presentation Competition 2025.
+                Achieved <strong>1st Runner Up</strong> at MIST's Poster Presentation Competition 2025.
                 The research presents a real-time GPS-tagged plant disease detection system using YOLO + NCNN,
                 enabling efficient onboard inference on drones for fast and autonomous disease monitoring in precision agriculture.
             </p>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.2rem;">
+            <div class="project-img-grid">
                 <img
                     src="images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg"
                     alt="1st Runner Up Poster Presentation"
-                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:contain; cursor:pointer; background:rgba(10,22,40,0.5); padding:0.5rem;"
-                    onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025 (BDT 5,000)')"
+                    onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025')"
                 >
                 <img
                     src="images/poster.jpg"
                     alt="Research Poster – Real-Time Plant Disease Detection"
-                    style="flex:1; min-width:280px; max-width:480px; height:320px; border-radius:0.6rem; border:1px solid var(--border); object-fit:contain; cursor:pointer; background:rgba(10,22,40,0.5); padding:0.5rem;"
                     onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones for Precision Agriculture')"
                 >
             </div>
@@ -397,21 +402,21 @@
     <div class="container">
         <h2>Major Projects & Research</h2>
 
-        <div class="project-grid">
+        <div class="project-list">
 
-            <!-- SAM YOLO Paper – full-width -->
-            <div class="project-card" style="background: linear-gradient(135deg, rgba(0,168,255,0.15) 0%, rgba(0,136,204,0.15) 100%); border: 2px solid var(--accent); grid-column: 1 / -1;">
-                <span style="display:inline-block; font-size:1.8rem; margin-bottom:0.5rem;">📰</span>
+            <!-- SAM YOLO Paper -->
+            <div class="project-card project-highlight">
+                <span style="display:inline-block; font-size:2rem; margin-bottom:0.8rem;">📰</span>
                 <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
-                <p style="font-size:0.9rem; color:var(--accent); margin-bottom:1rem;"><strong>Published Research Paper | IEEE STI 2025 Best Paper Award</strong></p>
+                <div class="project-status">✅ Published Research Paper | ✅ IEEE STI 2025 Best Paper Award</div>
                 <p>
                     Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced
                     computer vision and deep learning. Leveraged Segment Anything Model (SAM) for automated mask generation, enabling
                     intelligent synthetic dataset creation through blending and copy-paste augmentation techniques. Trained YOLOv11
                     models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (mAP@0.5:0.95).
                 </p>
-                <p style="font-size:0.95rem; color:var(--accent); font-weight:700; margin-top:1rem;">
-                    ✅ Published | ✅ Peer-Reviewed | ✅ Novel Methodology | ✅ Real-world Environmental Application
+                <p style="font-size:1rem; color:var(--text); margin-top:1rem; line-height:1.9;">
+                    <strong>Key Achievements:</strong> Peer-reviewed publication • Novel augmentation methodology • Real-world environmental application • Demonstrated accuracy improvements in oceanographic monitoring systems
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">YOLO11</span>
@@ -422,29 +427,24 @@
                     <span class="tech-tag">Environmental Monitoring</span>
                     <span class="tech-tag">Python</span>
                 </div>
-                <div class="project-links">
-                    <a href="#">Research Documentation</a>
-                    <a href="#">Full Paper PDF</a>
-                    <a href="#">Implementation Code</a>
-                </div>
             </div>
 
             <!-- Mavirov ROV -->
             <div class="project-card">
+                <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
+                <div class="project-status">Co-founder & Software Team Lead | Production Deployment</div>
                 <img
                     src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
                     alt="Leviathan ROV – First underwater drone by Mavirov"
-                    class="project-img-single"
+                    class="project-img-large"
                     onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')"
                 >
-                <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
                 <p>
                     Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform.
                     Designed hierarchical control architecture integrating Pixhawk autopilot with Raspberry Pi 5 central processing hub
                     managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous
                     waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.
                 </p>
-                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Co-founder & Software Team Lead | Production Deployment</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">C++</span>
@@ -454,92 +454,16 @@
                     <span class="tech-tag">Raspberry Pi 5</span>
                     <span class="tech-tag">Systemd Services</span>
                 </div>
-                <div class="project-links">
-                    <a href="#">System Architecture</a>
-                    <a href="#">GitHub Repository</a>
-                    <a href="#">Technical Documentation</a>
-                </div>
             </div>
 
-            <!-- Expo 2026 -->
+            <!-- New Drone with Robotic Arm -->
             <div class="project-card">
-                <div class="project-img-grid">
-                    <img
-                        src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
-                        alt="DDIE 2026 – Leviathan and Creeper drones on display"
-                        class="span2"
-                        onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0 on display at MIST booth')"
-                    >
-                    <img
-                        src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg"
-                        alt="Farhan at DDIE 2026"
-                        onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026, BCFCC Dhaka')"
-                    >
-                    <img
-                        src="images/chief advisor.jpg"
-                        alt="Chief Advisor Dr. Yunus and MIST Commandant with our drones"
-                        onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')"
-                    >
-                </div>
-                <h3>Digital Device & Innovation Expo 2026 – Mavirov Exhibition</h3>
-                <p>
-                    Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (depth-tested to 10.36 m, 6-DOF, 2.3 hrs operation)
-                    and <strong>Creeper 1.0</strong> (3 m depth, 4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
-                    Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus
-                    and the MIST Commandant.
-                </p>
-                <p style="font-size:0.95rem; color:var(--accent); font-weight:700;">National-Level Expo | High-Profile Audience | MIST Mavirov</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">Leviathan 2.0</span>
-                    <span class="tech-tag">Creeper 1.0</span>
-                    <span class="tech-tag">6-DOF ROV</span>
-                    <span class="tech-tag">Autonomous Navigation</span>
-                    <span class="tech-tag">Wireless Control</span>
-                </div>
-            </div>
-
-            <!-- Bear Summit + Field Ops -->
-            <div class="project-card">
-                <div class="project-img-grid">
-                    <img
-                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
-                        alt="Leviathan at Bear Summit 2 with team members"
-                        class="span2"
-                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
-                    >
-                    <img
-                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful operation of Leviathan"
-                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
-                    >
-                    <img
-                        src="images/postogola.jpg"
-                        alt="Field operation at Postogola Cantonment pool (33 ft depth)"
-                        onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
-                    >
-                </div>
-                <h3>Field Operations & Public Showcases</h3>
-                <p>
-                    Participated in the <strong>BEAR Summit 2 & National Seminar</strong> (ICT Division, Bangladesh Computer Council &
-                    World Bank – EDGE) with Leviathan ROV. Conducted live underwater field operations at Postogola Cantonment,
-                    monitoring and capturing diver movements at approximately 33 feet depth — a milestone real-world deployment.
-                </p>
-                <p style="font-size:0.95rem; color:var(--warning); font-weight:700;">Real-World Deployment | Field Testing | ~33 ft Depth</p>
-                <div class="tech-stack">
-                    <span class="tech-tag">ROV Deployment</span>
-                    <span class="tech-tag">Underwater Surveillance</span>
-                    <span class="tech-tag">Real-time Video</span>
-                    <span class="tech-tag">Field Testing</span>
-                </div>
-            </div>
-
-            <!-- Revealing Day / New Drone with Arm -->
-            <div class="project-card">
-                <div class="project-img-grid">
+                <h3>New Underwater Drone with Robotic Arm – Official Unveiling at MIST</h3>
+                <div class="project-status">Official Unveiling | MIST Commandant | Next-Gen ROV</div>
+                <div class="project-img-grid span-full">
                     <img
                         src="images/new%20underwater%20drone%20reveling%20by%20commandat%20of%20MIST.jpg"
                         alt="New drone with arm revealed by MIST Commandant"
-                        class="span2"
                         onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Officially unveiled by the Commandant of MIST')"
                     >
                     <img
@@ -553,14 +477,12 @@
                         onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Leviathan 2.0')"
                     >
                 </div>
-                <h3>New Drone with Robotic Arm – Official Unveiling at MIST</h3>
                 <p>
                     The new advanced underwater drone equipped with a <strong>robotic arm</strong> was officially unveiled by the
                     <strong>Commandant of MIST</strong> in a formal ceremony. This next-generation vehicle features 6-DOF motion,
                     real-time video streaming, and a functional manipulator arm — representing a significant leap beyond Leviathan,
                     our first drone. Live footage was projected for senior officials during the event.
                 </p>
-                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Official Unveiling | MIST Commandant | Robotic Arm | Next-Gen ROV</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Robotic Arm</span>
                     <span class="tech-tag">6-DOF ROV</span>
@@ -570,21 +492,91 @@
                 </div>
             </div>
 
+            <!-- Expo 2026 -->
+            <div class="project-card">
+                <h3>Digital Device & Innovation Expo 2026 – Mavirov Exhibition</h3>
+                <div class="project-status">National-Level Expo | High-Profile Audience | MIST Mavirov</div>
+                <div class="project-img-grid span-full">
+                    <img
+                        src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
+                        alt="DDIE 2026 – Leviathan and Creeper drones on display"
+                        onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0 on display at MIST booth')"
+                    >
+                    <img
+                        src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg"
+                        alt="Farhan at DDIE 2026"
+                        onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026, BCFCC Dhaka')"
+                    >
+                    <img
+                        src="images/chief advisor.jpg"
+                        alt="Chief Advisor Dr. Yunus and MIST Commandant with our drones"
+                        onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')"
+                    >
+                </div>
+                <p>
+                    Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (depth-tested to 10.36 m, 6-DOF, 2.3 hrs operation)
+                    and <strong>Creeper 1.0</strong> (3 m depth, 4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
+                    Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus
+                    and the MIST Commandant.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Leviathan 2.0</span>
+                    <span class="tech-tag">Creeper 1.0</span>
+                    <span class="tech-tag">6-DOF ROV</span>
+                    <span class="tech-tag">Autonomous Navigation</span>
+                    <span class="tech-tag">Wireless Control</span>
+                </div>
+            </div>
+
+            <!-- Bear Summit + Field Ops -->
+            <div class="project-card">
+                <h3>Field Operations & Public Showcases</h3>
+                <div class="project-status">Real-World Deployment | Field Testing | ~33 ft Depth</div>
+                <div class="project-img-grid span-full">
+                    <img
+                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
+                        alt="Leviathan at Bear Summit 2 with team members"
+                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
+                    >
+                    <img
+                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
+                        alt="First successful operation of Leviathan"
+                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
+                    >
+                    <img
+                        src="images/postogola.jpg"
+                        alt="Field operation at Postogola Cantonment pool (33 ft depth)"
+                        onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
+                    >
+                </div>
+                <p>
+                    Participated in the <strong>BEAR Summit 2 & National Seminar</strong> (ICT Division, Bangladesh Computer Council &
+                    World Bank – EDGE) with Leviathan ROV. Conducted live underwater field operations at Postogola Cantonment,
+                    monitoring and capturing diver movements at approximately 33 feet depth — a milestone real-world deployment.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">ROV Deployment</span>
+                    <span class="tech-tag">Underwater Surveillance</span>
+                    <span class="tech-tag">Real-time Video</span>
+                    <span class="tech-tag">Field Testing</span>
+                </div>
+            </div>
+
             <!-- PAM + TDM MATLAB -->
             <div class="project-card">
+                <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
+                <div class="project-status">Signal Processing & Communication Systems | Real-time Implementation</div>
                 <img
                     src="images/PAM_TDM_SERVO.png"
                     alt="PAM TDM 4-Servo Signal Processor – MATLAB"
-                    class="project-img-single"
+                    class="project-img-large"
                     onclick="openLightbox(this.src, 'PAM + TDM 4-Servo Real-time Signal Processor – MATLAB Implementation')"
                 >
-                <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
                 <p>
                     Developed sophisticated MATLAB-based signal processing system for Pulse Amplitude Modulation and Time Division
                     Multiplexing. Implemented real-time signal processing chain with 8 kHz master clock, 4 independent TDM channels,
                     and signal recovery via 4th-order Butterworth low-pass filtering, achieving smooth 25 FPS real-time animation.
                 </p>
-                <p style="font-size:0.95rem; color:var(--warning); font-weight:700;">Signal Processing & Communication Systems | Real-time Implementation</p>
                 <div class="tech-stack">
                     <span class="tech-tag">MATLAB</span>
                     <span class="tech-tag">Signal Processing</span>
@@ -592,21 +584,17 @@
                     <span class="tech-tag">PAM/TDM Systems</span>
                     <span class="tech-tag">Real-time Visualization</span>
                 </div>
-                <div class="project-links">
-                    <a href="#">Project Documentation</a>
-                    <a href="#">MATLAB Code</a>
-                </div>
             </div>
 
             <!-- Drone Building -->
             <div class="project-card">
                 <h3>Practical Drone Building & Design (MIST)</h3>
+                <div class="project-status">Instructor | Practical Drone Engineering | MIST</div>
                 <p>
                     Conducted comprehensive hands-on educational program teaching practical drone design, construction, and flight
                     at Military Institute of Science and Technology. Program covers component selection, frame construction, motor
                     balancing, flight controller calibration, and complete flight testing procedures.
                 </p>
-                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Instructor | Practical Drone Engineering | MIST</p>
                 <div class="tech-stack">
                     <span class="tech-tag">Quadrotor Design</span>
                     <span class="tech-tag">Flight Controller</span>
@@ -614,21 +602,17 @@
                     <span class="tech-tag">Autonomous Flight</span>
                     <span class="tech-tag">Flight Testing</span>
                 </div>
-                <div class="project-links">
-                    <a href="#">Building Guide</a>
-                    <a href="#">Component Selection</a>
-                </div>
             </div>
 
             <!-- ESP32 IMU BLE -->
             <div class="project-card">
                 <h3>ESP32 IMU Sensor Streaming via Bluetooth Low Energy</h3>
+                <div class="project-status">Embedded Systems Engineering | Production Ready</div>
                 <p>
                     Implemented professional-grade 9-axis IMU sensor fusion system using ESP32 and Adafruit BNO055. Designed
                     real-time data acquisition pipeline at 20 Hz with efficient binary protocol (76-byte packets). Integrated
                     BLE 5.0 with automatic reconnection, GATT service architecture, and sub-10ms latency wireless transmission.
                 </p>
-                <p style="font-size:0.95rem; color:var(--success); font-weight:700;">Embedded Systems Engineering | Production Ready</p>
                 <div class="tech-stack">
                     <span class="tech-tag">ESP32</span>
                     <span class="tech-tag">BLE 5.0</span>
@@ -636,10 +620,6 @@
                     <span class="tech-tag">C++</span>
                     <span class="tech-tag">Sensor Fusion</span>
                     <span class="tech-tag">Quaternion Math</span>
-                </div>
-                <div class="project-links">
-                    <a href="#">Technical Documentation</a>
-                    <a href="#">Source Code</a>
                 </div>
             </div>
 
@@ -761,7 +741,7 @@
                 <h3>🥈 1st Runner Up – Poster Presentation Competition 2025</h3>
                 <div class="institution">Real-Time Plant Disease Detection – MIST, 2025</div>
                 <p>
-                    <strong>Prize:</strong> BDT 5,000<br>
+                    <strong>Achievement:</strong> 1st Runner Up at MIST's Poster Presentation Competition 2025<br>
                     <strong>Research:</strong> NCNN-optimized YOLO on drones for precision agriculture<br>
                     <strong>Highlights:</strong> GPS-tagged detection, edge inference without GPU/internet, Raspberry Pi deployment
                 </p>
