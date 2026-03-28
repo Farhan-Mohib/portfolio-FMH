@@ -462,12 +462,3 @@ This research represents a significant contribution to automated microplastic de
 **Key Achievement:** Demonstrated that SAM-guided synthetic blending augmentation improves detection performance by 2.89% on strict IoU evaluation metrics (mAP@0.5:0.95), providing practical pathway for deploying automated microplastic detection in real-world oceanographic monitoring systems.
 
 The research is both academically rigorous and practically applicable, with clear implications for environmental monitoring, autonomous systems, and small-object detection in general.
-
----
-
-**Research Quality: ⭐⭐⭐⭐⭐ (5/5)**
-- Novel methodology
-- Rigorous validation
-- Practical applications
-- Peer-reviewed publication
-- Clear contributions to field
