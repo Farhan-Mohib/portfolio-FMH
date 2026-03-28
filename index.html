@@ -6,369 +6,556 @@
     <meta name="description" content="Md Farhan Mohib Hemal - Underwater Robotics Engineer, Signal Processing Researcher | MIST">
     <meta name="keywords" content="Robotics, Underwater ROV, Signal Processing, MATLAB, Autonomous Systems, Control Systems, Mavirov, Leviathan">
     <title>Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher</title>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #0a1628;
-            --secondary: #1a2744;
+            --primary: #060e1c;
+            --secondary: #0d1f38;
             --accent: #00a8ff;
             --accent-dark: #0080cc;
-            --text: #f0f4f8;
-            --text-muted: #b0bac8;
-            --border: #2d3e54;
+            --accent2: #00d97e;
+            --text: #eef2f8;
+            --text-muted: #8fa0b8;
+            --border: #1e3050;
+            --border-light: #2a4060;
             --success: #00d97e;
             --warning: #ffa500;
+            --card-bg: rgba(13, 31, 56, 0.7);
+            --card-bg-hover: rgba(18, 40, 70, 0.95);
         }
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
+            background: var(--primary);
             color: var(--text);
             line-height: 1.8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        /* Prevent images from breaking layout */
-        img {
-            max-width: 100%;
-            height: auto;
         }
 
-        /* Navigation */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,168,255,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,217,126,0.04) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        img { max-width: 100%; height: auto; }
+
+        /* ── NAVIGATION ── */
         nav {
             position: fixed; top: 0; width: 100%;
-            background: rgba(10, 22, 40, 0.98);
-            backdrop-filter: blur(10px);
+            background: rgba(6, 14, 28, 0.96);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            z-index: 100; padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.4);
         }
-        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { font-size: 1.3rem; font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: 0.5px; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-size: 0.9rem; font-weight: 500; }
-        nav a:hover { color: var(--accent); }
-        
+
+        nav .nav-inner {
+            max-width: 1280px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 2rem;
+            gap: 1rem;
+        }
+
+        /* Brand block: name + full dept/uni + social icons in one column */
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.18rem;
+            flex-shrink: 0;
+        }
+
+        /* Row: name + inline social icons */
+        .nav-name-row {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand .nav-name {
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--accent); text-decoration: none; letter-spacing: 0.3px;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .nav-brand .nav-name:hover { color: #33bbff; }
+
+        /* Inline social icons beside name */
+        .nav-social-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-icon-sm {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: rgba(0,168,255,0.08);
+            border: 1px solid var(--border-light);
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+        .nav-icon-sm:hover {
+            background: var(--accent); color: white;
+            border-color: var(--accent); transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,168,255,0.3);
+        }
+        .nav-icon-sm svg { width: 12px; height: 12px; }
+        .nav-icon-sm.wa:hover  { background: #25D366; border-color: #25D366; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .nav-icon-sm.li:hover  { background: #0A66C2; border-color: #0A66C2; box-shadow: 0 4px 12px rgba(10,102,194,0.3); }
+        .nav-icon-sm.em:hover  { background: var(--accent); border-color: var(--accent); }
+        .nav-icon-sm.fb:hover  { background: #1877F2; border-color: #1877F2; box-shadow: 0 4px 12px rgba(24,119,242,0.3); }
+
+        /* Full-form dept / uni below name */
+        .nav-brand .nav-meta-full {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2px;
+            font-weight: 400;
+            line-height: 1.35;
+            max-width: 480px;
+        }
+        .nav-brand .nav-meta-full .inst-dept { color: var(--accent2); font-weight: 600; }
+        .nav-brand .nav-meta-full .inst-uni  { color: var(--accent);  font-weight: 600; }
+
+        .nav-right {
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 1.8rem; }
+        nav ul a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px; }
+        nav ul a:hover { color: var(--accent); }
+
         /* Mobile Menu Toggle */
-        .menu-toggle { display: none; background: none; border: none; color: var(--accent); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
-        
-        @media (max-width: 768px) {
+        .menu-toggle { display: none; background: none; border: none; color: var(--accent); font-size: 1.4rem; cursor: pointer; padding: 0.4rem; }
+
+        @media (max-width: 900px) {
             .menu-toggle { display: block; }
             nav ul {
                 position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: rgba(10, 22, 40, 0.98);
+                top: 72px; left: 0; right: 0;
+                background: rgba(6, 14, 28, 0.98);
                 flex-direction: column;
-                padding: 1.5rem;
+                padding: 1.5rem 2rem;
                 gap: 1.2rem;
                 border-bottom: 1px solid var(--border);
-                transform: translateY(-100%);
+                transform: translateY(-120%);
                 opacity: 0;
-                transition: transform 0.3s, opacity 0.3s;
+                transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
                 pointer-events: none;
             }
-            nav ul.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
-            }
+            nav ul.active { transform: translateY(0); opacity: 1; pointer-events: all; }
             nav ul li { text-align: center; }
-            nav a { font-size: 1rem; display: block; padding: 0.5rem; }
+            nav ul a { font-size: 1rem; display: block; padding: 0.5rem; }
+            .nav-meta-full { display: none !important; }
+            .nav-brand .nav-name { font-size: 0.95rem; }
+            .nav-social-inline { gap: 0.25rem; }
+            .nav-icon-sm { width: 22px; height: 22px; }
+            .nav-icon-sm svg { width: 11px; height: 11px; }
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        /* ── LAYOUT ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
         section { padding: 7rem 0; border-top: 1px solid var(--border); }
-        section h2 { font-size: 2.8rem; margin-bottom: 3rem; text-align: center; font-weight: 700; letter-spacing: 0.5px; }
+        section h2 {
+            font-size: 2.6rem; margin-bottom: 3rem; text-align: center; font-weight: 800; letter-spacing: -0.5px;
+        }
 
-        /* Hero */
+        /* ── HERO ── */
         .hero {
-            margin-top: 80px; min-height: calc(100vh - 80px);
+            margin-top: 68px; min-height: calc(100vh - 68px);
             display: flex; align-items: center; justify-content: center;
             position: relative; overflow: hidden;
+            padding: 4rem 2rem;
         }
-        .hero::before {
-            content: ''; position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,168,255,0.08) 0%, transparent 70%);
-            border-radius: 50%; top: -200px; right: -100px;
-            animation: float 8s ease-in-out infinite;
+
+        .hero-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
         }
-        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(40px)} }
-        @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        .hero-bg-circle:nth-child(1) {
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(0,168,255,0.07) 0%, transparent 70%);
+            top: -200px; right: -150px;
+            animation: floatA 9s ease-in-out infinite;
+        }
+        .hero-bg-circle:nth-child(2) {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(0,217,126,0.05) 0%, transparent 70%);
+            bottom: -100px; left: -100px;
+            animation: floatB 11s ease-in-out infinite;
+        }
 
-        .hero-content { position: relative; z-index: 2; text-align: center; animation: slideUp 0.8s ease-out; }
+        @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(30px) rotate(5deg)} }
+        @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-25px)} }
+        @keyframes slideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-        /* Hero photo */
+        .hero-content {
+            position: relative; z-index: 2; text-align: center;
+            animation: slideUp 0.9s cubic-bezier(0.4,0,0.2,1);
+            max-width: 750px;
+        }
+
         .hero-photo {
-            width: 160px; height: 160px;
+            width: 150px; height: 150px;
             border-radius: 50%;
             object-fit: cover; object-position: top;
-            border: 4px solid var(--accent);
-            box-shadow: 0 0 40px rgba(0,168,255,0.35);
-            margin: 0 auto 2rem;
+            border: 3px solid rgba(0,168,255,0.6);
+            box-shadow: 0 0 0 6px rgba(0,168,255,0.1), 0 20px 50px rgba(0,0,0,0.5);
+            margin: 0 auto 1.8rem;
             display: block;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+        .hero-photo:hover { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(0,168,255,0.15), 0 25px 60px rgba(0,168,255,0.2); }
 
         .hero h1 {
-            font-size: 3.8rem; margin-bottom: 0.8rem;
+            font-size: 3.2rem; margin-bottom: 0.4rem;
             background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text; font-weight: 800; letter-spacing: -1px;
+            line-height: 1.1;
         }
-        .hero .subtitle { font-size: 1.9rem; color: var(--text); margin-bottom: 0.8rem; font-weight: 600; }
-        .hero .tagline { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        .badges { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-        .badge { background: rgba(0,168,255,0.15); border: 1px solid var(--accent); color: var(--accent); padding: 0.7rem 1.4rem; border-radius: 0.6rem; font-size: 0.95rem; font-weight: 600; }
+        /* ── UNIVERSITY INFO BLOCK ── */
+        .hero-institution {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0,168,255,0.08);
+            border: 1px solid rgba(0,168,255,0.2);
+            border-radius: 100px;
+            padding: 0.45rem 1.2rem;
+            margin: 0.8rem auto 1.2rem;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        .hero-institution .inst-dept {
+            color: var(--accent2);
+            font-weight: 600;
+        }
+        .hero-institution .inst-sep {
+            color: var(--border-light);
+            margin: 0 0.1rem;
+        }
+        .hero-institution .inst-uni {
+            color: var(--accent);
+            font-weight: 600;
+        }
 
-        .cta-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 1rem 2.5rem; border-radius: 0.6rem; text-decoration: none; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; font-size: 1rem; }
-        .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 15px rgba(0,168,255,0.3); }
-        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,168,255,0.4); }
-        .btn-secondary { border-color: var(--accent); color: var(--accent); }
-        .btn-secondary:hover { background: rgba(0,168,255,0.1); transform: translateY(-3px); }
+        .hero .subtitle { font-size: 1.5rem; color: var(--text); margin-bottom: 0.7rem; font-weight: 500; letter-spacing: -0.3px; }
+        .hero .tagline { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
 
-        /* Award Cards */
+        /* Hero contact row */
+        .hero-contact-row {
+            display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .hero-contact-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 100px;
+            padding: 0.5rem 1.1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            transition: all 0.25s;
+        }
+        .hero-contact-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+        .hero-contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0,168,255,0.1);
+            transform: translateY(-2px);
+        }
+        .hero-contact-link.whatsapp:hover { border-color: #25D366; color: #25D366; background: rgba(37,211,102,0.1); }
+        .hero-contact-link.linkedin:hover { border-color: #0A66C2; color: #0A66C2; background: rgba(10,102,194,0.1); }
+        .hero-contact-link.rg:hover { border-color: #00CCBB; color: #00CCBB; background: rgba(0,204,187,0.1); }
+        .hero-contact-link.fb:hover { border-color: #1877F2; color: #1877F2; background: rgba(24,119,242,0.1); }
+
+        .badges { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .badge {
+            background: rgba(0,168,255,0.1); border: 1px solid rgba(0,168,255,0.25);
+            color: var(--text); padding: 0.55rem 1.1rem; border-radius: 100px;
+            font-size: 0.85rem; font-weight: 500;
+        }
+
+        .cta-buttons { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            padding: 0.85rem 2.2rem; border-radius: 100px; text-decoration: none;
+            font-weight: 600; transition: all 0.3s; border: 1.5px solid transparent;
+            font-size: 0.95rem; letter-spacing: 0.2px;
+        }
+        .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 20px rgba(0,168,255,0.35); border-color: var(--accent); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,168,255,0.45); }
+        .btn-secondary { border-color: var(--border-light); color: var(--text-muted); }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,168,255,0.08); transform: translateY(-3px); }
+
+        /* ── AWARD CARDS ── */
         .award-card {
-            background: rgba(0,168,255,0.08); border: 2px solid var(--accent);
-            padding: 2.5rem; border-radius: 0.8rem; margin-bottom: 2.5rem; transition: all 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.5rem; border-radius: 1rem; margin-bottom: 2rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
         }
-        .award-card:hover { background: rgba(0,168,255,0.15); transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,168,255,0.2); }
-        .award-card h3 { color: var(--success); margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 700; }
-        .award-type { color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .award-card:hover { background: var(--card-bg-hover); border-color: rgba(0,168,255,0.3); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .award-card h3 { color: var(--success); margin-bottom: 0.7rem; font-size: 1.4rem; font-weight: 700; }
+        .award-type { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1.2px; }
         .award-card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
 
-        /* Award image inside card - MUCH LARGER */
+        /* DOI pill */
+        .doi-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0,217,126,0.08);
+            border: 1px solid rgba(0,217,126,0.25);
+            color: var(--accent2);
+            padding: 0.45rem 1rem;
+            border-radius: 100px;
+            font-size: 0.82rem; font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            margin-top: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+        .doi-link:hover { background: rgba(0,217,126,0.15); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,217,126,0.15); }
+        .doi-link svg { width: 13px; height: 13px; }
+
         .award-img {
             width: 100%; max-width: 900px;
-            border-radius: 0.6rem;
+            border-radius: 0.8rem;
             border: 1px solid var(--border);
             margin: 1.5rem auto 0;
-            display: block;
-            object-fit: contain;
-            min-height: 500px;
-            background: rgba(10,22,40,0.3);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .award-img:hover { transform: scale(1.02); border-color: var(--accent); }
-        .award-img-caption {
-            text-align: center; font-size: 0.9rem;
-            color: var(--text-muted); margin-top: 0.8rem; font-style: italic;
-        }
-
-        /* Project Cards - FULL WIDTH STACKED */
-        .project-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 3rem; }
-        .project-card {
-            background: rgba(30,41,59,0.8); border: 1px solid var(--border);
-            padding: 3rem; border-radius: 0.8rem; transition: all 0.3s;
-        }
-        .project-card:hover { border-color: var(--accent); background: rgba(30,41,59,1); box-shadow: 0 15px 40px rgba(0,168,255,0.15); }
-        .project-card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.6rem; font-weight: 700; }
-        .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
-
-        /* Project highlight card */
-        .project-highlight {
-            background: linear-gradient(135deg, rgba(0,168,255,0.15) 0%, rgba(0,136,204,0.15) 100%);
-            border: 2px solid var(--accent);
-        }
-
-        /* Single large project image */
-        .project-img-large {
-            width: 100%; 
-            max-height: 600px;
-            object-fit: contain;
-            background: rgba(10,22,40,0.5);
-            border-radius: 0.6rem;
-            border: 1px solid var(--border);
-            margin-bottom: 2rem;
+            display: block; object-fit: contain;
+            min-height: 400px;
+            background: rgba(6,14,28,0.4);
             cursor: pointer;
             transition: transform 0.3s, border-color 0.3s;
-            padding: 1.5rem;
-            display: block;
         }
-        .project-img-large:hover { transform: scale(1.01); border-color: var(--accent); }
+        .award-img:hover { transform: scale(1.01); border-color: rgba(0,168,255,0.4); }
+        .award-img-caption { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem; font-style: italic; }
 
-        /* Multi-image grid - LARGER IMAGES */
+        /* ── PROJECT CARDS ── */
+        .project-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2.8rem; border-radius: 1rem; transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+        .project-card:hover { border-color: rgba(0,168,255,0.3); background: var(--card-bg-hover); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .project-card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 700; }
+        .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.85; }
+
+        .project-highlight {
+            background: linear-gradient(135deg, rgba(0,168,255,0.1) 0%, rgba(0,136,204,0.06) 100%);
+            border: 1px solid rgba(0,168,255,0.25);
+        }
+
+        .project-img-large {
+            width: 100%; max-height: 560px;
+            object-fit: contain; background: rgba(6,14,28,0.5);
+            border-radius: 0.8rem; border: 1px solid var(--border);
+            margin-bottom: 2rem; cursor: pointer;
+            transition: transform 0.3s, border-color 0.3s;
+            padding: 1.5rem; display: block;
+        }
+        .project-img-large:hover { transform: scale(1.01); border-color: rgba(0,168,255,0.4); }
+
         .project-img-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
-            gap: 1.5rem; 
-            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.2rem; margin-bottom: 2rem;
         }
         .project-img-grid img {
-            width: 100%; 
-            height: 450px;
-            object-fit: contain; 
-            background: rgba(10,22,40,0.5);
-            border-radius: 0.6rem;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: transform 0.3s, border-color 0.3s;
-            padding: 1.5rem;
+            width: 100%; height: 420px;
+            object-fit: contain; background: rgba(6,14,28,0.5);
+            border-radius: 0.8rem; border: 1px solid var(--border);
+            cursor: pointer; transition: transform 0.3s, border-color 0.3s;
+            padding: 1.2rem;
         }
-        .project-img-grid img:hover { transform: scale(1.02); border-color: var(--accent); }
-        .project-img-grid.span-full img:first-child { 
-            grid-column: 1 / -1; 
-            height: 550px; 
+        .project-img-grid img:hover { transform: scale(1.02); border-color: rgba(0,168,255,0.4); }
+        .project-img-grid.span-full img:first-child { grid-column: 1 / -1; height: 520px; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .tech-tag {
+            background: rgba(0,168,255,0.08); color: var(--accent);
+            padding: 0.4rem 0.9rem; border-radius: 100px;
+            font-size: 0.82rem; border: 1px solid rgba(0,168,255,0.2); font-weight: 500;
         }
 
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
-        .tech-tag { background: rgba(0,168,255,0.12); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0.4rem; font-size: 0.9rem; border: 1px solid rgba(0,168,255,0.3); font-weight: 600; }
-        
-        .project-status { 
-            display: inline-block;
-            font-size: 0.95rem; 
-            color: var(--success); 
-            font-weight: 700; 
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(0,217,126,0.1);
-            border-radius: 0.4rem;
-            border: 1px solid rgba(0,217,126,0.3);
+        .project-status {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-size: 0.85rem; color: var(--success); font-weight: 600;
+            margin-bottom: 1.2rem; padding: 0.45rem 1rem;
+            background: rgba(0,217,126,0.08);
+            border-radius: 100px; border: 1px solid rgba(0,217,126,0.2);
         }
 
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
-        .skill-category { background: rgba(30,41,59,0.8); border: 1px solid var(--border); padding: 2.5rem; border-radius: 0.8rem; transition: all 0.3s; }
-        .skill-category:hover { border-color: var(--accent); background: rgba(30,41,59,1); transform: translateY(-5px); }
-        .skill-category h3 { color: var(--accent); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 700; }
+        /* ── SKILLS ── */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .skill-category {
+            background: var(--card-bg); border: 1px solid var(--border);
+            padding: 2.2rem; border-radius: 1rem; transition: all 0.3s;
+        }
+        .skill-category:hover { border-color: rgba(0,168,255,0.3); background: var(--card-bg-hover); transform: translateY(-4px); }
+        .skill-category h3 { color: var(--accent); margin-bottom: 1.3rem; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.3px; }
         .skill-list { list-style: none; }
-        .skill-list li { color: var(--text-muted); margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative; line-height: 1.6; }
-        .skill-list li:before { content: "▸"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .skill-list li { color: var(--text-muted); margin-bottom: 0.7rem; padding-left: 1.6rem; position: relative; font-size: 0.92rem; line-height: 1.6; }
+        .skill-list li:before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
 
-        /* Education */
+        /* ── EDUCATION / CERTS ── */
         .education-timeline { max-width: 900px; margin: 3rem auto 0; }
-        .education-item { background: rgba(30,41,59,0.8); border-left: 4px solid var(--accent); padding: 2.5rem; margin-bottom: 2rem; border-radius: 0.6rem; transition: all 0.3s; }
-        .education-item:hover { background: rgba(30,41,59,1); transform: translateX(10px); }
-        .education-item h3 { color: var(--accent); margin-bottom: 0.6rem; font-size: 1.3rem; font-weight: 700; }
-        .institution { color: var(--success); font-weight: 700; margin-bottom: 0.8rem; font-size: 1rem; }
-        .education-item p { color: var(--text-muted); line-height: 1.8; }
+        .education-item {
+            background: var(--card-bg); border-left: 3px solid var(--accent);
+            padding: 2.2rem; margin-bottom: 1.8rem; border-radius: 0.8rem; transition: all 0.3s;
+        }
+        .education-item:hover { background: var(--card-bg-hover); transform: translateX(8px); }
+        .education-item h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 700; }
+        .institution { color: var(--success); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .education-item p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
 
-        /* Cert image inside education item - LARGER */
         .cert-img {
-            width: 100%; max-width: 800px;
-            border-radius: 0.6rem;
-            border: 1px solid var(--border);
-            margin-top: 1.5rem; display: block;
-            min-height: 450px;
-            object-fit: contain;
-            background: rgba(10,22,40,0.3);
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.3s;
+            width: 100%; max-width: 780px;
+            border-radius: 0.8rem; border: 1px solid var(--border);
+            margin-top: 1.5rem; display: block; min-height: 400px;
+            object-fit: contain; background: rgba(6,14,28,0.4);
+            padding: 1.2rem; cursor: pointer; transition: transform 0.3s, border-color 0.3s;
         }
-        .cert-img:hover { transform: scale(1.02); border-color: var(--accent); }
+        .cert-img:hover { transform: scale(1.02); border-color: rgba(0,168,255,0.4); }
 
-        /* Contact */
+        /* ── CONTACT – icon grid ── */
         .contact { text-align: center; }
-        .contact p { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem; }
-        .social-links { display: flex; gap: 1.8rem; justify-content: center; margin-bottom: 2.5rem; flex-wrap: wrap; }
-        .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 55px; height: 55px; background: rgba(0,168,255,0.12); border: 1.5px solid var(--border); border-radius: 50%; color: var(--accent); text-decoration: none; transition: all 0.3s; font-weight: bold; font-size: 1.3rem; }
-        .social-links a:hover { background: var(--accent); color: white; transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 25px rgba(0,168,255,0.3); }
-
-        footer { border-top: 1px solid var(--border); padding: 3rem 0; text-align: center; color: var(--text-muted); font-size: 0.95rem; }
-
-        /* Lightbox */
-        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 999; align-items: center; justify-content: center; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 0.5rem; object-fit: contain; }
-        .lightbox-close { position: absolute; top: 1.2rem; right: 1.8rem; font-size: 2.5rem; color: white; cursor: pointer; line-height: 1; }
-        .lightbox-caption { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 0.95rem; text-align: center; }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .container { padding: 0 1.5rem; }
-            section { padding: 5rem 0; }
-            .project-img-grid { grid-template-columns: 1fr; }
+        .contact > .container > p {
+            color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem;
+            max-width: 560px; margin-left: auto; margin-right: auto;
         }
 
+        .contact-grid-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.85rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .cg-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 110px;
+            height: 100px;
+            border-radius: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition: all 0.25s;
+            backdrop-filter: blur(8px);
+        }
+        .cg-item svg { width: 26px; height: 26px; flex-shrink: 0; }
+        .cg-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+
+        .cg-item.em:hover  { border-color: var(--accent);  color: var(--accent);  background: rgba(0,168,255,0.1); }
+        .cg-item.wa:hover  { border-color: #25D366; color: #25D366; background: rgba(37,211,102,0.1); }
+        .cg-item.li:hover  { border-color: #0A66C2; color: #0A66C2; background: rgba(10,102,194,0.1); }
+        .cg-item.fb:hover  { border-color: #1877F2; color: #1877F2; background: rgba(24,119,242,0.1); }
+        .cg-item.rg:hover  { border-color: #00CCBB; color: #00CCBB; background: rgba(0,204,187,0.1); }
+        .cg-item.gs:hover  { border-color: #4285F4; color: #4285F4; background: rgba(66,133,244,0.1); }
+
+        footer {
+            border-top: 1px solid var(--border); padding: 2.5rem 0;
+            text-align: center; color: var(--text-muted); font-size: 0.88rem;
+        }
+        footer p + p { margin-top: 0.4rem; }
+
+        /* ── LIGHTBOX ── */
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 999; align-items: center; justify-content: center; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 0.6rem; object-fit: contain; }
+        .lightbox-close { position: absolute; top: 1.2rem; right: 1.8rem; font-size: 2.5rem; color: white; cursor: pointer; line-height: 1; opacity: 0.8; }
+        .lightbox-close:hover { opacity: 1; }
+        .lightbox-caption { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #aaa; font-size: 0.9rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90vw; }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            /* Container & Sections */
-            .container { padding: 0 1rem; }
+            .container { padding: 0 1.2rem; }
             section { padding: 4rem 0; }
-            section h2 { font-size: 1.8rem; margin-bottom: 2rem; }
-            
-            /* Hero */
-            .hero { min-height: auto; padding: 3rem 0; }
-            .hero h1 { font-size: 2rem; }
-            .hero .subtitle { font-size: 1.3rem; }
-            .hero .tagline { font-size: 1rem; }
-            .hero-photo { width: 120px; height: 120px; }
-            
-            /* Badges */
-            .badges { gap: 0.8rem; }
-            .badge { font-size: 0.8rem; padding: 0.5rem 1rem; }
-            
-            /* Buttons */
-            .cta-buttons { flex-direction: column; width: 100%; }
-            .btn { width: 100%; text-align: center; padding: 0.9rem 2rem; font-size: 0.95rem; }
-            
-            /* Award Cards */
-            .award-card { padding: 1.5rem; margin-bottom: 2rem; }
-            .award-card h3 { font-size: 1.2rem; }
-            .award-type { font-size: 0.85rem; }
-            .award-img { min-height: 250px; max-width: 100%; padding: 0.8rem; }
-            .award-img-caption { font-size: 0.8rem; }
-            
-            /* Projects */
+            section h2 { font-size: 1.9rem; margin-bottom: 2rem; }
+
+            .hero { padding: 2.5rem 1.2rem; min-height: auto; }
+            .hero h1 { font-size: 2rem; letter-spacing: -0.5px; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .hero .tagline { font-size: 0.95rem; }
+            .hero-photo { width: 110px; height: 110px; margin-bottom: 1.4rem; }
+            .hero-institution {
+                font-size: 0.72rem; padding: 0.4rem 0.9rem;
+                flex-wrap: wrap; text-align: center; justify-content: center;
+            }
+
+            .hero-contact-row { gap: 0.6rem; }
+            .hero-contact-link { font-size: 0.78rem; padding: 0.45rem 0.85rem; }
+            .hero-contact-link .link-label { display: none; }
+
+            .badge { font-size: 0.78rem; padding: 0.45rem 0.9rem; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; text-align: center; font-size: 0.95rem; }
+
+            .award-card { padding: 1.5rem; }
+            .award-card h3 { font-size: 1.15rem; }
+            .award-img { min-height: 180px; }
             .project-card { padding: 1.5rem; }
-            .project-card h3 { font-size: 1.3rem; }
-            .project-card p { font-size: 0.95rem; }
-            .project-status { font-size: 0.85rem; padding: 0.4rem 0.8rem; }
-            
-            /* Images */
-            .project-img-large { max-height: 350px; padding: 1rem; }
-            .project-img-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .project-img-grid img { height: 280px; padding: 1rem; }
-            
-            /* Tech Stack */
-            .tech-stack { gap: 0.5rem; }
-            .tech-tag { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
-            
-            /* Skills */
-            .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .skill-category { padding: 1.5rem; }
-            .skill-category h3 { font-size: 1.1rem; }
-            .skill-list li { font-size: 0.9rem; }
-            
-            /* Education */
+            .project-card h3 { font-size: 1.2rem; }
+
+            .project-img-large { max-height: 260px; padding: 0.8rem; }
+            .project-img-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+            .project-img-grid img { height: 220px; padding: 0.8rem; }
+            .project-img-grid.span-full img:first-child { height: 250px; }
+
+            .skills-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .skill-category { padding: 1.3rem; }
+
             .education-item { padding: 1.5rem; }
-            .education-item h3 { font-size: 1.1rem; }
-            .institution { font-size: 0.95rem; }
-            .cert-img { min-height: 300px; padding: 1rem; }
-            
-            /* Contact */
-            .contact p { font-size: 1rem; }
-            .social-links { gap: 1.2rem; }
-            .social-links a { width: 48px; height: 48px; font-size: 1.1rem; }
-            
-            /* Footer */
-            footer { font-size: 0.85rem; padding: 2rem 0; }
+            .cert-img { min-height: 220px; padding: 0.8rem; }
+
+            /* Contact grid – 3 per row on tablet */
+            .contact-grid-wrap { gap: 0.7rem; max-width: 100%; }
+            .cg-item { width: calc(33.33% - 0.7rem); min-width: 90px; height: 90px; font-size: 0.72rem; }
+            .cg-item svg { width: 22px; height: 22px; }
         }
 
         @media (max-width: 480px) {
-            /* Extra small screens */
-            .hero h1 { font-size: 1.6rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            .hero .tagline { font-size: 0.9rem; }
-            
-            section h2 { font-size: 1.5rem; }
-            
-            .badge { font-size: 0.75rem; padding: 0.4rem 0.8rem; }
-            
-            .award-card { padding: 1.2rem; }
-            .project-card { padding: 1.2rem; }
-            
-            .project-img-grid img { height: 220px; padding: 0.8rem; }
-            .project-img-large { max-height: 280px; padding: 0.8rem; }
-            .award-img { min-height: 200px; padding: 0.8rem; }
-            .cert-img { min-height: 250px; padding: 0.8rem; }
+            .hero h1 { font-size: 1.65rem; }
+            .hero .subtitle { font-size: 1rem; }
+            section h2 { font-size: 1.6rem; }
+
+            /* Skills: single column on small phones */
+            .skills-grid { grid-template-columns: 1fr; }
+
+            /* Contact grid – 3 per row on phone, they fill the width */
+            .contact-grid-wrap { gap: 0.6rem; padding: 0 0.5rem; }
+            .cg-item { width: calc(33.33% - 0.6rem); min-width: 0; height: 86px; font-size: 0.68rem; border-radius: 0.75rem; }
+            .cg-item svg { width: 20px; height: 20px; }
         }
     </style>
 </head>
@@ -383,22 +570,56 @@
 
 <!-- Navigation -->
 <nav>
-    <div class="container">
-        <a href="#" class="logo">Md Farhan Mohib Hemal</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-        <ul id="navMenu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <div class="nav-inner">
+        <div class="nav-brand">
+            <!-- Name + inline social icons on the same row -->
+            <div class="nav-name-row">
+                <a href="#" class="nav-name">Md Farhan Mohib Hemal</a>
+                <div class="nav-social-inline">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/+8801824100874" class="nav-icon-sm wa" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" class="nav-icon-sm li" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:farhanmohibhemal@gmail.com" class="nav-icon-sm em" title="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/farhan.mohib.2024" class="nav-icon-sm fb" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Full-form department / university on separate lines -->
+            <span class="nav-meta-full" style="display:flex;flex-direction:column;gap:0.1rem;">
+                <span class="inst-dept">Electrical, Electronic &amp; Communication Engineering</span>
+                <span class="inst-uni">Military Institute of Science &amp; Technology (MIST)</span>
+            </span>
+        </div>
+
+        <div class="nav-right">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+            <ul id="navMenu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 
 <!-- Hero Section -->
 <section class="hero">
+    <div class="hero-bg-circle"></div>
+    <div class="hero-bg-circle"></div>
+
     <div class="hero-content">
         <img
             src="images/Picsart_25-07-08_16-22-30-400.jpg"
@@ -406,8 +627,17 @@
             class="hero-photo"
             onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal')"
         >
+
         <h1>Md Farhan Mohib Hemal</h1>
-        <p class="subtitle">Underwater Robotics Engineer & Advanced Signal Processing Researcher</p>
+
+        <div class="hero-institution">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0;color:var(--accent2)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span class="inst-dept">Electrical, Electronic &amp; Communication Engineering</span>
+            <span class="inst-sep">·</span>
+            <span class="inst-uni">Military Institute of Science &amp; Technology (MIST)</span>
+        </div>
+
+        <p class="subtitle">Underwater Robotics Engineer &amp; Signal Processing Researcher</p>
         <p class="tagline">Designing autonomous systems through rigorous software architecture, real-time control, and innovative signal processing</p>
 
         <div class="badges">
@@ -429,7 +659,6 @@
     <div class="container">
         <h2>Professional Recognition & Achievements</h2>
 
-        <!-- STI 2025 Best Paper -->
         <div class="award-card">
             <div class="award-type">🏆 IEEE STI 2025 – Best Paper Award</div>
             <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
@@ -439,6 +668,10 @@
                 The research demonstrates a novel SAM-guided synthetic data augmentation framework achieving 2.89% accuracy improvement
                 in microplastic detection for oceanographic monitoring systems.
             </p>
+            <a href="https://doi.org/10.1109/STI69347.2025.11367502" class="doi-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                DOI: 10.1109/STI69347.2025.11367502
+            </a>
             <img
                 src="images/best_paper.jpg"
                 alt="IEEE STI 2025 Best Paper Award Certificate"
@@ -448,7 +681,6 @@
             <p class="award-img-caption">IEEE STI 2025 Best Paper Award Certificate — December 2025</p>
         </div>
 
-        <!-- STI 2025 Conference Photo -->
         <div class="award-card">
             <div class="award-type">🎤 IEEE STI 2025 Conference Attendance</div>
             <h3>Presenting Research at the International Stage</h3>
@@ -466,7 +698,6 @@
             <p class="award-img-caption">IEEE STI 2025 Conference – Green University of Bangladesh</p>
         </div>
 
-        <!-- Poster Presentation 1st Runner Up -->
         <div class="award-card">
             <div class="award-type">🥈 1st Runner Up – Poster Presentation Competition 2025</div>
             <h3>Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones</h3>
@@ -490,7 +721,6 @@
             <p class="award-img-caption">Poster Presentation Competition 2025, MIST</p>
         </div>
 
-        <!-- Academic Excellence -->
         <div class="award-card">
             <div class="award-type">🎓 Academic Excellence</div>
             <h3>Secondary & Higher Secondary Education</h3>
@@ -501,7 +731,6 @@
             </p>
         </div>
 
-        <!-- Research Publications -->
         <div class="award-card">
             <div class="award-type">📚 Research & Academic Publication</div>
             <h3>Peer-Reviewed Research Contributions</h3>
@@ -521,11 +750,10 @@
 
         <div class="project-list">
 
-            <!-- SAM YOLO Paper -->
             <div class="project-card project-highlight">
                 <span style="display:inline-block; font-size:2rem; margin-bottom:0.8rem;">📰</span>
                 <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
-                <div class="project-status">✅ Published Research Paper | ✅ IEEE STI 2025 Best Paper Award</div>
+                <div class="project-status">✅ Published Research Paper &nbsp;|&nbsp; ✅ IEEE STI 2025 Best Paper Award</div>
                 <p>
                     Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced
                     computer vision and deep learning. Leveraged Segment Anything Model (SAM) for automated mask generation, enabling
@@ -535,6 +763,12 @@
                 <p style="font-size:1rem; color:var(--text); margin-top:1rem; line-height:1.9;">
                     <strong>Key Achievements:</strong> Peer-reviewed publication • Novel augmentation methodology • Real-world environmental application • Demonstrated accuracy improvements in oceanographic monitoring systems
                 </p>
+                <div style="margin-bottom:1.5rem;">
+                    <a href="https://doi.org/10.1109/STI69347.2025.11367502" class="doi-link" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        DOI: 10.1109/STI69347.2025.11367502
+                    </a>
+                </div>
                 <div class="tech-stack">
                     <span class="tech-tag">YOLO11</span>
                     <span class="tech-tag">Segment Anything Model</span>
@@ -546,7 +780,6 @@
                 </div>
             </div>
 
-            <!-- Mavirov ROV -->
             <div class="project-card">
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
                 <div class="project-status">Co-founder & Software Team Lead | Production Deployment | Real-World Field Operations</div>
@@ -562,8 +795,8 @@
                     managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous
                     waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.
                 </p>
-                
-                <h4 style="color: var(--warning); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem;">🌊 Real-World Field Operations & Deployment</h4>
+
+                <h4 style="color: var(--warning); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem;">🌊 Real-World Field Operations & Deployment</h4>
                 <div class="project-img-grid">
                     <img
                         src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
@@ -577,15 +810,13 @@
                     >
                 </div>
                 <p>
-                    <strong>Milestone Achievement:</strong> Successfully conducted live underwater field operations at <strong>Postogola Cantonment</strong>, 
-                    monitoring and capturing diver movements at approximately <strong>33 feet depth</strong>. This real-world deployment demonstrated the 
-                    system's reliability, stability, and operational capability in challenging underwater environments — validating years of development 
-                    and engineering work in actual field conditions.
+                    <strong>Milestone Achievement:</strong> Successfully conducted live underwater field operations at <strong>Postogola Cantonment</strong>,
+                    monitoring and capturing diver movements at approximately <strong>33 feet depth</strong>. This real-world deployment demonstrated the
+                    system's reliability, stability, and operational capability in challenging underwater environments.
                 </p>
-                <p style="font-size: 0.95rem; color: var(--accent); font-weight: 600; margin-top: 1rem;">
-                    ✅ Depth-tested to 33+ feet | ✅ Real-time underwater video | ✅ Diver monitoring capability | ✅ Stable field performance
+                <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-top: 1rem;">
+                    ✅ Depth-tested to 33+ feet &nbsp;|&nbsp; ✅ Real-time underwater video &nbsp;|&nbsp; ✅ Diver monitoring capability &nbsp;|&nbsp; ✅ Stable field performance
                 </p>
-                
                 <div class="tech-stack">
                     <span class="tech-tag">Python</span>
                     <span class="tech-tag">C++</span>
@@ -598,7 +829,6 @@
                 </div>
             </div>
 
-            <!-- New Drone with Robotic Arm -->
             <div class="project-card">
                 <h3>New Underwater Drone with Robotic Arm – Official Unveiling at MIST</h3>
                 <div class="project-status">Official Unveiling | MIST Commandant | Next-Gen ROV</div>
@@ -623,7 +853,7 @@
                     The new advanced underwater drone equipped with a <strong>robotic arm</strong> was officially unveiled by the
                     <strong>Commandant of MIST</strong> in a formal ceremony. This next-generation vehicle features 6-DOF motion,
                     real-time video streaming, and a functional manipulator arm — representing a significant leap beyond Leviathan,
-                    our first drone. Live footage was projected for senior officials during the event.
+                    our first drone.
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Robotic Arm</span>
@@ -634,7 +864,6 @@
                 </div>
             </div>
 
-            <!-- Expo 2026 & Bear Summit -->
             <div class="project-card">
                 <h3>Digital Device & Innovation Expo 2026 & BEAR Summit 2 – National Showcases</h3>
                 <div class="project-status">National-Level Exhibitions | High-Profile Audience | MIST Mavirov</div>
@@ -661,15 +890,13 @@
                     >
                 </div>
                 <p>
-                    <strong>Digital Device & Innovation Expo 2026:</strong> Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (depth-tested to 10.36 m, 6-DOF, 2.3 hrs operation)
-                    and <strong>Creeper 1.0</strong> (3 m depth, 4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
-                    Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus
-                    and the MIST Commandant.
+                    <strong>Digital Device & Innovation Expo 2026:</strong> Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (field-tested to 33 feet, 6-DOF, 2.3 hrs operation)
+                    and <strong>Creeper 1.0</strong> (4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
+                    Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus and the MIST Commandant.
                 </p>
                 <p>
-                    <strong>BEAR Summit 2 & National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council, 
-                    and World Bank – EDGE initiative. Presented Leviathan ROV to government officials, international delegates, and industry leaders, 
-                    showcasing Bangladesh's capabilities in advanced underwater robotics technology.
+                    <strong>BEAR Summit 2 & National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council,
+                    and World Bank – EDGE initiative. Presented Leviathan ROV to government officials, international delegates, and industry leaders.
                 </p>
                 <div class="tech-stack">
                     <span class="tech-tag">Leviathan 2.0</span>
@@ -681,7 +908,6 @@
                 </div>
             </div>
 
-            <!-- PAM + TDM MATLAB -->
             <div class="project-card">
                 <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
                 <div class="project-status">Signal Processing & Communication Systems | Real-time Implementation</div>
@@ -705,7 +931,6 @@
                 </div>
             </div>
 
-            <!-- Drone Building -->
             <div class="project-card">
                 <h3>Practical Drone Building & Design (MIST)</h3>
                 <div class="project-status">Instructor | Practical Drone Engineering | MIST</div>
@@ -723,7 +948,6 @@
                 </div>
             </div>
 
-            <!-- ESP32 IMU BLE -->
             <div class="project-card">
                 <h3>ESP32 IMU Sensor Streaming via Bluetooth Low Energy</h3>
                 <div class="project-status">Embedded Systems Engineering | Production Ready</div>
@@ -836,7 +1060,6 @@
 <section id="certifications">
     <div class="container">
         <h2>Certifications & Professional Recognition</h2>
-
         <div class="education-timeline">
 
             <div class="education-item">
@@ -848,6 +1071,10 @@
                     <strong>Track:</strong> Track 1 – Best Paper Award<br>
                     <strong>Significance:</strong> Recognition of research excellence in AI-powered environmental monitoring
                 </p>
+                <a href="https://doi.org/10.1109/STI69347.2025.11367502" class="doi-link" target="_blank" rel="noopener" style="margin-top:1rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    DOI: 10.1109/STI69347.2025.11367502
+                </a>
                 <img
                     src="images/best_paper.jpg"
                     alt="IEEE STI 2025 Best Paper Award Certificate"
@@ -912,10 +1139,10 @@
         <h2>Educational Background</h2>
         <div class="education-timeline">
             <div class="education-item">
-                <h3>Bachelor of Science</h3>
+                <h3>Bachelor of Science in Engineering</h3>
                 <div class="institution">Military Institute of Science and Technology (MIST)</div>
                 <p>
-                    <strong>Department:</strong> Electrical Electronic & Communication Engineering<br>
+                    <strong>Department:</strong> Electrical Electronic & Communication Engineering (EECE)<br>
                     Pursuing advanced engineering education with specialization in robotics, automation,
                     control systems, and embedded electronics. Focus on practical implementation of theoretical
                     concepts in real-world autonomous systems.
@@ -951,24 +1178,42 @@
         <img
             src="images/Picsart_25-07-08_16-22-30-400.jpg"
             alt="Md Farhan Mohib Hemal"
-            style="width:130px; height:130px; border-radius:50%; object-fit:cover; object-position:top; border:3px solid var(--accent); margin: 0 auto 2rem; display:block; box-shadow:0 0 30px rgba(0,168,255,0.25);"
+            style="width:100px; height:100px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid rgba(0,168,255,0.5); margin: 0 auto 2.5rem; display:block; box-shadow:0 0 0 5px rgba(0,168,255,0.08), 0 16px 36px rgba(0,0,0,0.4);"
         >
 
-        <div class="social-links">
-            <a href="https://wa.me/+8801824100874" title="WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
+        <!-- Contact grid: icon + platform name only -->
+        <div class="contact-grid-wrap">
+
+            <a href="mailto:farhanmohibhemal@gmail.com" class="cg-item em" title="farhanmohibhemal@gmail.com">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                <span>Email</span>
             </a>
-            <a href="mailto:farhanmohibhemal@gmail.com" title="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <polyline points="2,4 12,13 22,4"/>
-                </svg>
+
+            <a href="https://wa.me/+8801824100874" class="cg-item wa" title="+880 1824-100874">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span>WhatsApp</span>
             </a>
-            <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" title="LinkedIn">in</a>
-            <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" title="ResearchGate">RG</a>
-            <a href="https://www.facebook.com/farhan.mohib.2024" title="Facebook">f</a>
+
+            <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" class="cg-item li" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>LinkedIn</span>
+            </a>
+
+            <a href="https://www.facebook.com/farhan.mohib.2024" class="cg-item fb" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+            </a>
+
+            <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" class="cg-item rg" title="ResearchGate">
+                <span style="font-size:1.1rem;font-weight:900;letter-spacing:-1px;line-height:1;">RG</span>
+                <span>ResearchGate</span>
+            </a>
+
+            <a href="https://scholar.google.com/scholar?q=Md+Farhan+Mohib+Hemal" class="cg-item gs" title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+                <span>Google Scholar</span>
+            </a>
+
         </div>
     </div>
 </section>
@@ -976,49 +1221,40 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>&copy; 2025 Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher | MIST</p>
-        <p style="margin-top:0.5rem; font-size:0.85rem;">Mavirov – Advancing Underwater Robotics from Bangladesh to the World 🌊</p>
+        <p>&copy; 2025 Md Farhan Mohib Hemal &nbsp;·&nbsp; Electrical, Electronic &amp; Communication Engineering, MIST &nbsp;·&nbsp; Underwater Robotics Engineer & Researcher</p>
+        <p style="margin-top:0.4rem; font-size:0.82rem; opacity:0.7;">Mavirov – Advancing Underwater Robotics from Bangladesh to the World 🌊</p>
     </div>
 </footer>
 
-<!-- Lightbox Script -->
 <script>
     function openLightbox(src, caption) {
         document.getElementById('lightbox-img').src = src;
         document.getElementById('lightbox-caption').textContent = caption || '';
         document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox() {
         document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
     }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-    // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    
-    menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
-    
-    // Close menu when clicking a link
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     document.querySelectorAll('#navMenu a').forEach(link => {
-        link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-        });
+        link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
 
-    // Smooth scroll for navigation links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 </script>
-
 </body>
 </html>
