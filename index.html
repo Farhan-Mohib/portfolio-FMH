@@ -4,30 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Md Farhan Mohib Hemal - Underwater Robotics Engineer, Signal Processing Researcher | MIST">
-    <meta name="keywords" content="Robotics, Underwater ROV, Signal Processing, MATLAB, Autonomous Systems, Control Systems, Mavirov, Leviathan">
     <title>Md Farhan Mohib Hemal | Underwater Robotics Engineer & Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #060e1c;
-            --secondary: #0d1f38;
-            --accent: #00a8ff;
-            --accent-dark: #0080cc;
-            --accent2: #00d97e;
-            --text: #eef2f8;
-            --text-muted: #8fa0b8;
-            --border: #1e3050;
+            --primary:      #060e1c;
+            --secondary:    #0d1f38;
+            --accent:       #00a896;
+            --accent-dark:  #007d70;
+            --accent2:      #00d9c0;
+            --ocean:        #0b4f6c;
+            --ocean-mid:    #1277a0;
+            --gold:         #c9922a;
+            --gold-lt:      #e8b84b;
+            --text:         #eef2f8;
+            --text-muted:   #8fa0b8;
+            --border:       #1e3050;
             --border-light: #2a4060;
-            --success: #00d97e;
-            --warning: #ffa500;
-            --card-bg: rgba(13, 31, 56, 0.7);
-            --card-bg-hover: rgba(18, 40, 70, 0.95);
+            --success:      #00d9c0;
+            --card-bg:      rgba(13,31,56,0.7);
+            --card-bg-hover:rgba(18,40,70,0.95);
         }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--primary);
             color: var(--text);
             line-height: 1.8;
@@ -35,27 +39,39 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Noise texture */
         body::before {
             content: '';
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            background-size: 256px;
+        }
+
+        body::after {
+            content: '';
+            position: fixed; inset: 0;
             background:
-                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,168,255,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,217,126,0.04) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,168,150,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(11,79,108,0.06) 0%, transparent 60%);
+            pointer-events: none; z-index: 0;
         }
 
         img { max-width: 100%; height: auto; }
 
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
         /* ── NAVIGATION ── */
         nav {
             position: fixed; top: 0; width: 100%;
-            background: rgba(6, 14, 28, 0.96);
-            backdrop-filter: blur(16px);
+            background: rgba(6,14,28,0.92);
+            backdrop-filter: blur(20px) saturate(130%);
             border-bottom: 1px solid var(--border);
             z-index: 100;
-            box-shadow: 0 2px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 2px 40px rgba(0,0,0,0.4);
+            transition: background 0.3s;
         }
 
         nav .nav-inner {
@@ -65,222 +81,281 @@
             gap: 1rem;
         }
 
-        /* Brand block: name + full dept/uni + social icons in one column */
         .nav-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 0.18rem;
-            flex-shrink: 0;
+            display: flex; flex-direction: column; gap: 0.18rem; flex-shrink: 0;
         }
-
-        /* Row: name + inline social icons */
         .nav-name-row {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            flex-wrap: wrap;
+            display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;
         }
-
         .nav-brand .nav-name {
-            font-size: 1.1rem; font-weight: 700;
-            color: var(--accent); text-decoration: none; letter-spacing: 0.3px;
-            line-height: 1.2;
-            white-space: nowrap;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem; font-weight: 700;
+            color: var(--accent2); text-decoration: none; letter-spacing: 0.3px;
+            line-height: 1.2; white-space: nowrap;
+            transition: color 0.25s;
         }
-        .nav-brand .nav-name:hover { color: #33bbff; }
+        .nav-brand .nav-name:hover { color: #5eeee6; }
 
-        /* Inline social icons beside name */
-        .nav-social-inline {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
+        .nav-social-inline { display: flex; align-items: center; gap: 0.3rem; }
 
         .nav-icon-sm {
             display: inline-flex; align-items: center; justify-content: center;
-            width: 24px; height: 24px;
-            border-radius: 50%;
-            background: rgba(0,168,255,0.08);
+            width: 24px; height: 24px; border-radius: 50%;
+            background: rgba(0,168,150,0.08);
             border: 1px solid var(--border-light);
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.25s;
-            flex-shrink: 0;
+            color: var(--accent); text-decoration: none;
+            transition: all 0.25s; flex-shrink: 0;
         }
         .nav-icon-sm:hover {
-            background: var(--accent); color: white;
-            border-color: var(--accent); transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,168,255,0.3);
+            background: var(--accent); color: white; border-color: var(--accent);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 4px 16px rgba(0,168,150,0.4);
         }
         .nav-icon-sm svg { width: 12px; height: 12px; }
-        .nav-icon-sm.wa:hover  { background: #25D366; border-color: #25D366; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
-        .nav-icon-sm.li:hover  { background: #0A66C2; border-color: #0A66C2; box-shadow: 0 4px 12px rgba(10,102,194,0.3); }
-        .nav-icon-sm.em:hover  { background: var(--accent); border-color: var(--accent); }
-        .nav-icon-sm.fb:hover  { background: #1877F2; border-color: #1877F2; box-shadow: 0 4px 12px rgba(24,119,242,0.3); }
+        .nav-icon-sm.wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .nav-icon-sm.li:hover { background: #0A66C2; border-color: #0A66C2; box-shadow: 0 4px 12px rgba(10,102,194,0.3); }
+        .nav-icon-sm.fb:hover { background: #1877F2; border-color: #1877F2; box-shadow: 0 4px 12px rgba(24,119,242,0.3); }
 
-        /* Full-form dept / uni below name */
         .nav-brand .nav-meta-full {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            letter-spacing: 0.2px;
-            font-weight: 400;
-            line-height: 1.35;
-            max-width: 480px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem; color: var(--text-muted);
+            letter-spacing: 0.5px; font-weight: 400; line-height: 1.35;
         }
-        .nav-brand .nav-meta-full .inst-dept { color: var(--accent2); font-weight: 600; }
-        .nav-brand .nav-meta-full .inst-uni  { color: var(--accent);  font-weight: 600; }
+        .nav-brand .nav-meta-full .inst-dept { color: var(--accent2); font-weight: 500; }
+        .nav-brand .nav-meta-full .inst-uni  { color: var(--ocean-mid); font-weight: 500; }
 
-        .nav-right {
-            display: flex; align-items: center; gap: 1.5rem;
-        }
-
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         nav ul { display: flex; list-style: none; gap: 1.8rem; }
-        nav ul a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.3px; }
-        nav ul a:hover { color: var(--accent); }
+        nav ul a {
+            color: var(--text-muted); text-decoration: none;
+            transition: color 0.25s; font-size: 0.82rem; font-weight: 500;
+            letter-spacing: 1px; text-transform: uppercase;
+            position: relative; padding-bottom: 2px;
+        }
+        nav ul a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 100%;
+            height: 1.5px; background: var(--accent); transition: right 0.3s;
+        }
+        nav ul a:hover { color: var(--accent2); }
+        nav ul a:hover::after { right: 0; }
 
-        /* Mobile Menu Toggle */
         .menu-toggle { display: none; background: none; border: none; color: var(--accent); font-size: 1.4rem; cursor: pointer; padding: 0.4rem; }
 
         @media (max-width: 900px) {
             .menu-toggle { display: block; }
             nav ul {
-                position: fixed;
-                top: 72px; left: 0; right: 0;
-                background: rgba(6, 14, 28, 0.98);
-                flex-direction: column;
-                padding: 1.5rem 2rem;
-                gap: 1.2rem;
+                position: fixed; top: 72px; left: 0; right: 0;
+                background: rgba(6,14,28,0.98);
+                flex-direction: column; padding: 1.5rem 2rem; gap: 1.2rem;
                 border-bottom: 1px solid var(--border);
-                transform: translateY(-120%);
-                opacity: 0;
-                transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
-                pointer-events: none;
+                transform: scaleY(0); transform-origin: top;
+                opacity: 0; transition: transform 0.3s, opacity 0.3s; pointer-events: none;
             }
-            nav ul.active { transform: translateY(0); opacity: 1; pointer-events: all; }
+            nav ul.active { transform: scaleY(1); opacity: 1; pointer-events: all; }
             nav ul li { text-align: center; }
-            nav ul a { font-size: 1rem; display: block; padding: 0.5rem; }
+            nav ul a { font-size: 0.95rem; display: block; padding: 0.5rem; }
             .nav-meta-full { display: none !important; }
-            .nav-brand .nav-name { font-size: 0.95rem; }
-            .nav-social-inline { gap: 0.25rem; }
-            .nav-icon-sm { width: 22px; height: 22px; }
-            .nav-icon-sm svg { width: 11px; height: 11px; }
         }
 
         /* ── LAYOUT ── */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
-        section { padding: 7rem 0; border-top: 1px solid var(--border); }
         section h2 {
-            font-size: 2.6rem; margin-bottom: 3rem; text-align: center; font-weight: 800; letter-spacing: -0.5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem; margin-bottom: 3rem; text-align: center;
+            font-weight: 700; letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--ocean-mid) 40%, var(--accent2) 80%, var(--ocean-mid) 100%);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+        section h2.visible { animation: gradientShift 8s ease infinite; }
+        section h2 em { font-style: italic; }
+
+        /* Section border entrance animation */
+        section { padding: 7rem 0; border-top: 1px solid var(--border); position: relative; }
+        section::after {
+            content: '';
+            position: absolute; top: -1px; left: 0;
+            height: 1px; width: 0;
+            background: linear-gradient(90deg, var(--accent), var(--ocean-mid));
+            transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        section.in-view::after { width: 100%; }
+
+        /* Section eyebrow line-grow animation */
+        .section-eyebrow {
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); font-weight: 500; margin-bottom: 0.8rem;
+        }
+        .section-eyebrow::before, .section-eyebrow::after {
+            content: ''; display: block; height: 1px; width: 0; background: var(--accent);
+            opacity: 0.6; transition: width 0.9s 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .section-eyebrow.visible::before, .section-eyebrow.visible::after { width: 40px; }
 
         /* ── HERO ── */
         .hero {
             margin-top: 68px; min-height: calc(100vh - 68px);
             display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-            padding: 4rem 2rem;
+            position: relative; overflow: hidden; padding: 4rem 2rem;
         }
 
-        .hero-bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
+        nav ul a.active { color: var(--accent2); }
+        nav ul a.active::after { right: 0; }
+
+        /* Animated left border sweep on education items */
+        .education-item {
+            background: var(--card-bg); border-left: 2px solid var(--accent);
+            padding: 2.2rem; margin-bottom: 1.8rem; border-radius: 0.8rem;
+            transition: background 0.4s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1), border-color 0.3s, box-shadow 0.4s;
+            position: relative;
         }
-        .hero-bg-circle:nth-child(1) {
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(0,168,255,0.07) 0%, transparent 70%);
-            top: -200px; right: -150px;
-            animation: floatA 9s ease-in-out infinite;
+            position: absolute; inset: 0; pointer-events: none;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(0,168,150,0.025) 0px, rgba(0,168,150,0.025) 1px,
+                transparent 1px, transparent 80px
+            );
+            animation: depthScroll 20s linear infinite;
         }
-        .hero-bg-circle:nth-child(2) {
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(0,217,126,0.05) 0%, transparent 70%);
-            bottom: -100px; left: -100px;
-            animation: floatB 11s ease-in-out infinite;
+        @keyframes depthScroll { from { background-position: 0 0; } to { background-position: 0 80px; } }
+
+        /* ── HERO GRID BACKGROUND ── */
+        .hero-grid {
+            position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(0,168,150,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,168,150,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+            animation: gridShift 30s linear infinite;
+        }
+        @keyframes gridShift {
+            0%   { background-position: 0 0, 0 0; }
+            100% { background-position: 60px 60px, 60px 60px; }
         }
 
-        @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(30px) rotate(5deg)} }
-        @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-25px)} }
-        @keyframes slideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
-        @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+        /* Diagonal scan line */
+        .hero-scanline {
+            position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+        }
+        .hero-scanline::after {
+            content: '';
+            position: absolute; left: -100%; top: -100%;
+            width: 60%; height: 200%;
+            background: linear-gradient(105deg, transparent 40%, rgba(0,217,192,0.025) 50%, transparent 60%);
+            animation: scanSweep 8s ease-in-out infinite;
+        }
+        @keyframes scanSweep {
+            0%   { transform: translateX(-20%); opacity: 0; }
+            20%  { opacity: 1; }
+            80%  { opacity: 1; }
+            100% { transform: translateX(300%); opacity: 0; }
+        }
+
+        /* Corner accent lines */
+        .hero-corner {
+            position: absolute; pointer-events: none;
+            width: 60px; height: 60px;
+        }
+        .hero-corner.tl { top: 2rem; left: 2rem; border-top: 1.5px solid rgba(0,217,192,0.3); border-left: 1.5px solid rgba(0,217,192,0.3); animation: cornerFade 3s ease-in-out infinite alternate; }
+        .hero-corner.tr { top: 2rem; right: 2rem; border-top: 1.5px solid rgba(0,217,192,0.3); border-right: 1.5px solid rgba(0,217,192,0.3); animation: cornerFade 3s 1s ease-in-out infinite alternate; }
+        .hero-corner.bl { bottom: 2rem; left: 2rem; border-bottom: 1.5px solid rgba(0,217,192,0.3); border-left: 1.5px solid rgba(0,217,192,0.3); animation: cornerFade 3s 0.5s ease-in-out infinite alternate; }
+        .hero-corner.br { bottom: 2rem; right: 2rem; border-bottom: 1.5px solid rgba(0,217,192,0.3); border-right: 1.5px solid rgba(0,217,192,0.3); animation: cornerFade 3s 1.5s ease-in-out infinite alternate; }
+        @keyframes cornerFade { 0% { opacity: 0.2; } 100% { opacity: 0.7; } }
+
+        @keyframes slideUp   { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeIn    { from{opacity:0} to{opacity:1} }
+        @keyframes scaleIn   { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+        @keyframes blurIn    { from{opacity:0;filter:blur(10px);transform:translateY(8px)} to{opacity:1;filter:blur(0);transform:translateY(0)} }
+        @keyframes gradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        @keyframes photoRing { 0%,100%{box-shadow:0 0 0 6px rgba(0,168,150,0.12),0 20px 50px rgba(0,0,0,0.5)} 50%{box-shadow:0 0 0 10px rgba(0,168,150,0.2),0 20px 50px rgba(0,0,0,0.5),0 0 40px rgba(0,168,150,0.12)} }
+        @keyframes borderGlow { 0%,100%{border-color:rgba(0,168,150,0.2)} 50%{border-color:rgba(0,217,192,0.5)} }
 
         .hero-content {
             position: relative; z-index: 2; text-align: center;
-            animation: slideUp 0.9s cubic-bezier(0.4,0,0.2,1);
             max-width: 750px;
         }
+        .hero-content > * { animation: slideUp 0.8s cubic-bezier(0.4,0,0.2,1) both; }
+        .hero-content > *:nth-child(1) { animation-delay: 0.0s; }
+        .hero-content > *:nth-child(2) { animation-delay: 0.1s; }
+        .hero-content > *:nth-child(3) { animation-delay: 0.2s; }
+        .hero-content > *:nth-child(4) { animation-delay: 0.3s; }
+        .hero-content > *:nth-child(5) { animation-delay: 0.4s; }
+        .hero-content > *:nth-child(6) { animation-delay: 0.5s; }
+        .hero-content > *:nth-child(7) { animation-delay: 0.6s; }
+        .hero-content > *:nth-child(8) { animation-delay: 0.7s; }
 
         .hero-photo {
-            width: 150px; height: 150px;
-            border-radius: 50%;
+            width: 150px; height: 150px; border-radius: 50%;
             object-fit: cover; object-position: top;
-            border: 3px solid rgba(0,168,255,0.6);
-            box-shadow: 0 0 0 6px rgba(0,168,255,0.1), 0 20px 50px rgba(0,0,0,0.5);
-            margin: 0 auto 1.8rem;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid rgba(0,217,192,0.5);
+            box-shadow: 0 0 0 6px rgba(0,168,150,0.12), 0 20px 50px rgba(0,0,0,0.5);
+            margin: 0 auto 1.8rem; display: block; cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+            animation: scaleIn 0.7s cubic-bezier(0.4,0,0.2,1) both, photoRing 3s 0.8s ease-in-out infinite;
         }
-        .hero-photo:hover { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(0,168,255,0.15), 0 25px 60px rgba(0,168,255,0.2); }
+        .hero-photo:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 0 10px rgba(0,168,150,0.2), 0 28px 60px rgba(0,168,150,0.3), 0 0 60px rgba(0,168,150,0.15);
+        }
 
         .hero h1 {
-            font-size: 3.2rem; margin-bottom: 0.4rem;
-            background: linear-gradient(135deg, #00a8ff 0%, #00d97e 100%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem; margin-bottom: 0.4rem;
+            background: linear-gradient(135deg, var(--accent2) 0%, var(--ocean-mid) 40%, var(--accent2) 80%, var(--ocean-mid) 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; font-weight: 800; letter-spacing: -1px;
+            background-clip: text; font-weight: 700; letter-spacing: -1px;
             line-height: 1.1;
+            animation: gradientShift 6s ease infinite;
         }
+        .hero h1 em { font-style: italic; }
 
-        /* ── UNIVERSITY INFO BLOCK ── */
         .hero-institution {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(0,168,255,0.08);
-            border: 1px solid rgba(0,168,255,0.2);
-            border-radius: 100px;
-            padding: 0.45rem 1.2rem;
-            margin: 0.8rem auto 1.2rem;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            font-weight: 400;
+            background: rgba(0,168,150,0.08);
+            border: 1px solid rgba(0,168,150,0.2);
+            border-radius: 100px; padding: 0.45rem 1.2rem;
+            margin: 0.8rem auto 1.2rem; font-size: 0.88rem;
+            color: var(--text-muted); font-weight: 400;
+            font-family: 'DM Sans', sans-serif;
+            animation: borderGlow 4s 1s ease-in-out infinite;
         }
-        .hero-institution .inst-dept {
-            color: var(--accent2);
-            font-weight: 600;
-        }
-        .hero-institution .inst-sep {
-            color: var(--border-light);
-            margin: 0 0.1rem;
-        }
-        .hero-institution .inst-uni {
-            color: var(--accent);
-            font-weight: 600;
-        }
+        .hero-institution .inst-dept { color: var(--accent2); font-weight: 600; }
+        .hero-institution .inst-sep  { color: var(--border-light); margin: 0 0.1rem; }
+        .hero-institution .inst-uni  { color: var(--ocean-mid); font-weight: 600; }
 
-        .hero .subtitle { font-size: 1.5rem; color: var(--text); margin-bottom: 0.7rem; font-weight: 500; letter-spacing: -0.3px; }
-        .hero .tagline { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
+        .hero .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; color: var(--text); margin-bottom: 0.7rem;
+            font-weight: 600; letter-spacing: -0.3px; font-style: italic;
+            animation: blurIn 1s 0.3s cubic-bezier(0.4,0,0.2,1) both;
+        }
+        .hero .tagline {
+            font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7;
+            animation: blurIn 1s 0.5s cubic-bezier(0.4,0,0.2,1) both;
+        }
 
         /* Hero contact row */
-        .hero-contact-row {
-            display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
+        .hero-contact-row { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
         .hero-contact-link {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border-light);
-            border-radius: 100px;
-            padding: 0.5rem 1.1rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem; font-weight: 500;
-            transition: all 0.25s;
+            background: var(--card-bg); border: 1px solid var(--border-light);
+            border-radius: 100px; padding: 0.5rem 1.1rem;
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.82rem; font-weight: 500;
+            transition: all 0.3s; font-family: 'DM Sans', sans-serif;
         }
         .hero-contact-link svg { width: 15px; height: 15px; flex-shrink: 0; }
         .hero-contact-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(0,168,255,0.1);
-            transform: translateY(-2px);
+            border-color: var(--accent); color: var(--accent2);
+            background: rgba(0,168,150,0.1); transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
         .hero-contact-link.whatsapp:hover { border-color: #25D366; color: #25D366; background: rgba(37,211,102,0.1); }
         .hero-contact-link.linkedin:hover { border-color: #0A66C2; color: #0A66C2; background: rgba(10,102,194,0.1); }
@@ -289,272 +364,477 @@
 
         .badges { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
         .badge {
-            background: rgba(0,168,255,0.1); border: 1px solid rgba(0,168,255,0.25);
+            background: rgba(0,168,150,0.08); border: 1px solid rgba(0,168,150,0.2);
             color: var(--text); padding: 0.55rem 1.1rem; border-radius: 100px;
-            font-size: 0.85rem; font-weight: 500;
+            font-size: 0.82rem; font-weight: 500;
+            transition: all 0.3s; cursor: default;
         }
+        .badge:hover { background: rgba(0,168,150,0.15); border-color: var(--accent); transform: translateY(-2px); }
 
         .cta-buttons { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
         .btn {
             padding: 0.85rem 2.2rem; border-radius: 100px; text-decoration: none;
             font-weight: 600; transition: all 0.3s; border: 1.5px solid transparent;
-            font-size: 0.95rem; letter-spacing: 0.2px;
+            font-size: 0.9rem; letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif;
         }
-        .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 20px rgba(0,168,255,0.35); border-color: var(--accent); }
-        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,168,255,0.45); }
-        .btn-secondary { border-color: var(--border-light); color: var(--text-muted); }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,168,255,0.08); transform: translateY(-3px); }
+        .btn-primary {
+            background: var(--accent); color: white;
+            box-shadow: 0 4px 20px rgba(0,168,150,0.35); border-color: var(--accent);
+            position: relative; overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-20deg);
+            transition: none;
+        }
+        .btn-primary:hover::after { animation: btnShine 0.6s ease forwards; }
+        @keyframes btnShine { from{left:-100%} to{left:160%} }
+        .btn-primary:hover {
+            background: var(--accent-dark); transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(0,168,150,0.55);
+        }
+        .btn-secondary { border-color: var(--border-light); color: var(--text-muted); position: relative; overflow: hidden; }
+        .btn-secondary::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(0,168,150,0.06); transform: scaleX(0); transform-origin: left;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .btn-secondary:hover::before { transform: scaleX(1); }
+        .btn-secondary:hover {
+            border-color: var(--accent); color: var(--accent2);
+            transform: translateY(-3px);
+        }
 
         /* ── AWARD CARDS ── */
         .award-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             padding: 2.5rem; border-radius: 1rem; margin-bottom: 2rem;
-            transition: all 0.3s;
-            backdrop-filter: blur(8px);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(8px); position: relative; overflow: hidden;
         }
-        .award-card:hover { background: var(--card-bg-hover); border-color: rgba(0,168,255,0.3); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .award-card h3 { color: var(--success); margin-bottom: 0.7rem; font-size: 1.4rem; font-weight: 700; }
-        .award-type { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1.2px; }
-        .award-card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        .award-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--ocean-mid));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+        }
+        .award-card:hover::before { transform: scaleX(1); }
+        .award-card::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,168,150,0.04) 0%, transparent 60%);
+            transition: opacity 0.3s; opacity: 0;
+        }
+        .award-card:hover::after { opacity: 1; }
+        .award-card:hover {
+            background: var(--card-bg-hover); border-color: rgba(0,168,150,0.3);
+            transform: translateY(-5px); box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+        }
+        .award-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--success); margin-bottom: 0.7rem;
+            font-size: 1.5rem; font-weight: 700;
+        }
+        .award-type {
+            color: var(--accent); font-weight: 600; font-size: 0.78rem;
+            margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px;
+            font-family: 'DM Mono', monospace;
+        }
+        .award-card p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; font-size: 0.92rem; }
 
-        /* DOI pill */
         .doi-link {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(0,217,126,0.08);
-            border: 1px solid rgba(0,217,126,0.25);
-            color: var(--accent2);
-            padding: 0.45rem 1rem;
-            border-radius: 100px;
-            font-size: 0.82rem; font-weight: 600;
-            text-decoration: none;
-            transition: all 0.25s;
-            margin-top: 0.5rem;
-            letter-spacing: 0.3px;
+            background: rgba(0,217,126,0.08); border: 1px solid rgba(0,217,192,0.25);
+            color: var(--accent2); padding: 0.45rem 1rem; border-radius: 100px;
+            font-size: 0.78rem; font-weight: 600; text-decoration: none;
+            transition: all 0.25s; margin-top: 0.5rem; letter-spacing: 0.3px;
+            font-family: 'DM Mono', monospace;
         }
-        .doi-link:hover { background: rgba(0,217,126,0.15); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,217,126,0.15); }
+        .doi-link:hover { background: rgba(0,217,192,0.15); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,217,192,0.2); }
         .doi-link svg { width: 13px; height: 13px; }
 
         .award-img {
             width: 100%; max-width: 900px;
-            border-radius: 0.8rem;
-            border: 1px solid var(--border);
-            margin: 1.5rem auto 0;
-            display: block; object-fit: contain;
-            min-height: 400px;
-            background: rgba(6,14,28,0.4);
-            cursor: pointer;
-            transition: transform 0.3s, border-color 0.3s;
+            border-radius: 0.8rem; border: 1px solid var(--border);
+            margin: 1.5rem auto 0; display: block; object-fit: contain;
+            min-height: 400px; background: rgba(6,14,28,0.4);
+            cursor: pointer; transition: transform 0.4s, border-color 0.3s, box-shadow 0.3s;
         }
-        .award-img:hover { transform: scale(1.01); border-color: rgba(0,168,255,0.4); }
-        .award-img-caption { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem; font-style: italic; }
+        .award-img:hover {
+            transform: scale(1.015); border-color: rgba(0,168,150,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .award-img-caption {
+            text-align: center; font-size: 0.82rem; color: var(--text-muted);
+            margin-top: 0.8rem; font-style: italic;
+            font-family: 'Cormorant Garamond', serif; font-size: 0.95rem;
+        }
 
         /* ── PROJECT CARDS ── */
         .project-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2.5rem; }
         .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 2.8rem; border-radius: 1rem; transition: all 0.3s;
-            backdrop-filter: blur(8px);
+            background: var(--card-bg); border: 1px solid var(--border);
+            padding: 2.8rem; border-radius: 1rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(8px); position: relative; overflow: hidden;
         }
-        .project-card:hover { border-color: rgba(0,168,255,0.3); background: var(--card-bg-hover); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-        .project-card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.5rem; font-weight: 700; }
-        .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.85; }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--ocean-mid), var(--accent));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+        }
+        .project-card:hover::before { transform: scaleX(1); }
+        .project-card:hover {
+            border-color: rgba(0,168,150,0.3); background: var(--card-bg-hover);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35); transform: translateY(-4px);
+        }
+        .project-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent2); margin-bottom: 0.8rem;
+            font-size: 1.7rem; font-weight: 700; letter-spacing: -0.3px;
+        }
+        .project-card p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.85; font-size: 0.91rem; }
 
-        .project-highlight {
-            background: linear-gradient(135deg, rgba(0,168,255,0.1) 0%, rgba(0,136,204,0.06) 100%);
-            border: 1px solid rgba(0,168,255,0.25);
+        .project-card::after {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,168,150,0.04) 0%, transparent 55%);
+            transition: opacity 0.3s; opacity: 0;
+        }
+        .project-card:hover::after { opacity: 1; }
+            background: linear-gradient(135deg, rgba(0,168,150,0.08) 0%, rgba(11,79,108,0.06) 100%);
+            border: 1px solid rgba(0,168,150,0.2);
         }
 
         .project-img-large {
-            width: 100%; max-height: 560px;
-            object-fit: contain; background: rgba(6,14,28,0.5);
-            border-radius: 0.8rem; border: 1px solid var(--border);
-            margin-bottom: 2rem; cursor: pointer;
-            transition: transform 0.3s, border-color 0.3s;
+            width: 100%; max-height: 560px; object-fit: contain;
+            background: rgba(6,14,28,0.5); border-radius: 0.8rem;
+            border: 1px solid var(--border); margin-bottom: 2rem;
+            cursor: pointer; transition: transform 0.4s, border-color 0.3s, box-shadow 0.3s;
             padding: 1.5rem; display: block;
         }
-        .project-img-large:hover { transform: scale(1.01); border-color: rgba(0,168,255,0.4); }
+        .project-img-large:hover {
+            transform: scale(1.015); border-color: rgba(0,168,150,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
 
         .project-img-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 1.2rem; margin-bottom: 2rem;
         }
         .project-img-grid img {
-            width: 100%; height: 420px;
-            object-fit: contain; background: rgba(6,14,28,0.5);
-            border-radius: 0.8rem; border: 1px solid var(--border);
-            cursor: pointer; transition: transform 0.3s, border-color 0.3s;
+            width: 100%; height: 420px; object-fit: contain;
+            background: rgba(6,14,28,0.5); border-radius: 0.8rem;
+            border: 1px solid var(--border); cursor: pointer;
+            transition: transform 0.4s, border-color 0.3s, box-shadow 0.3s;
             padding: 1.2rem;
         }
-        .project-img-grid img:hover { transform: scale(1.02); border-color: rgba(0,168,255,0.4); }
+        .project-img-grid img:hover {
+            transform: scale(1.025); border-color: rgba(0,168,150,0.4);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
         .project-img-grid.span-full img:first-child { grid-column: 1 / -1; height: 520px; }
 
         .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
         .tech-tag {
-            background: rgba(0,168,255,0.08); color: var(--accent);
+            background: rgba(0,168,150,0.07); color: var(--accent2);
             padding: 0.4rem 0.9rem; border-radius: 100px;
-            font-size: 0.82rem; border: 1px solid rgba(0,168,255,0.2); font-weight: 500;
+            font-size: 0.75rem; border: 1px solid rgba(0,168,150,0.2);
+            font-weight: 500; font-family: 'DM Mono', monospace;
+            transition: all 0.25s;
         }
+        .tech-tag:hover { background: rgba(0,168,150,0.15); transform: translateY(-2px); }
 
         .project-status {
             display: inline-flex; align-items: center; gap: 0.4rem;
-            font-size: 0.85rem; color: var(--success); font-weight: 600;
+            font-size: 0.78rem; color: var(--success); font-weight: 600;
             margin-bottom: 1.2rem; padding: 0.45rem 1rem;
-            background: rgba(0,217,126,0.08);
-            border-radius: 100px; border: 1px solid rgba(0,217,126,0.2);
+            background: rgba(0,217,192,0.08); border-radius: 100px;
+            border: 1px solid rgba(0,217,192,0.2);
+            font-family: 'DM Mono', monospace; letter-spacing: 0.5px;
         }
+        .project-status .dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
 
         /* ── SKILLS ── */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; margin-top: 3rem; }
         .skill-category {
             background: var(--card-bg); border: 1px solid var(--border);
-            padding: 2.2rem; border-radius: 1rem; transition: all 0.3s;
+            padding: 2.2rem; border-radius: 1rem; transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            position: relative; overflow: hidden;
         }
-        .skill-category:hover { border-color: rgba(0,168,255,0.3); background: var(--card-bg-hover); transform: translateY(-4px); }
-        .skill-category h3 { color: var(--accent); margin-bottom: 1.3rem; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.3px; }
+        .skill-category::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--ocean-mid));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+        }
+        .skill-category:hover::after { transform: scaleX(1); }
+        .skill-category:hover {
+            border-color: rgba(0,168,150,0.3); background: var(--card-bg-hover);
+            transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .skill-category h3 {
+            font-family: 'DM Mono', monospace;
+            color: var(--accent2); margin-bottom: 1.3rem;
+            font-size: 0.85rem; font-weight: 500; letter-spacing: 1px;
+            text-transform: uppercase;
+        }
         .skill-list { list-style: none; }
-        .skill-list li { color: var(--text-muted); margin-bottom: 0.7rem; padding-left: 1.6rem; position: relative; font-size: 0.92rem; line-height: 1.6; }
-        .skill-list li:before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+        .skill-list li {
+            color: var(--text-muted); margin-bottom: 0.7rem;
+            padding-left: 1.6rem; position: relative; font-size: 0.9rem; line-height: 1.6;
+            transition: color 0.25s, transform 0.25s;
+        }
+        .skill-list li:before { content: "▸"; position: absolute; left: 0; color: var(--accent); transition: transform 0.25s; }
+        .skill-category:hover .skill-list li { color: var(--text); }
+        .skill-category:hover .skill-list li:nth-child(1) { transition-delay: 0.02s; }
+        .skill-category:hover .skill-list li:nth-child(2) { transition-delay: 0.05s; }
+        .skill-category:hover .skill-list li:nth-child(3) { transition-delay: 0.08s; }
+        .skill-category:hover .skill-list li:nth-child(4) { transition-delay: 0.11s; }
+        .skill-category:hover .skill-list li:nth-child(5) { transition-delay: 0.14s; }
+        .skill-category:hover .skill-list li:nth-child(6) { transition-delay: 0.17s; }
+        .skill-category:hover .skill-list li:before { transform: translateX(3px); }
 
         /* ── EDUCATION / CERTS ── */
         .education-timeline { max-width: 900px; margin: 3rem auto 0; }
         .education-item {
-            background: var(--card-bg); border-left: 3px solid var(--accent);
-            padding: 2.2rem; margin-bottom: 1.8rem; border-radius: 0.8rem; transition: all 0.3s;
+            background: var(--card-bg); border-left: 2px solid var(--accent);
+            padding: 2.2rem; margin-bottom: 1.8rem; border-radius: 0.8rem;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
         }
-        .education-item:hover { background: var(--card-bg-hover); transform: translateX(8px); }
-        .education-item h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 700; }
-        .institution { color: var(--success); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.95rem; }
-        .education-item p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+        .education-item::before {
+            content: ''; position: absolute; left: -7px; top: 1.8rem;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--accent); border: 2px solid var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,168,150,0.3);
+            transition: box-shadow 0.3s;
+        }
+        .education-item:hover::before { box-shadow: 0 0 0 5px rgba(0,168,150,0.2), 0 0 20px rgba(0,168,150,0.3); }
+        .education-item:hover { background: var(--card-bg-hover); transform: translateX(8px); border-color: var(--accent2); }
+        .education-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent2); margin-bottom: 0.5rem;
+            font-size: 1.3rem; font-weight: 700;
+        }
+        .institution { color: var(--gold-lt); font-weight: 600; margin-bottom: 0.8rem; font-size: 0.9rem; }
+        .education-item p { color: var(--text-muted); line-height: 1.8; font-size: 0.9rem; }
 
         .cert-img {
-            width: 100%; max-width: 780px;
-            border-radius: 0.8rem; border: 1px solid var(--border);
-            margin-top: 1.5rem; display: block; min-height: 400px;
-            object-fit: contain; background: rgba(6,14,28,0.4);
-            padding: 1.2rem; cursor: pointer; transition: transform 0.3s, border-color 0.3s;
+            width: 100%; max-width: 780px; border-radius: 0.8rem;
+            border: 1px solid var(--border); margin-top: 1.5rem; display: block;
+            min-height: 400px; object-fit: contain; background: rgba(6,14,28,0.4);
+            padding: 1.2rem; cursor: pointer;
+            transition: transform 0.4s, border-color 0.3s, box-shadow 0.3s;
         }
-        .cert-img:hover { transform: scale(1.02); border-color: rgba(0,168,255,0.4); }
+        .cert-img:hover { transform: scale(1.02); border-color: rgba(0,168,150,0.4); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
 
-        /* ── CONTACT – icon grid ── */
+        /* ── CONTACT ── */
         .contact { text-align: center; }
         .contact > .container > p {
-            color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem;
+            color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1rem;
             max-width: 560px; margin-left: auto; margin-right: auto;
+            font-family: 'DM Sans', sans-serif;
         }
-
         .contact-grid-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.85rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 0.85rem; max-width: 600px; margin: 0 auto 2.5rem;
         }
-
         .cg-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            width: 110px;
-            height: 100px;
-            border-radius: 1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-            transition: all 0.25s;
-            backdrop-filter: blur(8px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.5rem; width: 110px; height: 100px; border-radius: 1rem;
+            background: var(--card-bg); border: 1px solid var(--border);
+            text-decoration: none; color: var(--text-muted);
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2px;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(8px); font-family: 'DM Sans', sans-serif;
+            position: relative; overflow: hidden;
         }
+        .cg-item::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(0,168,150,0.1) 0%, transparent 70%);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .cg-item:hover::before { opacity: 1; }
         .cg-item svg { width: 26px; height: 26px; flex-shrink: 0; }
-        .cg-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
-
-        .cg-item.em:hover  { border-color: var(--accent);  color: var(--accent);  background: rgba(0,168,255,0.1); }
+        .cg-item:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(0,0,0,0.3); }
+        .cg-item.em:hover  { border-color: var(--accent);  color: var(--accent2);  background: rgba(0,168,150,0.1); }
         .cg-item.wa:hover  { border-color: #25D366; color: #25D366; background: rgba(37,211,102,0.1); }
         .cg-item.li:hover  { border-color: #0A66C2; color: #0A66C2; background: rgba(10,102,194,0.1); }
         .cg-item.fb:hover  { border-color: #1877F2; color: #1877F2; background: rgba(24,119,242,0.1); }
         .cg-item.rg:hover  { border-color: #00CCBB; color: #00CCBB; background: rgba(0,204,187,0.1); }
         .cg-item.gs:hover  { border-color: #4285F4; color: #4285F4; background: rgba(66,133,244,0.1); }
+        .cg-item.mv:hover  { border-color: var(--accent2); color: var(--accent2); background: rgba(0,217,192,0.1); }
 
+        /* ── FOOTER ── */
         footer {
-            border-top: 1px solid var(--border); padding: 2.5rem 0;
-            text-align: center; color: var(--text-muted); font-size: 0.88rem;
+            border-top: 1px solid var(--border);
+            text-align: center; font-family: 'DM Sans', sans-serif;
+            position: relative; overflow: hidden;
+            background: linear-gradient(to bottom, var(--primary), #030810);
         }
-        footer p + p { margin-top: 0.4rem; }
+
+        .footer-wave {
+            width: 100%; line-height: 0; display: block;
+            animation: waveShift 8s ease-in-out infinite alternate;
+        }
+        .footer-wave svg { width: 100%; height: 60px; display: block; }
+        @keyframes waveShift {
+            0%   { transform: scaleX(1) translateX(0); }
+            100% { transform: scaleX(1.08) translateX(-3%); }
+        }
+
+        .footer-inner {
+            padding: 2rem 0 2.5rem;
+            display: flex; flex-direction: column; align-items: center; gap: 0.9rem;
+        }
+
+        /* Each child animates in on scroll */
+        .footer-item {
+            opacity: 0; transform: translateY(18px);
+            transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+        footer.visible .footer-item:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+        footer.visible .footer-item:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+        footer.visible .footer-item:nth-child(3) { opacity:1; transform:none; transition-delay:0.25s; }
+        footer.visible .footer-item:nth-child(4) { opacity:1; transform:none; transition-delay:0.35s; }
+        footer.visible .footer-item:nth-child(5) { opacity:1; transform:none; transition-delay:0.45s; }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem; font-weight: 700; letter-spacing: -0.3px;
+            background: linear-gradient(135deg, var(--accent2), var(--ocean-mid));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer-logo em { font-style: italic; }
+
+        .footer-divider {
+            width: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: width 0.9s 0.2s cubic-bezier(0.4,0,0.2,1) !important;
+            transform: none !important;
+        }
+        footer.visible .footer-divider { width: 120px; opacity: 1 !important; }
+
+        .footer-meta {
+            font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.2px;
+            max-width: 620px; line-height: 1.7;
+        }
+        .footer-tagline {
+            font-size: 0.82rem; color: var(--text-muted); opacity: 0.7;
+        }
+        .footer-tagline span { color: var(--accent2); font-weight: 600; }
+        .footer-copy {
+            font-size: 0.75rem; color: var(--text-muted); opacity: 0.45;
+            font-family: 'DM Mono', monospace; letter-spacing: 0.3px;
+        }
 
         /* ── LIGHTBOX ── */
-        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.94); z-index: 999; align-items: center; justify-content: center; }
+        .lightbox {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.96); z-index: 999;
+            align-items: center; justify-content: center;
+        }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 90vw; max-height: 88vh; border-radius: 0.6rem; object-fit: contain; }
-        .lightbox-close { position: absolute; top: 1.2rem; right: 1.8rem; font-size: 2.5rem; color: white; cursor: pointer; line-height: 1; opacity: 0.8; }
-        .lightbox-close:hover { opacity: 1; }
-        .lightbox-caption { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: #aaa; font-size: 0.9rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90vw; }
+        .lightbox-close {
+            position: absolute; top: 1.2rem; right: 1.8rem;
+            font-size: 2.5rem; color: white; cursor: pointer; line-height: 1;
+            opacity: 0.6; transition: opacity 0.2s, transform 0.2s;
+            background: none; border: none;
+        }
+        .lightbox-close:hover { opacity: 1; transform: scale(1.1) rotate(90deg); }
+        .lightbox-caption {
+            position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+            color: #aaa; font-size: 0.85rem; text-align: center;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 90vw; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.5px;
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .reveal {
+            opacity: 0; transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .reveal-left {
+            opacity: 0; transform: translateX(-32px);
+            transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
+        }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale {
+            opacity: 0; transform: scale(0.93);
+            transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+        }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        /* Stagger children — up to 9 items */
+        .stagger-children > * {
+            opacity: 0; transform: translateY(22px);
+            transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), transform 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
+        .stagger-children.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.04s; }
+        .stagger-children.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.10s; }
+        .stagger-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+        .stagger-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.22s; }
+        .stagger-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.28s; }
+        .stagger-children.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.34s; }
+        .stagger-children.visible > *:nth-child(7) { opacity:1; transform:none; transition-delay:0.40s; }
+        .stagger-children.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay:0.46s; }
+        .stagger-children.visible > *:nth-child(9) { opacity:1; transform:none; transition-delay:0.52s; }
+
+        /* Stagger for award/project cards with bigger delay */
+        .stagger-cards > * {
+            opacity: 0; transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        .stagger-cards.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+        .stagger-cards.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.18s; }
+        .stagger-cards.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.31s; }
+        .stagger-cards.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.44s; }
+        .stagger-cards.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.57s; }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .container { padding: 0 1.2rem; }
             section { padding: 4rem 0; }
-            section h2 { font-size: 1.9rem; margin-bottom: 2rem; }
-
+            section h2 { font-size: 2.2rem; margin-bottom: 2rem; }
             .hero { padding: 2.5rem 1.2rem; min-height: auto; }
-            .hero h1 { font-size: 2rem; letter-spacing: -0.5px; }
-            .hero .subtitle { font-size: 1.1rem; }
-            .hero .tagline { font-size: 0.95rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .subtitle { font-size: 1.2rem; }
             .hero-photo { width: 110px; height: 110px; margin-bottom: 1.4rem; }
-            .hero-institution {
-                font-size: 0.72rem; padding: 0.4rem 0.9rem;
-                flex-wrap: wrap; text-align: center; justify-content: center;
-            }
-
+            .hero-institution { font-size: 0.72rem; padding: 0.4rem 0.9rem; flex-wrap: wrap; text-align: center; justify-content: center; }
             .hero-contact-row { gap: 0.6rem; }
-            .hero-contact-link { font-size: 0.78rem; padding: 0.45rem 0.85rem; }
+            .hero-contact-link { font-size: 0.75rem; padding: 0.45rem 0.85rem; }
             .hero-contact-link .link-label { display: none; }
-
-            .badge { font-size: 0.78rem; padding: 0.45rem 0.9rem; }
+            .badge { font-size: 0.75rem; }
             .cta-buttons { flex-direction: column; }
-            .btn { width: 100%; text-align: center; font-size: 0.95rem; }
-
+            .btn { width: 100%; text-align: center; }
             .award-card { padding: 1.5rem; }
-            .award-card h3 { font-size: 1.15rem; }
             .award-img { min-height: 180px; }
             .project-card { padding: 1.5rem; }
-            .project-card h3 { font-size: 1.2rem; }
-
             .project-img-large { max-height: 260px; padding: 0.8rem; }
             .project-img-grid { grid-template-columns: 1fr; gap: 0.9rem; }
             .project-img-grid img { height: 220px; padding: 0.8rem; }
-            .project-img-grid.span-full img:first-child { height: 250px; }
-
             .skills-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .skill-category { padding: 1.3rem; }
-
             .education-item { padding: 1.5rem; }
             .cert-img { min-height: 220px; padding: 0.8rem; }
-
-            /* Contact grid – 3 per row on tablet */
             .contact-grid-wrap { gap: 0.7rem; max-width: 100%; }
-            .cg-item { width: calc(33.33% - 0.7rem); min-width: 90px; height: 90px; font-size: 0.72rem; }
+            .cg-item { width: calc(33.33% - 0.7rem); min-width: 90px; height: 90px; font-size: 0.7rem; }
             .cg-item svg { width: 22px; height: 22px; }
         }
-
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.65rem; }
+            .hero h1 { font-size: 1.8rem; }
             .hero .subtitle { font-size: 1rem; }
-            section h2 { font-size: 1.6rem; }
-
-            /* Skills: single column on small phones */
+            section h2 { font-size: 1.8rem; }
             .skills-grid { grid-template-columns: 1fr; }
-
-            /* Contact grid – 3 per row on phone, they fill the width */
-            .contact-grid-wrap { gap: 0.6rem; padding: 0 0.5rem; }
-            .cg-item { width: calc(33.33% - 0.6rem); min-width: 0; height: 86px; font-size: 0.68rem; border-radius: 0.75rem; }
+            .cg-item { width: calc(33.33% - 0.6rem); height: 86px; font-size: 0.68rem; }
             .cg-item svg { width: 20px; height: 20px; }
         }
     </style>
@@ -563,7 +843,7 @@
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
     <img id="lightbox-img" src="" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
@@ -572,35 +852,28 @@
 <nav>
     <div class="nav-inner">
         <div class="nav-brand">
-            <!-- Name + inline social icons on the same row -->
             <div class="nav-name-row">
                 <a href="#" class="nav-name">Md Farhan Mohib Hemal</a>
                 <div class="nav-social-inline">
-                    <!-- WhatsApp -->
                     <a href="https://wa.me/+8801824100874" class="nav-icon-sm wa" title="WhatsApp">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     </a>
-                    <!-- LinkedIn -->
                     <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" class="nav-icon-sm li" title="LinkedIn">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
-                    <!-- Email -->
                     <a href="mailto:farhanmohibhemal@gmail.com" class="nav-icon-sm em" title="Email">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
                     </a>
-                    <!-- Facebook -->
                     <a href="https://www.facebook.com/farhan.mohib.2024" class="nav-icon-sm fb" title="Facebook">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
                 </div>
             </div>
-            <!-- Full-form department / university on separate lines -->
             <span class="nav-meta-full" style="display:flex;flex-direction:column;gap:0.1rem;">
                 <span class="inst-dept">Electrical, Electronic &amp; Communication Engineering</span>
                 <span class="inst-uni">Military Institute of Science &amp; Technology (MIST)</span>
             </span>
         </div>
-
         <div class="nav-right">
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
             <ul id="navMenu">
@@ -617,8 +890,12 @@
 
 <!-- Hero Section -->
 <section class="hero">
-    <div class="hero-bg-circle"></div>
-    <div class="hero-bg-circle"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-scanline"></div>
+    <div class="hero-corner tl"></div>
+    <div class="hero-corner tr"></div>
+    <div class="hero-corner bl"></div>
+    <div class="hero-corner br"></div>
 
     <div class="hero-content">
         <img
@@ -628,7 +905,7 @@
             onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal')"
         >
 
-        <h1>Md Farhan Mohib Hemal</h1>
+        <h1>Md Farhan <em>Mohib Hemal</em></h1>
 
         <div class="hero-institution">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0;color:var(--accent2)"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -639,6 +916,29 @@
 
         <p class="subtitle">Underwater Robotics Engineer &amp; Signal Processing Researcher</p>
         <p class="tagline">Designing autonomous systems through rigorous software architecture, real-time control, and innovative signal processing</p>
+
+        <div class="hero-contact-row">
+            <a href="mailto:farhanmohibhemal@gmail.com" class="hero-contact-link em">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                <span class="link-label">farhanmohibhemal@gmail.com</span>
+            </a>
+            <a href="https://wa.me/+8801824100874" class="hero-contact-link whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span class="link-label">WhatsApp</span>
+            </a>
+            <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" class="hero-contact-link linkedin">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span class="link-label">LinkedIn</span>
+            </a>
+            <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" class="hero-contact-link rg">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.121 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53c.029.148.067.295.112.437.244.743.65 1.302 1.213 1.679.565.375 1.255.565 2.073.565.608 0 1.178-.107 1.712-.322a4.163 4.163 0 0 0 1.303-.897 3.905 3.905 0 0 0 .82-1.345 5.094 5.094 0 0 0 .287-1.762v-.408H19.53v.408h2.065c-.07.749-.29 1.386-.657 1.912-.563.795-1.372 1.194-2.352 1.194-.65 0-1.226-.152-1.728-.457a3.155 3.155 0 0 1-1.147-1.264c-.271-.535-.406-1.172-.406-1.906 0-.734.135-1.37.406-1.906a3.155 3.155 0 0 1 1.147-1.264c.502-.305 1.078-.457 1.728-.457.98 0 1.789.399 2.352 1.194.367.526.587 1.163.657 1.912H22v-.408a5.094 5.094 0 0 0-.287-1.762 3.905 3.905 0 0 0-.82-1.345 4.163 4.163 0 0 0-1.303-.897A4.437 4.437 0 0 0 19.586 0z"/></svg>
+                <span class="link-label">ResearchGate</span>
+            </a>
+            <a href="https://www.facebook.com/farhan.mohib.2024" class="hero-contact-link fb">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span class="link-label">Facebook</span>
+            </a>
+        </div>
 
         <div class="badges">
             <span class="badge">🏆 Best Paper Award – IEEE STI 2025</span>
@@ -657,88 +957,50 @@
 <!-- Recognition Section -->
 <section id="about">
     <div class="container">
-        <h2>Professional Recognition & Achievements</h2>
+        <div class="section-eyebrow reveal">Recognition &amp; Achievements</div>
+        <h2 class="reveal">Professional Recognition<br><em>&amp; Achievements</em></h2>
 
-        <div class="award-card">
+        <div class="award-card reveal-scale">
             <div class="award-type">🏆 IEEE STI 2025 – Best Paper Award</div>
             <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
-            <p>
-                Received the prestigious <strong>Best Paper Award (Track 1)</strong> at the 2025 IEEE 7th International Conference
-                on Sustainable Technologies for Industry 5.0, held at The Green University of Bangladesh, Narayanganj (December 11–12, 2025).
-                The research demonstrates a novel SAM-guided synthetic data augmentation framework achieving 2.89% accuracy improvement
-                in microplastic detection for oceanographic monitoring systems.
-            </p>
+            <p>Received the prestigious <strong>Best Paper Award (Track 1)</strong> at the 2025 IEEE 7th International Conference on Sustainable Technologies for Industry 5.0, held at The Green University of Bangladesh, Narayanganj (December 11–12, 2025). The research demonstrates a novel SAM-guided synthetic data augmentation framework achieving 2.89% accuracy improvement in microplastic detection for oceanographic monitoring systems.</p>
             <a href="https://doi.org/10.1109/STI69347.2025.11367502" class="doi-link" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                 DOI: 10.1109/STI69347.2025.11367502
             </a>
-            <img
-                src="images/best_paper.jpg"
-                alt="IEEE STI 2025 Best Paper Award Certificate"
-                class="award-img"
-                onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate – Md Farhan Mohib Hemal')"
-            >
+            <img src="images/best_paper.jpg" alt="IEEE STI 2025 Best Paper Award Certificate" class="award-img" onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate – Md Farhan Mohib Hemal')">
             <p class="award-img-caption">IEEE STI 2025 Best Paper Award Certificate — December 2025</p>
         </div>
 
-        <div class="award-card">
+        <div class="award-card reveal-scale" style="transition-delay:0.1s">
             <div class="award-type">🎤 IEEE STI 2025 Conference Attendance</div>
             <h3>Presenting Research at the International Stage</h3>
-            <p>
-                Attended and presented at the 2025 IEEE 7th International Conference on Sustainable Technologies for Industry 5.0.
-                The conference brought together researchers and engineers from across the globe to share advances in robotics, AI,
-                and sustainable technology for next-generation industry.
-            </p>
-            <img
-                src="images/STI2025%20miy%20pic.jpg"
-                alt="At IEEE STI 2025 Conference"
-                class="award-img"
-                onclick="openLightbox(this.src, 'At IEEE STI 2025 – Sustainable Technologies for Industry 5.0')"
-            >
+            <p>Attended and presented at the 2025 IEEE 7th International Conference on Sustainable Technologies for Industry 5.0. The conference brought together researchers and engineers from across the globe to share advances in robotics, AI, and sustainable technology for next-generation industry.</p>
+            <img src="images/STI2025%20miy%20pic.jpg" alt="At IEEE STI 2025 Conference" class="award-img" onclick="openLightbox(this.src, 'At IEEE STI 2025 – Sustainable Technologies for Industry 5.0')">
             <p class="award-img-caption">IEEE STI 2025 Conference – Green University of Bangladesh</p>
         </div>
 
-        <div class="award-card">
+        <div class="award-card reveal-scale" style="transition-delay:0.15s">
             <div class="award-type">🥈 1st Runner Up – Poster Presentation Competition 2025</div>
             <h3>Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones</h3>
-            <p>
-                Achieved <strong>1st Runner Up</strong> at MIST's Poster Presentation Competition 2025.
-                The research presents a real-time GPS-tagged plant disease detection system using YOLO + NCNN,
-                enabling efficient onboard inference on drones for fast and autonomous disease monitoring in precision agriculture.
-            </p>
+            <p>Achieved <strong>1st Runner Up</strong> at MIST's Poster Presentation Competition 2025. The research presents a real-time GPS-tagged plant disease detection system using YOLO + NCNN, enabling efficient onboard inference on drones for fast and autonomous disease monitoring in precision agriculture.</p>
             <div class="project-img-grid">
-                <img
-                    src="images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg"
-                    alt="1st Runner Up Poster Presentation"
-                    onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025')"
-                >
-                <img
-                    src="images/poster.jpg"
-                    alt="Research Poster – Real-Time Plant Disease Detection"
-                    onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection with NCNN-Optimized YOLO on Drones for Precision Agriculture')"
-                >
+                <img src="images/first%20runner%20up%20at%20poster%20presentation%20real%20time%20palnt%20disease%20detection%20nccnn%20optimized%20yolon%20on%20drone%20in%20agriculture.jpg" alt="1st Runner Up Poster Presentation" onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025')">
+                <img src="images/poster.jpg" alt="Research Poster – Real-Time Plant Disease Detection" onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection')">
             </div>
             <p class="award-img-caption">Poster Presentation Competition 2025, MIST</p>
         </div>
 
-        <div class="award-card">
+        <div class="award-card reveal-scale" style="transition-delay:0.2s">
             <div class="award-type">🎓 Academic Excellence</div>
-            <h3>Secondary & Higher Secondary Education</h3>
-            <p>
-                Achieved A+ grades in both SSC and HSC examinations with exceptional performance in Physics, Chemistry, and Mathematics
-                (96% aggregate in PCM subjects). Educational foundation from Bangladesh Noubahini School & College, Chattogram,
-                establishing strong theoretical and analytical skills essential for advanced engineering work.
-            </p>
+            <h3>Secondary &amp; Higher Secondary Education</h3>
+            <p>Achieved A+ grades in both SSC and HSC examinations with exceptional performance in Physics, Chemistry, and Mathematics (96% aggregate in PCM subjects). Educational foundation from Bangladesh Noubahini School &amp; College, Chattogram, establishing strong theoretical and analytical skills essential for advanced engineering work.</p>
         </div>
 
-        <div class="award-card">
-            <div class="award-type">📚 Research & Academic Publication</div>
+        <div class="award-card reveal-scale" style="transition-delay:0.25s">
+            <div class="award-type">📚 Research &amp; Academic Publication</div>
             <h3>Peer-Reviewed Research Contributions</h3>
-            <p>
-                Active contributor to underwater robotics and autonomous systems literature through publications on Google Scholar and
-                ResearchGate. Research focuses on practical implementation of advanced control systems, sensor fusion algorithms,
-                and real-time embedded system design for autonomous underwater vehicles.
-            </p>
+            <p>Active contributor to underwater robotics and autonomous systems literature through publications on Google Scholar and ResearchGate. Research focuses on practical implementation of advanced control systems, sensor fusion algorithms, and real-time embedded system design for autonomous underwater vehicles.</p>
         </div>
     </div>
 </section>
@@ -746,22 +1008,18 @@
 <!-- Projects Section -->
 <section id="projects">
     <div class="container">
-        <h2>Major Projects & Research</h2>
+        <div class="section-eyebrow reveal">Research &amp; Engineering</div>
+        <h2 class="reveal">Major Projects<br><em>&amp; Research</em></h2>
 
-        <div class="project-list">
+        <div class="project-list stagger-cards">
 
             <div class="project-card project-highlight">
                 <span style="display:inline-block; font-size:2rem; margin-bottom:0.8rem;">📰</span>
                 <h3>SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</h3>
-                <div class="project-status">✅ Published Research Paper &nbsp;|&nbsp; ✅ IEEE STI 2025 Best Paper Award</div>
-                <p>
-                    Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced
-                    computer vision and deep learning. Leveraged Segment Anything Model (SAM) for automated mask generation, enabling
-                    intelligent synthetic dataset creation through blending and copy-paste augmentation techniques. Trained YOLOv11
-                    models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (mAP@0.5:0.95).
-                </p>
-                <p style="font-size:1rem; color:var(--text); margin-top:1rem; line-height:1.9;">
-                    <strong>Key Achievements:</strong> Peer-reviewed publication • Novel augmentation methodology • Real-world environmental application • Demonstrated accuracy improvements in oceanographic monitoring systems
+                <div class="project-status"><span class="dot"></span> Published Research Paper &nbsp;|&nbsp; IEEE STI 2025 Best Paper Award</div>
+                <p>Developed novel synthetic data augmentation framework addressing underwater microplastic detection using advanced computer vision and deep learning. Leveraged Segment Anything Model (SAM) for automated mask generation, enabling intelligent synthetic dataset creation through blending and copy-paste augmentation techniques. Trained YOLOv11 models on augmented datasets and demonstrated 2.89% improvement in detection accuracy (mAP@0.5:0.95).</p>
+                <p style="font-size:0.92rem; color:var(--text); margin-top:1rem; line-height:1.9;">
+                    <strong>Key Achievements:</strong> Peer-reviewed publication · Novel augmentation methodology · Real-world environmental application · Demonstrated accuracy improvements in oceanographic monitoring systems
                 </p>
                 <div style="margin-bottom:1.5rem;">
                     <a href="https://doi.org/10.1109/STI69347.2025.11367502" class="doi-link" target="_blank" rel="noopener">
@@ -782,187 +1040,91 @@
 
             <div class="project-card">
                 <h3>Mavirov ROV – Leviathan Underwater Drone</h3>
-                <div class="project-status">Co-founder & Software Team Lead | Production Deployment | Real-World Field Operations</div>
-                <img
-                    src="images/first%20underwater%20drone%20name%20Leviathan.jpg"
-                    alt="Leviathan ROV – First underwater drone by Mavirov"
-                    class="project-img-large"
-                    onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')"
-                >
-                <p>
-                    Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform.
-                    Designed hierarchical control architecture integrating Pixhawk autopilot with Raspberry Pi 5 central processing hub
-                    managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous
-                    waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.
-                </p>
-
-                <h4 style="color: var(--warning); margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem;">🌊 Real-World Field Operations & Deployment</h4>
+                <div class="project-status"><span class="dot"></span> Co-founder &amp; Software Team Lead | Production Deployment | Real-World Field Operations</div>
+                <img src="images/first%20underwater%20drone%20name%20Leviathan.jpg" alt="Leviathan ROV" class="project-img-large" onclick="openLightbox(this.src, 'Leviathan – First Underwater Drone by Mavirov')">
+                <p>Architected and implemented comprehensive software ecosystem for autonomous underwater robotics platform. Designed hierarchical control architecture integrating Pixhawk autopilot with Raspberry Pi 5 central processing hub managing real-time video streaming, telemetry aggregation, and servo coordination. System supports autonomous waypoint navigation, PS5 joystick control, and keyboard fine-grain servo adjustment.</p>
+                <h4 style="color:var(--gold-lt); margin-top:2rem; margin-bottom:1rem; font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic;">🌊 Real-World Field Operations &amp; Deployment</h4>
                 <div class="project-img-grid">
-                    <img
-                        src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg"
-                        alt="First successful operation of Leviathan"
-                        onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')"
-                    >
-                    <img
-                        src="images/postogola.jpg"
-                        alt="Field operation at Postogola Cantonment pool (33 ft depth)"
-                        onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – monitoring diver movement at ~33 ft depth')"
-                    >
+                    <img src="images/first%20sucess%20ful%20operation%20of%20leviathan.jpg" alt="First successful operation of Leviathan" onclick="openLightbox(this.src, 'First Successful Operation of Leviathan ROV')">
+                    <img src="images/postogola.jpg" alt="Field operation at Postogola Cantonment" onclick="openLightbox(this.src, 'Field operation at Postogola Cantonment – 33 ft depth')">
                 </div>
-                <p>
-                    <strong>Milestone Achievement:</strong> Successfully conducted live underwater field operations at <strong>Postogola Cantonment</strong>,
-                    monitoring and capturing diver movements at approximately <strong>33 feet depth</strong>. This real-world deployment demonstrated the
-                    system's reliability, stability, and operational capability in challenging underwater environments.
-                </p>
-                <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; margin-top: 1rem;">
-                    ✅ Depth-tested to 33+ feet &nbsp;|&nbsp; ✅ Real-time underwater video &nbsp;|&nbsp; ✅ Diver monitoring capability &nbsp;|&nbsp; ✅ Stable field performance
+                <p><strong>Milestone Achievement:</strong> Successfully conducted live underwater field operations at <strong>Postogola Cantonment</strong>, monitoring and capturing diver movements at approximately <strong>33 feet depth</strong>.</p>
+                <p style="font-size:0.85rem; color:var(--accent2); font-weight:600; margin-top:1rem; font-family:'DM Mono',monospace; letter-spacing:0.5px;">
+                    ✅ Depth-tested to 33+ feet &nbsp;|&nbsp; ✅ Real-time underwater video &nbsp;|&nbsp; ✅ Diver monitoring &nbsp;|&nbsp; ✅ Stable field performance
                 </p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">C++</span>
-                    <span class="tech-tag">MAVLink Protocol</span>
-                    <span class="tech-tag">GStreamer</span>
-                    <span class="tech-tag">Pixhawk</span>
-                    <span class="tech-tag">Raspberry Pi 5</span>
-                    <span class="tech-tag">Systemd Services</span>
-                    <span class="tech-tag">Field Deployment</span>
+                    <span class="tech-tag">Python</span><span class="tech-tag">C++</span>
+                    <span class="tech-tag">MAVLink Protocol</span><span class="tech-tag">GStreamer</span>
+                    <span class="tech-tag">Pixhawk</span><span class="tech-tag">Raspberry Pi 5</span>
+                    <span class="tech-tag">Systemd Services</span><span class="tech-tag">Field Deployment</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h3>New Underwater Drone with Robotic Arm – Official Unveiling at MIST</h3>
-                <div class="project-status">Official Unveiling | MIST Commandant | Next-Gen ROV</div>
+                <div class="project-status"><span class="dot"></span> Official Unveiling | MIST Commandant | Next-Gen ROV</div>
                 <div class="project-img-grid span-full">
-                    <img
-                        src="images/new%20underwater%20drone%20reveling%20by%20commandat%20of%20MIST.jpg"
-                        alt="New drone with arm revealed by MIST Commandant"
-                        onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Officially unveiled by the Commandant of MIST')"
-                    >
-                    <img
-                        src="images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg"
-                        alt="Farhan explaining the underwater drone system at revealing day"
-                        onclick="openLightbox(this.src, 'Farhan Mohib Hemal presenting the underwater drone system at revealing day')"
-                    >
-                    <img
-                        src="images/our%20new%20underwatera%20drone%20with%20arm.jpg"
-                        alt="New underwater drone with robotic arm"
-                        onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Leviathan 2.0')"
-                    >
+                    <img src="images/new%20underwater%20drone%20reveling%20by%20commandat%20of%20MIST.jpg" alt="New drone unveiled by MIST Commandant" onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Officially unveiled by the Commandant of MIST')">
+                    <img src="images/revealing%20day%20my%20pic%20explaining%20the%20undera%20water%20drone%20system.jpg" alt="Farhan explaining the drone system" onclick="openLightbox(this.src, 'Farhan Mohib Hemal presenting the underwater drone system at revealing day')">
+                    <img src="images/our%20new%20underwatera%20drone%20with%20arm.jpg" alt="New underwater drone with robotic arm" onclick="openLightbox(this.src, 'New Underwater Drone with Robotic Arm – Leviathan 2.0')">
                 </div>
-                <p>
-                    The new advanced underwater drone equipped with a <strong>robotic arm</strong> was officially unveiled by the
-                    <strong>Commandant of MIST</strong> in a formal ceremony. This next-generation vehicle features 6-DOF motion,
-                    real-time video streaming, and a functional manipulator arm — representing a significant leap beyond Leviathan,
-                    our first drone.
-                </p>
+                <p>The new advanced underwater drone equipped with a <strong>robotic arm</strong> was officially unveiled by the <strong>Commandant of MIST</strong> in a formal ceremony. This next-generation vehicle features 6-DOF motion, real-time video streaming, and a functional manipulator arm.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Robotic Arm</span>
-                    <span class="tech-tag">6-DOF ROV</span>
-                    <span class="tech-tag">H.264 Streaming</span>
-                    <span class="tech-tag">Live Demo</span>
+                    <span class="tech-tag">Robotic Arm</span><span class="tech-tag">6-DOF ROV</span>
+                    <span class="tech-tag">H.264 Streaming</span><span class="tech-tag">Live Demo</span>
                     <span class="tech-tag">Manipulation System</span>
                 </div>
             </div>
 
             <div class="project-card">
-                <h3>Digital Device & Innovation Expo 2026 & BEAR Summit 2 – National Showcases</h3>
-                <div class="project-status">National-Level Exhibitions | High-Profile Audience | MIST Mavirov</div>
+                <h3>Digital Device &amp; Innovation Expo 2026 &amp; BEAR Summit 2</h3>
+                <div class="project-status"><span class="dot"></span> National-Level Exhibitions | High-Profile Audience</div>
                 <div class="project-img-grid span-full">
-                    <img
-                        src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg"
-                        alt="DDIE 2026 – Leviathan and Creeper drones on display"
-                        onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0 on display at MIST booth')"
-                    >
-                    <img
-                        src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg"
-                        alt="Farhan at DDIE 2026"
-                        onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026, BCFCC Dhaka')"
-                    >
-                    <img
-                        src="images/chief advisor.jpg"
-                        alt="Chief Advisor Dr. Yunus and MIST Commandant with our drones"
-                        onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus and MIST Commandant observing Leviathan at the expo')"
-                    >
-                    <img
-                        src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg"
-                        alt="Leviathan at Bear Summit 2 with team members"
-                        onclick="openLightbox(this.src, 'Mavirov Team with Leviathan ROV at BEAR Summit 2 & National Seminar')"
-                    >
+                    <img src="images/digital%20device%20innovation%20expo%202026%20leviathan%20with%20our%20new%20wireless%20drone%20creeper.jpg" alt="DDIE 2026" onclick="openLightbox(this.src, 'Digital Device & Innovation Expo 2026 – Leviathan 2.0 & Creeper 1.0')">
+                    <img src="images/digital%20device%20innovation%20expo%202026%20mine%20pic.jpg" alt="Farhan at DDIE 2026" onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal at Digital Device & Innovation Expo 2026')">
+                    <img src="images/chief advisor.jpg" alt="Chief Advisor with drones" onclick="openLightbox(this.src, 'Chief Advisor Dr. Muhammad Yunus observing Leviathan at the expo')">
+                    <img src="images/leviathan%20at%20bear%20summit%20with%20team%20members.jpg" alt="BEAR Summit 2" onclick="openLightbox(this.src, 'Mavirov Team with Leviathan at BEAR Summit 2')">
                 </div>
-                <p>
-                    <strong>Digital Device & Innovation Expo 2026:</strong> Showcased the Mavirov platform — including <strong>Leviathan 2.0</strong> (field-tested to 33 feet, 6-DOF, 2.3 hrs operation)
-                    and <strong>Creeper 1.0</strong> (4-DOF, 3 hrs operation) — at the Bangladesh–China Friendship Conference Centre (BCFCC),
-                    Dhaka (January 28–31, 2026). The exhibition attracted high-profile attention including the Chief Advisor Dr. Muhammad Yunus and the MIST Commandant.
-                </p>
-                <p>
-                    <strong>BEAR Summit 2 & National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council,
-                    and World Bank – EDGE initiative. Presented Leviathan ROV to government officials, international delegates, and industry leaders.
-                </p>
+                <p><strong>Digital Device &amp; Innovation Expo 2026:</strong> Showcased <strong>Leviathan 2.0</strong> and <strong>Creeper 1.0</strong> at BCFCC Dhaka. The exhibition attracted Chief Advisor Dr. Muhammad Yunus and the MIST Commandant.</p>
+                <p><strong>BEAR Summit 2 &amp; National Seminar:</strong> Participated in the prestigious BEAR Summit organized by ICT Division, Bangladesh Computer Council, and World Bank – EDGE initiative.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Leviathan 2.0</span>
-                    <span class="tech-tag">Creeper 1.0</span>
-                    <span class="tech-tag">6-DOF ROV</span>
-                    <span class="tech-tag">Autonomous Navigation</span>
-                    <span class="tech-tag">Wireless Control</span>
-                    <span class="tech-tag">National Exhibition</span>
+                    <span class="tech-tag">Leviathan 2.0</span><span class="tech-tag">Creeper 1.0</span>
+                    <span class="tech-tag">6-DOF ROV</span><span class="tech-tag">Autonomous Navigation</span>
+                    <span class="tech-tag">Wireless Control</span><span class="tech-tag">National Exhibition</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h3>PAM + TDM 4-Servo Real-time Signal Processor</h3>
-                <div class="project-status">Signal Processing & Communication Systems | Real-time Implementation</div>
-                <img
-                    src="images/PAM_TDM_SERVO.png"
-                    alt="PAM TDM 4-Servo Signal Processor – MATLAB"
-                    class="project-img-large"
-                    onclick="openLightbox(this.src, 'PAM + TDM 4-Servo Real-time Signal Processor – MATLAB Implementation')"
-                >
-                <p>
-                    Developed sophisticated MATLAB-based signal processing system for Pulse Amplitude Modulation and Time Division
-                    Multiplexing. Implemented real-time signal processing chain with 8 kHz master clock, 4 independent TDM channels,
-                    and signal recovery via 4th-order Butterworth low-pass filtering, achieving smooth 25 FPS real-time animation.
-                </p>
+                <div class="project-status"><span class="dot"></span> Signal Processing &amp; Communication Systems | Real-time Implementation</div>
+                <img src="images/PAM_TDM_SERVO.png" alt="PAM TDM 4-Servo Signal Processor" class="project-img-large" onclick="openLightbox(this.src, 'PAM + TDM 4-Servo Real-time Signal Processor – MATLAB Implementation')">
+                <p>Developed sophisticated MATLAB-based signal processing system for Pulse Amplitude Modulation and Time Division Multiplexing. Implemented real-time signal processing chain with 8 kHz master clock, 4 independent TDM channels, and signal recovery via 4th-order Butterworth low-pass filtering, achieving smooth 25 FPS real-time animation.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">MATLAB</span>
-                    <span class="tech-tag">Signal Processing</span>
-                    <span class="tech-tag">Butterworth Filters</span>
-                    <span class="tech-tag">PAM/TDM Systems</span>
+                    <span class="tech-tag">MATLAB</span><span class="tech-tag">Signal Processing</span>
+                    <span class="tech-tag">Butterworth Filters</span><span class="tech-tag">PAM/TDM Systems</span>
                     <span class="tech-tag">Real-time Visualization</span>
                 </div>
             </div>
 
             <div class="project-card">
-                <h3>Practical Drone Building & Design (MIST)</h3>
-                <div class="project-status">Instructor | Practical Drone Engineering | MIST</div>
-                <p>
-                    Conducted comprehensive hands-on educational program teaching practical drone design, construction, and flight
-                    at Military Institute of Science and Technology. Program covers component selection, frame construction, motor
-                    balancing, flight controller calibration, and complete flight testing procedures.
-                </p>
+                <h3>Practical Drone Building &amp; Design (MIST)</h3>
+                <div class="project-status"><span class="dot"></span> Instructor | Practical Drone Engineering | MIST</div>
+                <p>Conducted comprehensive hands-on educational program teaching practical drone design, construction, and flight at Military Institute of Science and Technology. Program covers component selection, frame construction, motor balancing, flight controller calibration, and complete flight testing procedures.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">Quadrotor Design</span>
-                    <span class="tech-tag">Flight Controller</span>
-                    <span class="tech-tag">Motor Selection</span>
-                    <span class="tech-tag">Autonomous Flight</span>
+                    <span class="tech-tag">Quadrotor Design</span><span class="tech-tag">Flight Controller</span>
+                    <span class="tech-tag">Motor Selection</span><span class="tech-tag">Autonomous Flight</span>
                     <span class="tech-tag">Flight Testing</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h3>ESP32 IMU Sensor Streaming via Bluetooth Low Energy</h3>
-                <div class="project-status">Embedded Systems Engineering | Production Ready</div>
-                <p>
-                    Implemented professional-grade 9-axis IMU sensor fusion system using ESP32 and Adafruit BNO055. Designed
-                    real-time data acquisition pipeline at 20 Hz with efficient binary protocol (76-byte packets). Integrated
-                    BLE 5.0 with automatic reconnection, GATT service architecture, and sub-10ms latency wireless transmission.
-                </p>
+                <div class="project-status"><span class="dot"></span> Embedded Systems Engineering | Production Ready</div>
+                <p>Implemented professional-grade 9-axis IMU sensor fusion system using ESP32 and Adafruit BNO055. Designed real-time data acquisition pipeline at 20 Hz with efficient binary protocol (76-byte packets). Integrated BLE 5.0 with automatic reconnection, GATT service architecture, and sub-10ms latency wireless transmission.</p>
                 <div class="tech-stack">
-                    <span class="tech-tag">ESP32</span>
-                    <span class="tech-tag">BLE 5.0</span>
-                    <span class="tech-tag">BNO055 IMU</span>
-                    <span class="tech-tag">C++</span>
-                    <span class="tech-tag">Sensor Fusion</span>
-                    <span class="tech-tag">Quaternion Math</span>
+                    <span class="tech-tag">ESP32</span><span class="tech-tag">BLE 5.0</span>
+                    <span class="tech-tag">BNO055 IMU</span><span class="tech-tag">C++</span>
+                    <span class="tech-tag">Sensor Fusion</span><span class="tech-tag">Quaternion Math</span>
                 </div>
             </div>
 
@@ -973,16 +1135,17 @@
 <!-- Skills Section -->
 <section id="skills">
     <div class="container">
-        <h2>Technical Expertise</h2>
-        <div class="skills-grid">
+        <div class="section-eyebrow reveal">Core Competencies</div>
+        <h2 class="reveal">Technical<br><em>Expertise</em></h2>
+        <div class="skills-grid stagger-children">
             <div class="skill-category">
-                <h3>Robotics & Control Systems</h3>
+                <h3>Robotics &amp; Control Systems</h3>
                 <ul class="skill-list">
                     <li>Underwater Robotics Architecture</li>
                     <li>Autonomous Navigation Systems</li>
                     <li>6-DOF Motion Control</li>
-                    <li>Servo Control & PWM</li>
-                    <li>Robot Kinematics & Dynamics</li>
+                    <li>Servo Control &amp; PWM</li>
+                    <li>Robot Kinematics &amp; Dynamics</li>
                     <li>Real-time Control Loops</li>
                 </ul>
             </div>
@@ -998,7 +1161,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Signal Processing & MATLAB</h3>
+                <h3>Signal Processing &amp; MATLAB</h3>
                 <ul class="skill-list">
                     <li>PAM/TDM Multiplexing</li>
                     <li>Digital Filter Design</li>
@@ -1009,7 +1172,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Embedded Systems & Hardware</h3>
+                <h3>Embedded Systems &amp; Hardware</h3>
                 <ul class="skill-list">
                     <li>Pixhawk Flight Controller</li>
                     <li>Raspberry Pi Integration</li>
@@ -1031,7 +1194,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Computer Vision & AI</h3>
+                <h3>Computer Vision &amp; AI</h3>
                 <ul class="skill-list">
                     <li>YOLOv11 Object Detection</li>
                     <li>Segment Anything Model (SAM)</li>
@@ -1044,7 +1207,7 @@
             <div class="skill-category">
                 <h3>Unmanned Aerial Systems</h3>
                 <ul class="skill-list">
-                    <li>Drone Flight Control & Dynamics</li>
+                    <li>Drone Flight Control &amp; Dynamics</li>
                     <li>UAV System Design</li>
                     <li>Autonomous Flight Algorithms</li>
                     <li>Quadcopter Control</li>
@@ -1059,10 +1222,11 @@
 <!-- Certifications Section -->
 <section id="certifications">
     <div class="container">
-        <h2>Certifications & Professional Recognition</h2>
+        <div class="section-eyebrow reveal">Credentials</div>
+        <h2 class="reveal">Certifications &amp;<br><em>Professional Recognition</em></h2>
         <div class="education-timeline">
 
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>🏆 IEEE STI 2025 Best Paper Award</h3>
                 <div class="institution">SAM-Augmented Blending for Enhanced Microplastic Detection Using YOLO11</div>
                 <p>
@@ -1075,15 +1239,10 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                     DOI: 10.1109/STI69347.2025.11367502
                 </a>
-                <img
-                    src="images/best_paper.jpg"
-                    alt="IEEE STI 2025 Best Paper Award Certificate"
-                    class="cert-img"
-                    onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate')"
-                >
+                <img src="images/best_paper.jpg" alt="IEEE STI 2025 Best Paper Award Certificate" class="cert-img" onclick="openLightbox(this.src, 'IEEE STI 2025 Best Paper Award Certificate')">
             </div>
 
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>🥈 1st Runner Up – Poster Presentation Competition 2025</h3>
                 <div class="institution">Real-Time Plant Disease Detection – MIST, 2025</div>
                 <p>
@@ -1093,35 +1252,26 @@
                 </p>
             </div>
 
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>📜 Certificate of Recognition – Drone Course Instructor</h3>
                 <div class="institution">MIST Mavirov – Introduction to Aerial Drone Building and Autonomous Flight</div>
-                <p>
-                    Recognized for successfully conducting the <strong>"Introduction to Aerial Drone Building and Autonomous Flight"</strong>
-                    course organized by MIST Mavirov under the Department of Electrical, Electronic & Communication Engineering, MIST.
-                    Issued by Brig Gen K M Mustafizur Rahman, psc – Head of EECE Department.
-                </p>
-                <img
-                    src="images/instructor.jpg"
-                    alt="Drone Course Instructor Certificate – MIST Mavirov"
-                    class="cert-img"
-                    onclick="openLightbox(this.src, 'MIST Mavirov Certificate of Recognition – Drone Course Instructor')"
-                >
+                <p>Recognised for successfully conducting the <strong>"Introduction to Aerial Drone Building and Autonomous Flight"</strong> course organised by MIST Mavirov under the Department of Electrical, Electronic &amp; Communication Engineering, MIST. Issued by Brig Gen K M Mustafizur Rahman, psc – Head of EECE Department.</p>
+                <img src="images/instructor.jpg" alt="Drone Course Instructor Certificate" class="cert-img" onclick="openLightbox(this.src, 'MIST Mavirov Certificate of Recognition – Drone Course Instructor')">
             </div>
 
-            <div class="education-item">
-                <h3>🎓 Co-founder & Software Team Lead</h3>
+            <div class="education-item reveal-left">
+                <h3>🎓 Co-founder &amp; Software Team Lead</h3>
                 <div class="institution">Mavirov Underwater Robotics Platform, MIST</div>
                 <p>
-                    <strong>Position:</strong> Co-founder & Software Team Lead<br>
+                    <strong>Position:</strong> Co-founder &amp; Software Team Lead<br>
                     <strong>Achievement:</strong> Led software architecture development for Leviathan ROV and Creeper drone platforms<br>
                     <strong>Recognition:</strong> Technical leadership in autonomous robotics at national and international exhibitions
                 </p>
             </div>
 
-            <div class="education-item">
-                <h3>📚 Research & Publication Credentials</h3>
-                <div class="institution">Google Scholar & ResearchGate</div>
+            <div class="education-item reveal-left">
+                <h3>📚 Research &amp; Publication Credentials</h3>
+                <div class="institution">Google Scholar &amp; ResearchGate</div>
                 <p>
                     <strong>Publications:</strong> Peer-reviewed research in underwater robotics and computer vision<br>
                     <strong>Google Scholar:</strong> Md Farhan Mohib Hemal<br>
@@ -1136,34 +1286,29 @@
 <!-- Education Section -->
 <section id="education">
     <div class="container">
-        <h2>Educational Background</h2>
+        <div class="section-eyebrow reveal">Academic Background</div>
+        <h2 class="reveal">Educational<br><em>Background</em></h2>
         <div class="education-timeline">
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>Bachelor of Science in Engineering</h3>
                 <div class="institution">Military Institute of Science and Technology (MIST)</div>
                 <p>
-                    <strong>Department:</strong> Electrical Electronic & Communication Engineering (EECE)<br>
-                    Pursuing advanced engineering education with specialization in robotics, automation,
-                    control systems, and embedded electronics. Focus on practical implementation of theoretical
-                    concepts in real-world autonomous systems.
+                    <strong>Department:</strong> Electrical Electronic &amp; Communication Engineering (EECE)<br>
+                    Pursuing advanced engineering education with specialization in robotics, automation, control systems, and embedded electronics. Focus on practical implementation of theoretical concepts in real-world autonomous systems.
                 </p>
             </div>
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>Higher Secondary Certificate (HSC)</h3>
                 <div class="institution">A+ | 96% in Physics, Chemistry, Mathematics</div>
                 <p>
-                    <strong>Institution:</strong> Bangladesh Noubahini School & College, Chattogram<br>
-                    Achieved distinction in advanced science subjects with 96% in PCM subjects,
-                    demonstrating comprehensive mastery of core scientific disciplines.
+                    <strong>Institution:</strong> Bangladesh Noubahini School &amp; College, Chattogram<br>
+                    Achieved distinction in advanced science subjects with 96% in PCM subjects, demonstrating comprehensive mastery of core scientific disciplines.
                 </p>
             </div>
-            <div class="education-item">
+            <div class="education-item reveal-left">
                 <h3>Secondary School Certificate (SSC)</h3>
-                <div class="institution">A+ | Bangladesh Noubahini School & College, Chattogram</div>
-                <p>
-                    Demonstrated consistent academic excellence from secondary level, achieving highest grade
-                    across all subjects and establishing a foundation for advanced scientific study.
-                </p>
+                <div class="institution">A+ | Bangladesh Noubahini School &amp; College, Chattogram</div>
+                <p>Demonstrated consistent academic excellence from secondary level, achieving highest grade across all subjects and establishing a foundation for advanced scientific study.</p>
             </div>
         </div>
     </div>
@@ -1172,73 +1317,119 @@
 <!-- Contact Section -->
 <section id="contact" class="contact">
     <div class="container">
-        <h2>Connect With Me</h2>
-        <p>Interested in collaborating on underwater robotics, autonomous systems, or advanced signal processing research?</p>
+        <div class="section-eyebrow reveal">Get In Touch</div>
+        <h2 class="reveal">Connect<br><em>With Me</em></h2>
+        <p class="reveal">Interested in collaborating on underwater robotics, autonomous systems, or advanced signal processing research?</p>
 
         <img
             src="images/Picsart_25-07-08_16-22-30-400.jpg"
             alt="Md Farhan Mohib Hemal"
-            style="width:100px; height:100px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid rgba(0,168,255,0.5); margin: 0 auto 2.5rem; display:block; box-shadow:0 0 0 5px rgba(0,168,255,0.08), 0 16px 36px rgba(0,0,0,0.4);"
+            style="width:100px; height:100px; border-radius:50%; object-fit:cover; object-position:top; border:2px solid rgba(0,217,192,0.5); margin: 0 auto 2.5rem; display:block; box-shadow:0 0 0 5px rgba(0,168,150,0.1), 0 16px 36px rgba(0,0,0,0.4), 0 0 40px rgba(0,168,150,0.1);"
+            class="reveal"
         >
 
-        <!-- Contact grid: icon + platform name only -->
-        <div class="contact-grid-wrap">
-
+        <div class="contact-grid-wrap stagger-children">
             <a href="mailto:farhanmohibhemal@gmail.com" class="cg-item em" title="farhanmohibhemal@gmail.com">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
                 <span>Email</span>
             </a>
-
             <a href="https://wa.me/+8801824100874" class="cg-item wa" title="+880 1824-100874">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 <span>WhatsApp</span>
             </a>
-
             <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" class="cg-item li" title="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                 <span>LinkedIn</span>
             </a>
-
             <a href="https://www.facebook.com/farhan.mohib.2024" class="cg-item fb" title="Facebook">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 <span>Facebook</span>
             </a>
-
             <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" class="cg-item rg" title="ResearchGate">
-                <span style="font-size:1.1rem;font-weight:900;letter-spacing:-1px;line-height:1;">RG</span>
+                <span style="font-size:1.1rem;font-weight:900;letter-spacing:-1px;line-height:1;font-family:'DM Mono',monospace;">RG</span>
                 <span>ResearchGate</span>
             </a>
-
             <a href="https://scholar.google.com/scholar?q=Md+Farhan+Mohib+Hemal" class="cg-item gs" title="Google Scholar">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
                 <span>Google Scholar</span>
             </a>
-
+            <a href="https://www.facebook.com/mistmavirov" class="cg-item mv" title="Mavirov – MIST Underwater Robotics" target="_blank" rel="noopener">
+                <span style="font-size:1rem;font-weight:800;letter-spacing:0.5px;line-height:1;font-family:'Cormorant Garamond',serif;">MAVIROV</span>
+                <span>Mavirov</span>
+            </a>
         </div>
     </div>
 </section>
 
 <!-- Footer -->
-<footer>
+<footer id="site-footer">
+    <div class="footer-wave">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="rgba(0,168,150,0.06)"/>
+            <path d="M0,40 C360,10 720,60 1080,20 C1260,5 1380,45 1440,40 L1440,60 L0,60 Z" fill="rgba(11,79,108,0.05)"/>
+        </svg>
+    </div>
     <div class="container">
-        <p>&copy; 2025 Md Farhan Mohib Hemal &nbsp;·&nbsp; Electrical, Electronic &amp; Communication Engineering, MIST &nbsp;·&nbsp; Underwater Robotics Engineer & Researcher</p>
-        <p style="margin-top:0.4rem; font-size:0.82rem; opacity:0.7;">Mavirov – Advancing Underwater Robotics from Bangladesh to the World 🌊</p>
+        <div class="footer-inner">
+            <div class="footer-logo footer-item">Md Farhan <em>Mohib Hemal</em></div>
+            <div class="footer-divider footer-item"></div>
+            <p class="footer-meta footer-item">Electrical, Electronic &amp; Communication Engineering &nbsp;·&nbsp; MIST &nbsp;·&nbsp; Underwater Robotics Engineer &amp; Researcher</p>
+            <p class="footer-tagline footer-item"><span>Mavirov</span> — Advancing Underwater Robotics from Bangladesh to the World 🌊</p>
+            <p class="footer-copy footer-item">© 2025 Md Farhan Mohib Hemal. All rights reserved.</p>
+        </div>
     </div>
 </footer>
 
 <script>
+    // Nav scroll shrink
+    const navEl = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        navEl.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Footer entrance
+    const footerObs = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+    }, { threshold: 0.15 });
+    footerObs.observe(document.getElementById('site-footer'));
+
+    const sectionObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('in-view');
+        });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('section').forEach(s => sectionObs.observe(s));
+
+    // Lightbox open/close with fade+scale
     function openLightbox(src, caption) {
-        document.getElementById('lightbox-img').src = src;
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.92)';
+        img.src = src;
         document.getElementById('lightbox-caption').textContent = caption || '';
-        document.getElementById('lightbox').classList.add('active');
+        lb.classList.add('active');
         document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+            img.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1)';
+            img.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        });
     }
     function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.style.opacity = '0';
+        img.style.transform = 'scale(0.92)';
+        setTimeout(() => {
+            lb.classList.remove('active');
+            document.body.style.overflow = '';
+            img.style.transition = '';
+        }, 300);
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
     menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
@@ -1246,6 +1437,7 @@
         link.addEventListener('click', () => navMenu.classList.remove('active'));
     });
 
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -1254,6 +1446,69 @@
             const target = document.querySelector(href);
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
+    });
+
+    // Scroll reveal — all variants
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger-children, .stagger-cards').forEach(el => {
+        revealObs.observe(el);
+    });
+
+    // Mouse glow on award AND project cards
+    document.querySelectorAll('.award-card, .project-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%';
+            const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%';
+            card.style.setProperty('--mx', x);
+            card.style.setProperty('--my', y);
+        });
+    });
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#navMenu a[href^="#"]');
+    const activeObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(a => a.classList.remove('active'));
+                const link = document.querySelector(`#navMenu a[href="#${entry.target.id}"]`);
+                if (link) link.classList.add('active');
+            }
+        });
+    }, { threshold: 0.4 });
+    sections.forEach(s => activeObs.observe(s));
+
+    // Animate stat numbers when visible (any element with data-count)
+    document.querySelectorAll('[data-count]').forEach(el => {
+        const obs = new IntersectionObserver(([entry]) => {
+            if (!entry.isIntersecting) return;
+            const target = +el.dataset.count;
+            const duration = 1400;
+            const start = performance.now();
+            const tick = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(ease * target);
+                if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+            obs.unobserve(el);
+        }, { threshold: 0.6 });
+        obs.observe(el);
+    });
+
+    // Section border top entrance line
+    document.querySelectorAll('section[id]').forEach(sec => {
+        sec.style.setProperty('--border-progress', '0');
     });
 </script>
 </body>
