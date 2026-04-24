@@ -205,59 +205,46 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
    SCROLL PROGRESS
    ═══════════════════════════════════════════════════════════ */
 
-/* Scroll progress sits at the bottom edge of the nav (attached below) */
-
-/* ═══════════════════════════════════════════════════════════
-   NAVIGATION — full-width top bar, flush at top
-   ═══════════════════════════════════════════════════════════ */
-
-nav.primary {
+.scroll-progress {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 0.7rem 1.5rem;
-    background: rgba(10, 18, 34, 0.78);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border-bottom: 1px solid var(--border);
-    box-shadow:
-        0 4px 24px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.04);
-    transition: box-shadow 0.4s var(--ease-out), background 0.3s;
-}
-
-/* Scroll progress line sits flush at the bottom edge of the nav */
-nav.primary::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
+    top: 0; left: 0;
     height: 2px;
     width: var(--progress, 0%);
     background: linear-gradient(90deg, var(--cyan), var(--teal), var(--mint));
     box-shadow: 0 0 12px rgba(34,211,238,0.5);
+    z-index: 200;
     transition: width 0.08s linear;
-    pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION — floating glass pill
+   ═══════════════════════════════════════════════════════════ */
+
+nav.primary {
+    position: fixed;
+    top: 1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem;
+    background: rgba(10, 18, 34, 0.72);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: box-shadow 0.4s var(--ease-out);
 }
 
 nav.primary.scrolled {
-    background: rgba(10, 18, 34, 0.88);
-    border-bottom-color: var(--border-lit);
     box-shadow:
-        0 8px 30px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-}
-
-nav.primary .nav-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+        0 16px 50px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .nav-brand-pill {
@@ -404,21 +391,22 @@ nav.primary .nav-inner {
 
 @media (max-width: 880px) {
     nav.primary {
-        padding: 0.6rem 1rem;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        gap: 0.5rem;
     }
     .nav-links { display: none; }
     .nav-menu-btn { display: flex; }
     .nav-brand-pill {
-        padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+        padding: 0.45rem 0.9rem 0.45rem 0.45rem;
     }
     .nav-brand-name { font-size: 0.88rem; }
     .nav-avatar { width: 28px; height: 28px; }
 }
 
 @media (max-width: 480px) {
-    nav.primary { padding: 0.5rem 0.8rem; }
+    nav.primary { top: 1rem; }
     .nav-brand-name { display: none; }
-    .nav-brand-pill { padding: 0.3rem; border-radius: 50%; background: transparent; border: none; }
+    .nav-brand-pill { padding: 0.4rem; border-radius: 50%; background: transparent; border: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1140,22 +1128,19 @@ section h2.display {
 .award-hero-right {
     position: relative;
     z-index: 2;
+    aspect-ratio: 4 / 5;
     border-radius: 1.2rem;
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--deep);
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .award-hero-right img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: contain;
     cursor: pointer;
     transition: transform 0.6s var(--ease-out);
+    padding: 1rem;
 }
 
 .award-hero-right:hover img { transform: scale(1.03); }
@@ -1247,19 +1232,22 @@ section h2.display {
     border: 1px solid var(--border);
     margin-top: 1.2rem;
     background: var(--deep);
+    min-height: 340px;
+    max-height: 420px;
 }
 
 .recog-card .recog-img img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
     cursor: pointer;
     transition: transform 0.6s var(--ease-out);
 }
 
-.recog-card .recog-img:hover img { transform: scale(1.03); }
+.recog-card .recog-img:hover img { transform: scale(1.05); }
 
-.recog-card .recog-img.contain img { padding: 0.8rem; }
+.recog-card .recog-img.contain img { object-fit: contain; padding: 0.8rem; }
 
 .recog-card .recog-img.grid-2 {
     display: flex;
@@ -1267,6 +1255,8 @@ section h2.display {
     gap: 0.8rem;
     background: transparent;
     border: none;
+    min-height: 0;
+    max-height: none;
     overflow: visible;
 }
 
@@ -1275,26 +1265,34 @@ section h2.display {
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--deep);
+    min-height: 260px;
+    aspect-ratio: 16/10;
 }
 
 .recog-card .recog-img.grid-2 img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    min-height: 260px;
     border-radius: 0;
+    object-fit: cover;
     cursor: pointer;
     transition: transform 0.6s var(--ease-out);
 }
 
-.recog-card .recog-img.grid-2 > div:hover img { transform: scale(1.03); }
+.recog-card .recog-img.grid-2 > div:hover img { transform: scale(1.05); }
 
 @media (max-width: 560px) {
     .recog-grid { grid-template-columns: 1fr; gap: 1.2rem; }
     .recog-card { padding: 1.5rem; }
+    .recog-card .recog-img { min-height: 240px; }
+    .recog-card .recog-img img { min-height: 240px; }
+    .recog-card .recog-img.grid-2 > div { min-height: 200px; }
+    .recog-card .recog-img.grid-2 img { min-height: 200px; }
 }
 
 @media (max-width: 900px) {
     .award-hero { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+    .award-hero-right { aspect-ratio: 16/10; }
 }
 
 @media (max-width: 560px) {
@@ -1456,6 +1454,7 @@ section h2.display {
 
 .proj-visual {
     position: relative;
+    aspect-ratio: 5/4;
     border-radius: 1.4rem;
     overflow: hidden;
     background: var(--deep);
@@ -1464,23 +1463,22 @@ section h2.display {
 }
 
 .proj-visual:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.01);
     border-color: var(--border-lit);
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
 
 .proj-visual img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
     cursor: pointer;
     transition: transform 0.7s var(--ease-out);
 }
 
-.proj-visual:hover img { transform: scale(1.03); }
+.proj-visual:hover img { transform: scale(1.06); }
 
 .proj-visual.contain { background: linear-gradient(135deg, rgba(34,211,238,0.04), rgba(45,212,191,0.02)); }
-.proj-visual.contain img { padding: 1.5rem; }
+.proj-visual.contain img { object-fit: contain; padding: 1.5rem; }
 
 .proj-visual .corner-tag {
     position: absolute;
@@ -1501,22 +1499,26 @@ section h2.display {
 }
 
 .proj-visual-multi {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.8rem;
+    aspect-ratio: auto;
+    min-height: 540px;
 }
 
 .proj-visual-multi > div {
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid var(--border);
+    position: relative;
     background: var(--deep);
     transition: transform 0.5s var(--ease-out), border-color 0.3s;
     cursor: pointer;
 }
 
 .proj-visual-multi > div:first-child {
-    grid-row: auto;
+    grid-row: span 2;
 }
 
 .proj-visual-multi > div:hover {
@@ -1525,13 +1527,12 @@ section h2.display {
 }
 
 .proj-visual-multi img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
     transition: transform 0.7s var(--ease-out);
 }
 
-.proj-visual-multi > div:hover img { transform: scale(1.03); }
+.proj-visual-multi > div:hover img { transform: scale(1.08); }
 
 .proj-content h3 {
     font-family: var(--serif);
@@ -1632,6 +1633,7 @@ section h2.display {
     .proj-spread { grid-template-columns: 1fr; gap: 2rem; }
     .proj-featured { padding: 2rem; }
     .proj-achievements { padding: 1.2rem; grid-template-columns: repeat(2, 1fr); }
+    .proj-visual-multi { min-height: 420px; }
 }
 
 @media (max-width: 560px) {
@@ -1959,21 +1961,25 @@ section h2.display {
     margin-top: 1.2rem;
     background: var(--deep);
     border: 1px solid var(--border);
-    padding: 1rem;
+    min-height: 400px;
+    max-height: 560px;
 }
 
 .tl-card .tl-img img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    min-height: 400px;
+    object-fit: contain;
+    padding: 1.2rem;
     cursor: pointer;
     transition: transform 0.5s;
 }
 
-.tl-card .tl-img:hover img { transform: scale(1.02); }
+.tl-card .tl-img:hover img { transform: scale(1.03); }
 
 @media (max-width: 560px) {
-    .tl-card .tl-img { padding: 0.6rem; }
+    .tl-card .tl-img { min-height: 280px; }
+    .tl-card .tl-img img { min-height: 280px; padding: 0.8rem; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -2379,28 +2385,27 @@ footer.site {
 <div class="depth-grid"></div>
 <div class="bubbles" id="bubbles"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="primary" id="nav">
-    <div class="nav-inner">
-        <a href="#top" class="nav-brand-pill">
-            <img src="images/Picsart_25-07-08_16-22-30-400.jpg" alt="Farhan" class="nav-avatar" onerror="this.style.display='none'">
-            <span class="nav-brand-name">Farhan <em>Mohib</em></span>
-        </a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#recognition">Recognition</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#credentials">Credentials</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                <line x1="3" y1="8" x2="21" y2="8"/>
-                <line x1="3" y1="16" x2="21" y2="16"/>
-            </svg>
-        </button>
-    </div>
+    <a href="#top" class="nav-brand-pill">
+        <img src="images/Picsart_25-07-08_16-22-30-400.jpg" alt="Farhan" class="nav-avatar" onerror="this.style.display='none'">
+        <span class="nav-brand-name">Farhan <em>Mohib</em></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#recognition">Recognition</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="8" x2="21" y2="8"/>
+            <line x1="3" y1="16" x2="21" y2="16"/>
+        </svg>
+    </button>
 </nav>
 
 <div class="mobile-sheet" id="mobileSheet">
@@ -3208,16 +3213,20 @@ footer.site {
         setInterval(makeBubble, 2400);
     }
 
-    /* ─── Nav: scroll progress on its bottom edge + scrolled state ─── */
-    const nav = document.getElementById('nav');
+    /* ─── Scroll progress bar ─── */
+    const progress = document.getElementById('scrollProgress');
     const updateProgress = () => {
         const h = document.documentElement;
         const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-        nav.style.setProperty('--progress', scrolled + '%');
-        nav.classList.toggle('scrolled', window.scrollY > 60);
+        progress.style.setProperty('--progress', scrolled + '%');
     };
     window.addEventListener('scroll', updateProgress, { passive: true });
-    updateProgress();
+
+    /* ─── Nav stays visible always; add scrolled state for shadow ─── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
 
     /* ─── Mobile menu ─── */
     const menuBtn = document.getElementById('menuBtn');
