@@ -230,7 +230,7 @@ nav.primary {
     align-items: center;
     gap: 0.4rem;
     padding: 0.5rem;
-    background: rgba(10, 18, 34, 0.55);
+    background: rgba(10, 18, 34, 0.72);
     backdrop-filter: blur(24px) saturate(160%);
     -webkit-backdrop-filter: blur(24px) saturate(160%);
     border: 1px solid var(--border);
@@ -238,11 +238,13 @@ nav.primary {
     box-shadow:
         0 10px 40px rgba(0,0,0,0.4),
         inset 0 1px 0 rgba(255,255,255,0.06);
-    transition: top 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    transition: box-shadow 0.4s var(--ease-out);
 }
 
-nav.primary.hidden {
-    transform: translate(-50%, -150%);
+nav.primary.scrolled {
+    box-shadow:
+        0 16px 50px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 .nav-brand-pill {
@@ -558,6 +560,85 @@ section h2.display {
     100% { background-position: -200% 50%; }
 }
 
+/* Institution plate — prominent affiliation */
+.hero-institution {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.3rem 0.9rem 1.1rem;
+    background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(45,212,191,0.04));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(34,211,238,0.2);
+    border-radius: 14px;
+    margin-bottom: 1.8rem;
+    position: relative;
+    animation: blurUp 1s var(--ease-out) 0.4s both;
+    transition: border-color 0.4s, transform 0.4s var(--ease-out);
+    max-width: 100%;
+}
+
+.hero-institution:hover {
+    border-color: var(--border-lit);
+    transform: translateY(-2px);
+}
+
+.hero-institution::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 15%;
+    bottom: 15%;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--cyan), var(--teal));
+    border-radius: 0 3px 3px 0;
+}
+
+.hero-institution .inst-ico {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(45,212,191,0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cyan-lt);
+    flex-shrink: 0;
+}
+
+.hero-institution .inst-ico svg { width: 19px; height: 19px; }
+
+.hero-institution .inst-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.hero-institution .inst-dept {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.02rem;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+}
+
+.hero-institution .inst-uni {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+}
+
+.hero-institution .inst-uni strong {
+    color: var(--cyan-lt);
+    font-weight: 500;
+}
+
+@media (max-width: 560px) {
+    .hero-institution { padding: 0.75rem 1rem 0.75rem 0.95rem; gap: 0.75rem; }
+    .hero-institution .inst-ico { width: 34px; height: 34px; }
+    .hero-institution .inst-dept { font-size: 0.92rem; }
+    .hero-institution .inst-uni { font-size: 0.66rem; }
+}
+
 .hero-role {
     font-family: var(--serif);
     font-style: italic;
@@ -566,7 +647,7 @@ section h2.display {
     color: var(--cyan-lt);
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
-    animation: blurUp 1s var(--ease-out) 0.45s both;
+    animation: blurUp 1s var(--ease-out) 0.5s both;
 }
 
 .hero-desc {
@@ -739,57 +820,28 @@ section h2.display {
     pointer-events: none;
 }
 
-/* Floating tag cards around portrait */
-.float-chip {
+/* Decorative accent dots around portrait (non-overlapping) */
+.portrait-accent {
     position: absolute;
-    padding: 0.8rem 1.1rem;
-    background: rgba(10,18,34,0.75);
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    font-size: 0.78rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    animation: float 6s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.float-chip .ico {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(45,212,191,0.1));
-    color: var(--cyan-lt);
+.portrait-accent.tl {
+    top: -8px; left: -8px;
+    width: 60px; height: 60px;
+    border-top: 1.5px solid var(--cyan);
+    border-left: 1.5px solid var(--cyan);
+    border-radius: 16px 0 0 0;
+    opacity: 0.5;
 }
 
-.float-chip .ico svg { width: 16px; height: 16px; }
-
-.float-chip .txt-title {
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.1;
-}
-
-.float-chip .txt-sub {
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    color: var(--muted);
-    margin-top: 2px;
-}
-
-.float-chip.tl { top: 5%; left: -15%; animation-delay: -2s; }
-.float-chip.br { bottom: 8%; right: -10%; }
-.float-chip.bl { bottom: 30%; left: -20%; animation-delay: -4s; }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-12px); }
+.portrait-accent.br {
+    bottom: -8px; right: -8px;
+    width: 60px; height: 60px;
+    border-bottom: 1.5px solid var(--teal);
+    border-right: 1.5px solid var(--teal);
+    border-radius: 0 0 16px 0;
+    opacity: 0.5;
 }
 
 @keyframes floatIn {
@@ -853,21 +905,13 @@ section h2.display {
 @media (max-width: 960px) {
     .hero { padding: 8rem 0 4rem; }
     .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .portrait-wrap { max-width: 320px; margin: 0 auto; }
-    .float-chip.tl { left: -5%; }
-    .float-chip.bl { left: -10%; }
-    .float-chip.br { right: -5%; }
+    .portrait-wrap { max-width: 360px; margin: 0 auto; }
     .scroll-hint { display: none; }
 }
 
 @media (max-width: 560px) {
     .hero-metrics { gap: 1.5rem; flex-wrap: wrap; }
     .metric .num { font-size: 1.6rem; }
-    .float-chip { font-size: 0.7rem; padding: 0.6rem 0.9rem; }
-    .float-chip .ico { width: 26px; height: 26px; }
-    .float-chip.tl { top: 2%; }
-    .float-chip.bl { left: -5%; }
-    .float-chip.br { right: -2%; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1104,8 +1148,8 @@ section h2.display {
 /* Recognition supplementary grid */
 .recog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    gap: 1.8rem;
     margin-top: 2.5rem;
 }
 
@@ -1115,10 +1159,12 @@ section h2.display {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border);
     border-radius: 1.2rem;
-    padding: 1.8rem;
+    padding: 2rem;
     transition: transform 0.45s var(--ease-out), border-color 0.3s, background 0.4s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .recog-card::before {
@@ -1145,8 +1191,8 @@ section h2.display {
 }
 
 .recog-card .ico-box {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     border-radius: 12px;
     background: linear-gradient(135deg, rgba(34,211,238,0.18), rgba(45,212,191,0.08));
     display: flex;
@@ -1155,6 +1201,7 @@ section h2.display {
     color: var(--cyan-lt);
     margin-bottom: 1.2rem;
     transition: transform 0.4s var(--ease-spring);
+    flex-shrink: 0;
 }
 
 .recog-card:hover .ico-box { transform: rotate(-6deg) scale(1.1); }
@@ -1163,7 +1210,7 @@ section h2.display {
 
 .recog-card h4 {
     font-family: var(--serif);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 500;
     color: var(--ink);
     margin-bottom: 0.8rem;
@@ -1172,23 +1219,27 @@ section h2.display {
 }
 
 .recog-card p {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.65;
+    line-height: 1.7;
     margin-bottom: 1rem;
+    flex-grow: 1;
 }
 
 .recog-card .recog-img {
-    aspect-ratio: 16 / 10;
-    border-radius: 0.8rem;
+    border-radius: 0.9rem;
     overflow: hidden;
     border: 1px solid var(--border);
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     background: var(--deep);
+    min-height: 340px;
+    max-height: 420px;
 }
 
 .recog-card .recog-img img {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.6s var(--ease-out);
@@ -1196,26 +1247,48 @@ section h2.display {
 
 .recog-card .recog-img:hover img { transform: scale(1.05); }
 
-.recog-card .recog-img.contain img { object-fit: contain; padding: 0.5rem; }
+.recog-card .recog-img.contain img { object-fit: contain; padding: 0.8rem; }
 
 .recog-card .recog-img.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
     background: transparent;
     border: none;
-    aspect-ratio: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
 }
 
 .recog-card .recog-img.grid-2 > div {
-    aspect-ratio: 1/1;
-    border-radius: 0.6rem;
+    border-radius: 0.8rem;
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--deep);
+    min-height: 260px;
+    aspect-ratio: 16/10;
 }
 
-.recog-card .recog-img.grid-2 img { border-radius: 0; }
+.recog-card .recog-img.grid-2 img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    border-radius: 0;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.recog-card .recog-img.grid-2 > div:hover img { transform: scale(1.05); }
+
+@media (max-width: 560px) {
+    .recog-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .recog-card { padding: 1.5rem; }
+    .recog-card .recog-img { min-height: 240px; }
+    .recog-card .recog-img img { min-height: 240px; }
+    .recog-card .recog-img.grid-2 > div { min-height: 200px; }
+    .recog-card .recog-img.grid-2 img { min-height: 200px; }
+}
 
 @media (max-width: 900px) {
     .award-hero { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
@@ -1430,8 +1503,8 @@ section h2.display {
     grid-template-columns: 1.3fr 0.7fr;
     grid-template-rows: 1fr 1fr;
     gap: 0.8rem;
-    aspect-ratio: 5/4;
-    min-height: 400px;
+    aspect-ratio: auto;
+    min-height: 540px;
 }
 
 .proj-visual-multi > div {
@@ -1560,7 +1633,7 @@ section h2.display {
     .proj-spread { grid-template-columns: 1fr; gap: 2rem; }
     .proj-featured { padding: 2rem; }
     .proj-achievements { padding: 1.2rem; grid-template-columns: repeat(2, 1fr); }
-    .proj-visual-multi { min-height: 300px; }
+    .proj-visual-multi { min-height: 420px; }
 }
 
 @media (max-width: 560px) {
@@ -1883,23 +1956,31 @@ section h2.display {
 .tl-card p strong { color: var(--text); font-weight: 500; }
 
 .tl-card .tl-img {
-    aspect-ratio: 16/9;
-    border-radius: 0.7rem;
+    border-radius: 0.8rem;
     overflow: hidden;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
     background: var(--deep);
     border: 1px solid var(--border);
+    min-height: 400px;
+    max-height: 560px;
 }
 
 .tl-card .tl-img img {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
     object-fit: contain;
-    padding: 0.8rem;
+    padding: 1.2rem;
     cursor: pointer;
     transition: transform 0.5s;
 }
 
 .tl-card .tl-img:hover img { transform: scale(1.03); }
+
+@media (max-width: 560px) {
+    .tl-card .tl-img { min-height: 280px; }
+    .tl-card .tl-img img { min-height: 280px; padding: 0.8rem; }
+}
 
 /* ═══════════════════════════════════════════════════════════
    CONTACT SECTION
@@ -2354,6 +2435,16 @@ footer.site {
                     <span class="ln"><em>Mohib Hemal</em></span>
                 </h1>
 
+                <div class="hero-institution">
+                    <div class="inst-ico">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div class="inst-text">
+                        <div class="inst-dept">Electrical, Electronic &amp; Communication Engineering</div>
+                        <div class="inst-uni"><strong>Military Institute of Science and Technology</strong> &nbsp;·&nbsp; MIST, Dhaka</div>
+                    </div>
+                </div>
+
                 <p class="hero-role">Underwater Robotics Engineer<br>& Signal Processing Researcher</p>
 
                 <p class="hero-desc">
@@ -2385,8 +2476,8 @@ footer.site {
                         <span class="label">Depth-Tested</span>
                     </div>
                     <div class="metric">
-                        <div class="num"><span data-count="96">0</span><em>%</em></div>
-                        <span class="label">HSC (PCM)</span>
+                        <div class="num"><span data-count="7">0</span><em>+</em></div>
+                        <span class="label">Major Projects</span>
                     </div>
                 </div>
             </div>
@@ -2396,36 +2487,8 @@ footer.site {
                     <div class="portrait-frame">
                         <img src="images/Picsart_25-07-08_16-22-30-400.jpg" alt="Md Farhan Mohib Hemal" onclick="openLightbox(this.src, 'Md Farhan Mohib Hemal')">
                     </div>
-
-                    <div class="float-chip tl">
-                        <div class="ico">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h12l-1 7a2 2 0 01-2 2H9a2 2 0 01-2-2L6 9z"/><path d="M9 9V6a3 3 0 016 0v3"/></svg>
-                        </div>
-                        <div>
-                            <div class="txt-title">IEEE STI 2025</div>
-                            <div class="txt-sub">Best Paper · Track 1</div>
-                        </div>
-                    </div>
-
-                    <div class="float-chip bl">
-                        <div class="ico">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2,17 12,22 22,17"/><polyline points="2,12 12,17 22,12"/></svg>
-                        </div>
-                        <div>
-                            <div class="txt-title">MIST · EECE</div>
-                            <div class="txt-sub">B.Sc. Engineering</div>
-                        </div>
-                    </div>
-
-                    <div class="float-chip br">
-                        <div class="ico">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
-                        </div>
-                        <div>
-                            <div class="txt-title">Mavirov</div>
-                            <div class="txt-sub">Co-founder · Software Lead</div>
-                        </div>
-                    </div>
+                    <div class="portrait-accent tl"></div>
+                    <div class="portrait-accent br"></div>
                 </div>
             </div>
         </div>
@@ -3159,17 +3222,10 @@ footer.site {
     };
     window.addEventListener('scroll', updateProgress, { passive: true });
 
-    /* ─── Nav hide on scroll down ─── */
+    /* ─── Nav stays visible always; add scrolled state for shadow ─── */
     const nav = document.getElementById('nav');
-    let lastY = 0;
     window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        if (y > 200 && y > lastY + 4) {
-            nav.classList.add('hidden');
-        } else if (y < lastY - 4 || y < 100) {
-            nav.classList.remove('hidden');
-        }
-        lastY = y;
+        nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
     /* ─── Mobile menu ─── */
