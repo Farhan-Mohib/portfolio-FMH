@@ -2732,6 +2732,56 @@ nav.primary {
     }
 }
 
+
+/* =========================================================
+   HERO PROFILE PICTURE GAP FIX
+   Keeps the same portrait frame, but fills the empty bottom
+   space on desktop and mobile.
+   ========================================================= */
+.portrait-wrap {
+    max-width: 430px !important;
+    aspect-ratio: 4 / 5 !important;
+}
+
+.portrait-frame {
+    display: block !important;
+    overflow: hidden !important;
+    background: var(--deep) !important;
+}
+
+.portrait-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    padding: 0 !important;
+}
+
+.portrait-frame:hover img {
+    transform: scale(1.025) !important;
+}
+
+@media (max-width: 960px) {
+    .portrait-wrap {
+        max-width: 390px !important;
+        aspect-ratio: 4 / 5 !important;
+        margin-inline: auto !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .portrait-wrap {
+        max-width: 360px !important;
+    }
+}
+
+@media (max-width: 460px) {
+    .portrait-wrap {
+        max-width: 335px !important;
+    }
+}
 </style>
 </head>
 <body>
