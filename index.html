@@ -1822,31 +1822,98 @@ footer.site {
 
 
 /* =========================================================
-   FINAL PROJECT IMAGE CENTER + SLIGHTLY LARGER FIX
-   Keeps the same design; only improves project image placement.
-   - Centers every project image inside its card
-   - Makes landscape/gallery images slightly larger
-   - Prevents cropping faces/people in BEAR Summit + Innovation Expo
-   - Keeps two-column magazine layout on desktop and stacked layout on mobile
+   FINAL REQUEST PATCH — centered larger images + nav info/icons
+   Keeps the original design; only improves image placement and top bar.
    ========================================================= */
 
-#projects .proj-visual,
-#projects .proj-visual-multi > div {
+/* Top bar: show name + department/institute beside it */
+.nav-brand-pill {
+    min-width: 0;
+    max-width: 560px;
+}
+
+.nav-brand-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.05;
+}
+
+.nav-brand-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 2px;
+    font-family: var(--mono);
+    font-size: 0.50rem;
+    line-height: 1.18;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+
+.nav-brand-dept {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-brand-meta strong {
+    display: block;
+    color: var(--cyan-lt);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Contact icons on the right side of the top bar */
+.nav-contact-icons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    position: relative;
+    z-index: 3;
+}
+
+.nav-contact-icons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.18);
+    color: var(--cyan-lt);
+    transition: transform 0.3s var(--ease-out), background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.nav-contact-icons a:hover {
+    transform: translateY(-2px);
+    background: rgba(34,211,238,0.16);
+    border-color: rgba(34,211,238,0.36);
+    color: var(--mint);
+}
+
+.nav-contact-icons svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Keep all project image groups centered and slightly larger without cropping */
+#projects .proj-visual {
     display: grid;
     place-items: center;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 50% 18%, rgba(34,211,238,0.07), transparent 58%),
-        var(--deep);
-}
-
-#projects .proj-visual {
+    justify-self: center;
+    width: min(100%, 620px);
     aspect-ratio: 4 / 3;
-    min-height: 390px;
 }
 
-#projects .proj-visual img,
-#projects .proj-visual-multi img {
+#projects .proj-visual img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -1854,34 +1921,72 @@ footer.site {
     padding: 0.35rem;
 }
 
-#projects .proj-visual:hover img,
-#projects .proj-visual-multi > div:hover img {
-    transform: scale(1.035);
-}
-
+/* Field operation, BEAR Summit, robotic arm, and national expo image groups */
 #projects .proj-visual-multi {
+    width: min(100%, 700px);
+    justify-self: center;
+    align-self: center;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.85rem;
-    align-self: center;
 }
 
 #projects .proj-visual-multi > div {
-    height: 260px;
+    height: 240px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 22%, rgba(34,211,238,0.08), transparent 60%),
+        var(--deep);
 }
 
 #projects .proj-visual-multi > div:first-child {
     grid-column: 1 / -1;
-    height: 320px;
+    height: 310px;
 }
 
-#projects .proj-spread {
-    align-items: center;
+#projects .proj-visual-multi img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    padding: 0.3rem;
 }
 
-@media (max-width: 900px) {
-    #projects .proj-visual {
-        min-height: 340px;
-        aspect-ratio: 16 / 10;
+/* Prevent hover zoom from cutting faces/bodies */
+#projects .proj-visual:hover img,
+#projects .proj-visual-multi > div:hover img {
+    transform: scale(1.025);
+}
+
+/* Keep text aligned nicely beside the image on desktop */
+#projects .proj-content {
+    align-self: center;
+}
+
+/* Responsive safety: no overlap, images remain centered */
+@media (max-width: 1180px) {
+    .nav-brand-meta {
+        max-width: 360px;
+    }
+
+    .nav-contact-icons a {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .nav-brand-meta {
+        display: none;
+    }
+}
+
+@media (max-width: 960px) {
+    #projects .proj-visual,
+    #projects .proj-visual-multi {
+        width: min(100%, 760px);
     }
 
     #projects .proj-visual-multi > div {
@@ -1889,28 +1994,311 @@ footer.site {
     }
 
     #projects .proj-visual-multi > div:first-child {
-        height: 270px;
+        height: 280px;
     }
 }
 
-@media (max-width: 560px) {
-    #projects .proj-visual {
-        min-height: 250px;
-        aspect-ratio: 16 / 10;
+@media (max-width: 880px) {
+    .nav-contact-icons {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-contact-icons {
+        display: none;
     }
 
     #projects .proj-visual-multi {
         grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
 
+    #projects .proj-visual,
     #projects .proj-visual-multi > div,
     #projects .proj-visual-multi > div:first-child {
-        height: 230px;
+        height: 245px;
+        aspect-ratio: auto;
     }
 
     #projects .proj-visual img,
     #projects .proj-visual-multi img {
         padding: 0.25rem;
+    }
+}
+
+
+/* =========================================================
+   FINAL NAV + IMAGE MOBILE PATCH
+   Only fixes: navbar identity/icons, mobile menu visibility,
+   centered non-cropped images, and portrait image safety.
+   ========================================================= */
+
+/* Top-bar identity: full name above department, department above institute */
+.nav-brand-pill {
+    max-width: min(58vw, 620px);
+}
+
+.nav-brand-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    line-height: 1.1;
+}
+
+.nav-brand-name {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.08;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-brand-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 2px;
+    font-family: var(--mono);
+    font-size: 0.50rem;
+    line-height: 1.18;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 500px;
+}
+
+.nav-brand-dept,
+.nav-brand-meta strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-brand-meta strong {
+    color: var(--cyan-lt);
+    font-weight: 500;
+}
+
+/* Contact icons beside navbar, including Facebook */
+.nav-contact-icons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
+}
+
+.nav-contact-icons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34,211,238,0.08);
+    border: 1px solid rgba(34,211,238,0.18);
+    color: var(--cyan-lt);
+    transition: transform 0.3s var(--ease-out), background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.nav-contact-icons a:hover {
+    transform: translateY(-2px);
+    background: rgba(34,211,238,0.16);
+    border-color: rgba(34,211,238,0.36);
+    color: var(--mint);
+}
+
+.nav-contact-icons svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Make the three-dot menu visible and tappable on mobile */
+.nav-menu-btn {
+    position: relative;
+    z-index: 8;
+    flex-shrink: 0;
+}
+
+.nav-menu-btn .dots-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Center all project images and prevent cropping */
+#projects .proj-visual,
+#projects .proj-visual-multi,
+#projects .media,
+#projects .media.multi {
+    justify-self: center;
+    margin-inline: auto;
+}
+
+#projects .proj-visual {
+    display: grid;
+    place-items: center;
+    width: min(100%, 660px);
+    aspect-ratio: 4 / 3;
+}
+
+#projects .proj-visual img,
+#projects .proj-visual-multi img,
+#projects .media .image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center center !important;
+    padding: 0.35rem;
+}
+
+#projects .proj-visual-multi {
+    width: min(100%, 740px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+#projects .proj-visual-multi > div {
+    height: 255px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 22%, rgba(34,211,238,0.08), transparent 60%),
+        var(--deep);
+}
+
+#projects .proj-visual-multi > div:first-child {
+    grid-column: 1 / -1;
+    height: 330px;
+}
+
+#projects .media .image-panel {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 50% 22%, rgba(103,232,249,.08), transparent 55%),
+        rgba(0,0,0,.18);
+}
+
+/* Prevent hover zoom from cutting faces or bodies */
+#projects .proj-visual:hover img,
+#projects .proj-visual-multi > div:hover img,
+#projects .image-panel:hover img {
+    transform: scale(1.015) !important;
+}
+
+/* Recognition/timeline portrait safety, especially on mobile */
+.recog-card .recog-img,
+.recog-card .recog-img.grid-2 > div,
+.tl-card .tl-img,
+.timeline-card .image-panel,
+.info-card .image-panel {
+    display: grid;
+    place-items: center;
+    background: var(--deep);
+}
+
+.recog-card .recog-img img,
+.recog-card .recog-img.grid-2 img,
+.tl-card .tl-img img,
+.timeline-card .image-panel img,
+.info-card .image-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center center !important;
+}
+
+@media (max-width: 1180px) {
+    .nav-brand-pill { max-width: 52vw; }
+    .nav-brand-meta { max-width: 360px; }
+    .nav-contact-icons a { width: 32px; height: 32px; }
+}
+
+@media (max-width: 980px) {
+    .nav-links { display: none !important; }
+    .nav-menu-btn { display: flex !important; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 900px) {
+    .nav-brand-pill { max-width: 64vw; }
+    .nav-brand-meta { display: none; }
+    #projects .proj-visual,
+    #projects .proj-visual-multi { width: min(100%, 760px); }
+    #projects .proj-visual-multi > div { height: 245px; }
+    #projects .proj-visual-multi > div:first-child { height: 310px; }
+}
+
+@media (max-width: 720px) {
+    .nav-contact-icons { display: none; }
+    .nav-brand-name { font-size: 0.82rem; max-width: 50vw; }
+    .nav-menu-btn { margin-left: auto; }
+
+    #projects .proj-visual-multi,
+    #projects .media.multi {
+        grid-template-columns: 1fr !important;
+        gap: 0.9rem;
+    }
+
+    #projects .proj-visual,
+    #projects .proj-visual-multi > div,
+    #projects .proj-visual-multi > div:first-child,
+    #projects .media .image-panel {
+        height: auto;
+        min-height: 300px;
+        max-height: none;
+        aspect-ratio: 4 / 3;
+    }
+
+    /* Portrait photos get a taller frame so heads/bodies do not crop */
+    #projects .proj-visual-multi > div:nth-child(2),
+    #projects .proj-visual-multi > div:nth-child(3),
+    .recog-card .recog-img,
+    .recog-card .recog-img.grid-2 > div,
+    .tl-card .tl-img,
+    .timeline-card .image-panel,
+    .info-card .image-panel {
+        min-height: 330px;
+        aspect-ratio: 4 / 5;
+    }
+
+    #projects .proj-visual img,
+    #projects .proj-visual-multi img,
+    #projects .media .image-panel img,
+    .recog-card .recog-img img,
+    .recog-card .recog-img.grid-2 img,
+    .tl-card .tl-img img,
+    .timeline-card .image-panel img,
+    .info-card .image-panel img {
+        padding: 0.25rem;
+        object-fit: contain !important;
+        object-position: center center !important;
+    }
+}
+
+@media (max-width: 460px) {
+    .nav-brand-name { max-width: 44vw; font-size: 0.78rem; }
+    #projects .proj-visual,
+    #projects .proj-visual-multi > div,
+    #projects .proj-visual-multi > div:first-child,
+    #projects .media .image-panel {
+        min-height: 275px;
+    }
+    #projects .proj-visual-multi > div:nth-child(2),
+    #projects .proj-visual-multi > div:nth-child(3),
+    .recog-card .recog-img,
+    .recog-card .recog-img.grid-2 > div,
+    .tl-card .tl-img,
+    .timeline-card .image-panel,
+    .info-card .image-panel {
+        min-height: 315px;
     }
 }
 
@@ -1928,7 +2316,13 @@ footer.site {
 <nav class="primary" id="nav">
     <a href="#top" class="nav-brand-pill">
         <img src="images/Picsart_25-07-08_16-22-30-400.jpg" alt="Farhan" class="nav-avatar" onerror="this.style.display='none'">
-        <span class="nav-brand-name">Farhan <em>Mohib</em></span>
+        <span class="nav-brand-copy">
+            <span class="nav-brand-name">Md Farhan <em>Mohib Hemal</em></span>
+            <span class="nav-brand-meta">
+                <span class="nav-brand-dept">Department of Electrical, Electronic &amp; Communication Engineering</span>
+                <strong>Military Institute of Science and Technology</strong>
+            </span>
+        </span>
     </a>
     <ul class="nav-links" id="navLinks">
         <li><a href="#recognition">Recognition</a></li>
@@ -1937,10 +2331,29 @@ footer.site {
         <li><a href="#credentials">Credentials</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="3" y1="8" x2="21" y2="8"/>
-            <line x1="3" y1="16" x2="21" y2="16"/>
+    <div class="nav-contact-icons" aria-label="Quick contact links">
+        <a href="mailto:farhanmohibhemal@gmail.com" aria-label="Email Farhan" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        </a>
+        <a href="https://wa.me/8801824100874" target="_blank" rel="noopener" aria-label="WhatsApp Farhan" title="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/md-farhan-mohib-hemal-467589258" target="_blank" rel="noopener" aria-label="LinkedIn profile" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.facebook.com/farhan.mohib.2024" target="_blank" rel="noopener" aria-label="Facebook profile" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.researchgate.net/profile/Md-Farhan-Hemal" target="_blank" rel="noopener" aria-label="ResearchGate profile" title="ResearchGate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </a>
+    </div>
+
+    <button class="nav-menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg class="dots-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="12" cy="5" r="2.2"/>
+            <circle cx="12" cy="12" r="2.2"/>
+            <circle cx="12" cy="19" r="2.2"/>
         </svg>
     </button>
 </nav>
