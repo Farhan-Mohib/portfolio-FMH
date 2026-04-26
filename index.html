@@ -1046,6 +1046,37 @@ section h2.display {
 
 .recog-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; flex-grow: 1; }
 
+/* Poster award card spacing fix — keeps images closer to the text */
+.recog-card.poster-competition-card {
+    justify-content: flex-start;
+}
+
+.recog-card.poster-competition-card p {
+    flex-grow: 0;
+    margin-bottom: 1.1rem;
+}
+
+.recog-card.poster-competition-card .recog-img.grid-2 {
+    margin-top: 0.35rem;
+}
+
+.recog-card.poster-competition-card .recog-img.grid-2 > div {
+    height: 220px;
+}
+
+@media (max-width: 900px) {
+    .recog-card.poster-competition-card .recog-img.grid-2 > div {
+        height: 200px;
+    }
+}
+
+@media (max-width: 560px) {
+    .recog-card.poster-competition-card .recog-img.grid-2 > div {
+        height: 260px;
+    }
+}
+
+
 /* ─── Smaller recognition images — no overlapping ─── */
 .recog-card .recog-img {
     border-radius: 0.9rem;
@@ -2932,12 +2963,12 @@ nav.primary {
                 </div>
             </div>
 
-            <div class="recog-card">
+            <div class="recog-card poster-competition-card">
                 <div class="ico-box">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 8 5-3 5 3-2-8"/></svg>
                 </div>
                 <h4>1st Runner Up · Poster Competition 2025</h4>
-                <p>Real-time GPS-tagged plant disease detection using <strong>NCNN-optimized YOLO on drones</strong>. Edge inference without GPU — Raspberry Pi deployment for precision agriculture.</p>
+                <p>Real-time GPS-tagged plant disease detection using <strong>NCNN-optimized YOLO on drones</strong>. Edge inference without GPU — Raspberry Pi deployment for precision agriculture. The system was designed for field-ready crop monitoring, combining aerial image capture, lightweight detection, and location-tagged reporting for faster diagnosis in agricultural environments.</p>
                 <div class="recog-img grid-2">
                     <div><img src="images/first runner up at poster presentation real time palnt disease detection nccnn optimized yolon on drone in agriculture.jpg" alt="1st Runner Up" onclick="openLightbox(this.src, '1st Runner Up – Poster Presentation Competition 2025')"></div>
                     <div><img src="images/poster.jpg" alt="Research Poster" onclick="openLightbox(this.src, 'Research Poster – Real-Time Plant Disease Detection')"></div>
