@@ -2782,6 +2782,100 @@ nav.primary {
         max-width: 335px !important;
     }
 }
+
+
+/* =========================================================
+   PAM + TDM CARD IMAGE FIX
+   Keeps the compact 3-card row layout unchanged.
+   Adds the PAM_TDM_SERVO.png image inside only the PAM + TDM block,
+   centered above the description and fully visible on desktop/mobile.
+   ========================================================= */
+.proj-compact-img {
+    width: 100%;
+    margin: 1rem 0 1.1rem;
+    border-radius: 0.95rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(34,211,238,0.08), transparent 55%),
+        var(--deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem;
+    min-height: 190px;
+}
+
+.proj-compact-img img {
+    width: 100%;
+    height: auto;
+    max-height: 230px;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    transition: transform 0.55s var(--ease-out), filter 0.55s var(--ease-out);
+}
+
+.proj-compact-img:hover img {
+    transform: scale(1.025);
+    filter: brightness(1.06);
+}
+
+@media (max-width: 900px) {
+    .proj-compact-img {
+        min-height: 180px;
+    }
+
+    .proj-compact-img img {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 560px) {
+    .proj-compact-img {
+        min-height: 170px;
+        padding: 0.5rem;
+    }
+
+    .proj-compact-img img {
+        max-height: 220px;
+    }
+}
+
+/* =========================================================
+   DRONE ENGINEERING CERTIFICATE IMAGE
+   Adds the instructor certificate inside the Drone Engineering block,
+   beside the ESP32 IMU block in the compact project row.
+   ========================================================= */
+.proj-compact-img.instructor-cert-img {
+    min-height: 210px;
+}
+
+.proj-compact-img.instructor-cert-img img {
+    max-height: 260px;
+}
+
+@media (max-width: 900px) {
+    .proj-compact-img.instructor-cert-img {
+        min-height: 200px;
+    }
+
+    .proj-compact-img.instructor-cert-img img {
+        max-height: 260px;
+    }
+}
+
+@media (max-width: 560px) {
+    .proj-compact-img.instructor-cert-img {
+        min-height: 190px;
+    }
+
+    .proj-compact-img.instructor-cert-img img {
+        max-height: 250px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -3177,6 +3271,14 @@ nav.primary {
                     <span class="ico-lg">📡</span>
                     <div class="proj-status"><span class="dot"></span>Signal Processing</div>
                     <h3>PAM + TDM Real-time Processor</h3>
+                    <div class="proj-compact-img">
+                        <img
+                            src="images/PAM_TDM_SERVO.png"
+                            alt="PAM and TDM real-time processor visualization"
+                            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/PAM_TDM_SERVO.png';"
+                            onclick="openLightbox(this.src, 'PAM + TDM Real-time Processor Visualization')"
+                        >
+                    </div>
                     <p>MATLAB system for Pulse Amplitude Modulation and Time Division Multiplexing. 8 kHz master clock, 4 independent TDM channels, signal recovery via 4th-order Butterworth LPFs, 25 FPS real-time animation.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">MATLAB</span>
@@ -3211,7 +3313,15 @@ nav.primary {
                     <span class="ico-lg">🚁</span>
                     <div class="proj-status"><span class="dot"></span>Instructor · MIST</div>
                     <h3>Practical Drone Engineering Course</h3>
-                    <p>Hands-on curriculum at MIST covering component selection, frame construction, motor balancing, flight controller calibration, and complete flight testing — from first principles to autonomous flight.</p>
+                                        <div class="proj-compact-img instructor-cert-img">
+                        <img
+                            src="images/instructor.jpg"
+                            alt="MIST Mavirov Drone Engineering Course Instructor Certificate"
+                            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/Farhan-Mohib/portfolio-FMH/main/images/instructor.jpg';"
+                            onclick="openLightbox(this.src, 'MIST Mavirov Certificate of Recognition — Drone Engineering Instructor')"
+                        >
+                    </div>
+<p>Hands-on curriculum at MIST covering component selection, frame construction, motor balancing, flight controller calibration, and complete flight testing — from first principles to autonomous flight.</p>
                     <div class="tech-tags">
                         <span class="tech-tag">Quadrotor</span>
                         <span class="tech-tag">Flight Controller</span>
