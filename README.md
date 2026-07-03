@@ -1,6 +1,6 @@
 # Md Farhan Mohib Hemal | Underwater Robotics Engineer & Signal Processing Researcher
 
-**Professional Portfolio | Advanced Engineering Solutions | Research & Innovation**
+**MATE ROV World Champion 2026 | Underwater Robotics | Ground Control Systems | Research & Innovation**
 
 ---
 
@@ -18,7 +18,8 @@ This portfolio demonstrates both breadth (diverse project domains) and depth (ri
 
 ### Core Professional Highlights
 
-- 🏆 **STI 2025 Best Paper Award** - Advanced Control Systems for Underwater Robotics Research
+- 🌍🏆 **MATE ROV World Champion 2026** - MIST Mavirov Underwater Robotics Team
+- 🏆 **STI 2025 Best Paper Award** - Peer-reviewed computer-vision research for underwater microplastic detection
 - 🤖 **Co-founder & Software Team Lead** - Mavirov Underwater ROV Platform (Production Deployment)
 - 📊 **Published Researcher** - Active publications on Google Scholar & ResearchGate
 - 🎓 **Academic Excellence** - A+ in HSC with 96% in Physics, Chemistry, Mathematics (PCM)
@@ -133,129 +134,80 @@ Developed novel SAM-guided synthetic data augmentation framework combining Segme
 
 ## 🚀 Major Projects
 
-### Mavirov ROV - Autonomous Underwater Robotics Platform
+### MIST Mavirov ROV — MATE ROV World Champion 2026
 
 **Professional Role:** Co-founder & Software Team Lead  
-**Status:** Production Deployment | Active Development
+**Recognition:** MATE ROV World Champion 2026  
+**Status:** Competition-deployed integrated underwater robotics platform
 
-**Project Objective:**
-Design and implement a complete software architecture for a fully autonomous underwater remotely-operated vehicle (ROV) capable of subsea exploration, research, and industrial applications. The system prioritizes low-latency control, real-time telemetry, autonomous navigation, and modular design for scalability.
+The MIST Mavirov ROV is a tethered underwater vehicle and surface-control ecosystem developed for reliable competition operation. The system combines a Pixhawk running ArduSub, a Raspberry Pi 5 communication hub, multiple live camera streams, a Teensy-based manipulator controller, an Ethernet tether, and a custom Ground Control Station.
 
-**Architecture Overview:**
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Subsea Component (ROV)                   │
-├─────────────────────────────────────────────────────────────┤
-│  Pixhawk 2.4.8      │    Raspberry Pi 5      │   Teensy 4.1 │
-│ Flight Controller   │  Central Processing    │  Servo Driver │
-│ (Autopilot/Nav)     │  (Telemetry/Streaming) │   (6-DOF Arm) │
-└──────────┬──────────┴────────────┬───────────┴────────┬──────┘
-           │                       │                   │
-        Sensors              Multi-Camera           6-DOF
-        (IMU/Depth)          System                 Manipulator
-           │                       │                   │
-└──────────┴───────────────────────┴───────────────────┘
-       Ethernet Tether (Bidirectional Communication)
-           │
-┌──────────▼────────────────────────────────────────┐
-│         Surface Station (Pilot/Control)            │
-├──────────────────────────────────────────────────┤
-│  • QGroundControl (Autonomous Missions)            │
-│  • Video Viewer (Multi-camera RTSP)               │
-│  • Control Interface (PS5/Keyboard)               │
-│  • Telemetry Monitor (MAVLink/UDP)               │
-└──────────────────────────────────────────────────┘
-```
+My work focused on the software and communication architecture that connects the vehicle and the pilot station. The architecture keeps the time-critical propulsion controller, onboard communication services, camera subsystem, manipulator controller, and surface application logically separated while presenting them to the pilot through one coordinated workflow.
 
-**Hardware Subsystems:**
+#### Championship Recognition
 
-1. **Pixhawk 2.4.8 Flight Controller**
-   - 32-bit ARM processor with IMU, barometer, magnetometer
-   - Autonomous waypoint navigation via Ardupilot firmware
-   - Supports multiple flight modes (manual, stabilized, autonomous)
-   - Real-time sensor fusion and attitude estimation
-   - Depth sensing integration via barometric pressure
+The MIST Mavirov team achieved the title of **MATE ROV World Champion 2026**. The result represents the combined performance of the mechanical, electrical, embedded, communication, software, and operations teams.
 
-2. **Raspberry Pi 5 Central Processing Hub**
-   - Primary telemetry aggregation and streaming
-   - MAVProxy bridge for autopilot communication forwarding
-   - GStreamer-based multi-camera video encoding and RTSP streaming
-   - UDP servo control protocol implementation
-   - Python-based control scripts and integrations
+![MIST Mavirov celebrating with the MATE ROV 2026 championship trophy](images/with%20trophy.jpeg)
 
-3. **Teensy 4.1 Microcontroller**
-   - Real-time PWM servo control (6 channels, configurable)
-   - UDP protocol implementation for servo commands
-   - NativeEthernet support for tether communication
-   - Deterministic servo response with millisecond-level accuracy
-   - Firmware written in C++ for optimization
+#### System Architecture
 
-4. **Multi-Camera System**
-   - 3 × USB cameras (640×480 or 1280×720 resolution)
-   - H.264 video encoding at 30 FPS
-   - GStreamer pipeline for efficient compression
-   - Individual stream assignment (forward, side, gripper views)
+| Layer | Main Components | Responsibility |
+|---|---|---|
+| Surface station | Pilot computer, custom GCS, PS5 controller, keyboard | Vehicle operation, telemetry supervision, camera monitoring, planning, setup, and safety |
+| Tether network | Ethernet tether | Shared transport for telemetry, video, commands, and service management |
+| Communication hub | Raspberry Pi 5 | MAVLink forwarding, multi-camera RTSP services, and remote process coordination |
+| Vehicle-control layer | Pixhawk with ArduSub | Thruster control, stabilization, depth control, sensing, and vehicle telemetry |
+| Manipulator layer | Teensy controller, arm servo, claw servo | Independent robotic-arm and claw control with calibrated limits |
+| Vision layer | Multiple USB cameras | Navigation, situational awareness, and manipulator feedback |
 
-**Software Implementation:**
+#### Communication Design
 
-**Component 1: Telemetry Bridge (MAVProxy)**
-```
-Pixhawk → USB/Serial → MAVProxy ← Parses MAVLink
-                          ↓
-                    UDP Multicast
-                          ↓
-QGroundControl ← Receives Telemetry
-```
+- **MAVLink:** Carries vehicle heartbeat, telemetry, sensor state, flight mode, mission data, parameters, command acknowledgements, and operator commands between ArduSub and the surface applications.
+- **RTSP/H.264:** Delivers independent live camera streams from the Raspberry Pi to the custom GCS and compatible video clients.
+- **UDP manipulator link:** Sends lightweight, bounded arm and claw commands directly to the Teensy controller.
+- **SSH service management:** Allows the GCS to start and supervise Raspberry Pi telemetry and camera services from the surface.
+- **Ethernet tether:** Provides the common physical network for the separate logical communication channels.
 
-**Component 2: Video Streaming (GStreamer)**
-```
-USB Cameras → V4L2 (Video4Linux2) → GStreamer
-                        ↓
-                H.264 Encoding
-                        ↓
-                RTSP Server Port 8554
-                        ↓
-Network Receivers (VLC, RTSP Viewers)
-```
+#### Custom MIST Mavirov ROV Ground Control Station
 
-**Component 3: Servo Control (UDP Protocol)**
-```
-Control Input (PS5/Keyboard) → Python Script
-        ↓
-JSON Command over UDP Port 5005
-        ↓
-Teensy MCU → Parses Command
-        ↓
-PWM Signal → 6 Servo Channels (500-2500 µs)
-```
+I developed a unified desktop Ground Control Station for competition operations. The application identifies itself as **ROV GCS v3.4 — MIST Mavirov** and organizes the pilot workflow into four main workspaces:
 
-**Control Methods Implemented:**
+- **Fly:** Flight modes, arm/disarm, heads-up display, telemetry, camera selection, joystick drive, manipulator visualization, dive statistics, and system logs.
+- **Analyze:** Live plots for gyroscope, accelerometer, magnetometer, depth, battery, temperature, and other recent telemetry.
+- **Plan:** MAVLink mission download, waypoint creation, upload, clearing, and mission-progress monitoring.
+- **Setup:** Vehicle summary, firmware workflow, frame selection, sensor calibration, motor testing, parameter management, and safety configuration.
 
-1. **Autonomous Mode** (QGroundControl Integration)
-   - Waypoint mission planning
-   - Altitude hold and depth maintenance
-   - Automated return-to-home functionality
-   - Conditional mission logic (IF-THEN)
+The GCS opens the vehicle telemetry and camera services through the Raspberry Pi while keeping the manipulator link independently controllable. This separation improves fault isolation: telemetry can continue if a camera service fails, and the robotic arm can be connected or disconnected without changing the propulsion link.
 
-2. **Manual Control via PS5 Controller**
-   - Dual-stick configuration (6-DOF control)
-   - Exponential response curves for precise control
-   - Deadband filtering (eliminates stick drift)
-   - Exponential moving average (EMA) smoothing
-   - Rate limiting to prevent servo oscillation
+![MIST Mavirov ROV GCS flight and telemetry interface](images/gcs1.png)
 
-3. **Keyboard Fine-Control**
-   - Individual servo adjustment (+/- PWM steps)
-   - Binary thrust vectoring (forward/backward/left/right)
-   - Terminal-based interface for scripting
+![MIST Mavirov ROV GCS analysis, planning, and setup interface](images/gcs2.png)
 
-**Technical Achievements:**
-- ✅ Sub-100ms control latency over tether
-- ✅ Real-time 3-camera video streaming at 30 FPS
-- ✅ Autonomous depth maintenance (±0.5 meters)
-- ✅ Robust telemetry even with packet loss (>20% tolerance)
-- ✅ Hot-swap camera configuration
-- ✅ Systemd auto-start services for reliability
+#### Main GCS Capabilities
+
+- Unified vehicle, camera, and manipulator supervision.
+- Simultaneous MAVLink output for the custom GCS and QGroundControl.
+- Selectable multi-camera viewing with operational HUD information.
+- PS5 DualSense and generic gamepad support with configurable speed and dead-zone settings.
+- Keyboard and on-screen robotic-arm control.
+- Three-dimensional manipulator-state visualization.
+- Mission planning and waypoint transfer.
+- Live parameter viewing and editing.
+- Sensor calibration and individual motor testing.
+- Leak, pressure, and temperature failsafe configuration.
+- Emergency neutral command and motor-test termination.
+- Timestamped operational logs and connection diagnostics.
+
+#### Safety and Reliability
+
+The system uses bounded manipulator commands, separate arm and claw limits, visible armed and leak states, heartbeat monitoring, connection timeouts, sensor-health checks, flight-controller acknowledgements, and a prominent emergency-stop workflow. Separate telemetry, video, and manipulator channels make it easier to identify and recover from subsystem failures.
+
+#### Documentation
+
+- [Underwater ROV System and GCS Overview](UNDERWATER_ROV_SYSTEM.md)
+- [MIST Mavirov Technical Documentation 2026](https://github.com/Farhan-Mohib/portfolio-FMH/blob/main/MIST%20Mavirov_Technical%20Documentation_2026.pdf)
+- [Portfolio Website](index.html)
 
 ### PAM + TDM 4-Servo Real-time Signal Processor
 
@@ -838,12 +790,12 @@ Byte Offset  |  Data Field           | Size (bytes)
 
 ```
 portfolio-FMH/
-├── index.html              # Main portfolio website
-├── README.md              # This file
-└── projects/              # Detailed project documentation
-    ├── mavirov-rov/       # ROV software architecture
-    ├── pam-tdm-simulator/ # MATLAB signal processing project
-    └── research/          # Research papers and documentation
+├── index.html                                  # Main portfolio website
+├── README.md                                   # Portfolio and repository overview
+├── UNDERWATER_ROV_SYSTEM.md                    # ROV architecture and GCS description
+├── MIST Mavirov_Technical Documentation_2026.pdf
+├── images/                                     # Portfolio, championship, ROV, and GCS media
+└── projects/                                   # Additional detailed project documentation
 ```
 
 ---
@@ -879,12 +831,12 @@ portfolio-FMH/
 
 ## 📖 Documentation
 
-Comprehensive documentation for major projects is available in individual project folders:
-- Architecture diagrams (to be added)
-- Technical specifications
-- Installation & setup guides
-- API documentation
-- Code examples
+Key documentation is available directly in the repository:
+- [Underwater ROV System and GCS Overview](UNDERWATER_ROV_SYSTEM.md)
+- [MIST Mavirov Technical Documentation 2026](https://github.com/Farhan-Mohib/portfolio-FMH/blob/main/MIST%20Mavirov_Technical%20Documentation_2026.pdf)
+- Architecture and communication descriptions
+- Competition and field-operation media
+- Research papers and supporting technical documentation
 
 ---
 
@@ -892,8 +844,9 @@ Comprehensive documentation for major projects is available in individual projec
 
 - Advanced control algorithms for underwater vehicles
 - Real-time signal processing optimization
-- Multi-camera streaming integration
-- Autonomous mission planning systems
+- Multi-camera streaming and pilot-interface integration
+- Custom ROV Ground Control Station development
+- Mission planning and vehicle safety systems
 - Research paper publication in peer-reviewed journals
 
 ---
@@ -919,8 +872,8 @@ This portfolio and associated documentation are provided for professional and ed
 
 This repository serves as a comprehensive showcase of my professional work, research contributions, and technical expertise. It demonstrates my capabilities in software architecture, robotics systems engineering, and advanced signal processing across both academic and practical applications.
 
-**Last Updated**: March 2024  
-**Version**: 2.0 (Professional Technical Edition)
+**Last Updated**: July 2026  
+**Version**: 3.0 (MATE ROV World Champion 2026 Edition)
 
 ---
 
